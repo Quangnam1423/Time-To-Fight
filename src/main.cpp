@@ -52,8 +52,17 @@ int main()
     init(character , idle);
 
     sf::Clock clock;
+    clock.restart();
     float frameTime = 0.2f;
 
+    sf::Event event;
+    while (window.isOpen())
+    {
+        if (event.type == sf::Event::Closed)
+            window.close();
+        
+        //if 
+    }
 }
 
 void init(sf::Sprite& character , Action& firstAction)

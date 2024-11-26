@@ -1,7 +1,7 @@
 # Makefile for SFML project
 CXX = g++
 CXXFLAGS = -std=c++11 -Wall
-LDFLAGS = -lsfml-graphics -lsfml-window -lsfml-system
+LDFLAGS = -lsfml-graphics -lsfml-window -lsfml-systemm
 
 SRC_DIR = src
 OBJ_DIR = obj
