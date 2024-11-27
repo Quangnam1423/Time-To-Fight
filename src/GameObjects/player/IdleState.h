@@ -1,19 +1,19 @@
-#ifndef JUMPSTATE_H
-#define JUMPSTATE_H
+#ifndef IDLESTATE_H
+#define IDLESTATE_H
 
-#include <SFML/Graphics.hpp>
+
 #include "IPlayerState.h"
 
 class Character;
 
-class JumpState : public IPlayerState
+class IdleState : public IPlayerState
 {
 public:
-    JumpState(Character* character, const std::string* texturePath, 
-            sf::Vector2i frameCount, 
-            float frameTime = 0.1f
+    IdleState(Character* character, const std::string* texturePath,
+                sf::Vector2i frameCount,
+                float frameTime = 0.1f
     );
-    ~JumpState();
+    ~IdleState();
 
     void update(float deltaTime) override;
     void setStateAtTheEndFrame() override;
@@ -25,8 +25,7 @@ public:
     using IPlayerState::getTexture;
     using IPlayerState::reset;
 private:
-
+    
 };
-
 
 #endif

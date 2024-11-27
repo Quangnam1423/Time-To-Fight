@@ -1,19 +1,18 @@
-#ifndef JUMPSTATE_H
-#define JUMPSTATE_H
+#ifndef WALKSTATE_H
+#define WALKSTATE_H
 
-#include <SFML/Graphics.hpp>
 #include "IPlayerState.h"
 
 class Character;
 
-class JumpState : public IPlayerState
+class WalkState : public IPlayerState
 {
 public:
-    JumpState(Character* character, const std::string* texturePath, 
+    WalkState(Character* character, const std::string* texturePath, 
             sf::Vector2i frameCount, 
             float frameTime = 0.1f
     );
-    ~JumpState();
+    ~WalkState();
 
     void update(float deltaTime) override;
     void setStateAtTheEndFrame() override;
@@ -27,6 +26,5 @@ public:
 private:
 
 };
-
 
 #endif

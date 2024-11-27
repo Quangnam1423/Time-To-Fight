@@ -1,29 +1,29 @@
-#include "JumpState.h"
+#include "WalkState.h"
 #include "Character.h"
 
-JumpState::JumpState(Character* character, const std::string *texturePath, 
+WalkState::WalkState(Character* character, const std::string *texturePath, 
                 sf::Vector2i frameCount, 
                 float frameTime = 0.1f) : IPlayerState(character, texturePath, frameCount, frameTime)
 {
 
 }
 
-JumpState::~JumpState()
+WalkState::~WalkState()
 {
     IPlayerState::~IPlayerState();
 }
 
 
-void JumpState::update(float deltaTime)
+void WalkState::update(float deltaTime)
 {
     
 }
 
-void JumpState::setStateAtTheEndFrame()
+void WalkState::setStateAtTheEndFrame()
 {
     m_character->setState(State::IDLE);
 }
 
-void JumpState::handleEvent(sf::Event &event)
+void WalkState::handleEvent(sf::Event &event)
 {
 }

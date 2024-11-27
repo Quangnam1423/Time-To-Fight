@@ -5,9 +5,10 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 #include <map>
+#include <unordered_map>
 
 #include "IPlayerState.h"
-#include "PlayerState.h"
+#include "PlayerConfigState.h"
 
 
 class Character : sf::Sprite
@@ -15,6 +16,7 @@ class Character : sf::Sprite
     public:
         
         Character(float x , float y);
+        ~Character();
 
         void update();
         void render(sf::RenderWindow& gl_window);
@@ -27,8 +29,10 @@ class Character : sf::Sprite
         sf::Sprite* m_sprite;
         sf::Clock m_animationClock;
         sf::Time m_deltaTime;
-        int m_statusAction;
-        State m_state;
+        IPlayerState * m_state;
+
+        // get state for 
+        std::unordered_map<State, IPlayerState* , EnumClassHash> m_stateMap;
 };
 
 #endif

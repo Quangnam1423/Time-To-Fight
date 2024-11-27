@@ -1,5 +1,7 @@
-#ifndef PLAYERSTATE_H
-#define PLAYERSTATE_H
+#ifndef PLAYERCONFIGSTATE_H
+#define PLAYERCONFIGSTATE_H
+
+#include <iostream>
 
 
 // path of action
@@ -37,6 +39,13 @@ enum State{
     JUMP = 6, 
     HURT = 7, 
     DEAD = 8
+};
+
+struct EnumClassHash{
+    template<typename T>
+    std::size_t operator() (T t) const{
+        return static_cast<std::size_t>(t);
+    }
 };
 
 #endif
