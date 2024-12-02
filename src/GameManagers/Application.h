@@ -3,7 +3,9 @@
 
 #include <SFML/Graphics.hpp>
 
-class Application
+#include "Singleton.h"
+
+class Application : public Singleton
 {
     public:
         void run();
@@ -15,6 +17,7 @@ class Application
         void render();
     private:
         sf::RenderWindow* m_window;
+        sf::Clock m_clock;
 
 };
 
