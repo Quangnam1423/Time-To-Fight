@@ -21,6 +21,8 @@ class Application : public Singleton
         void render();
     private:
         sf::RenderWindow* m_window;
+        Character* m_character;
+        sf::Clock m_clock;
 
 };
 
