@@ -1,17 +1,29 @@
 #include "IPlayerState.h"
 
 IPlayerState::IPlayerState(Character *character, 
-                           const std::string *texturePath, 
+                           const char *texturePath, 
                            sf::Vector2i frameCount, 
-                           float timeFrame = 0.1f) :
+                           float timeFrame) :
             m_character(character), m_frameCount(frameCount), m_timeFrame(timeFrame)
 {
-    if (!m_texture.loadFromFile(*texturePath))
+    if (!m_texture.loadFromFile(texturePath))
     {
         throw std::runtime_error("can't load texture");
     }
     m_currentFrame = sf::Vector2i(0 , 0);
     CalculateFrameSize();
+}
+
+void IPlayerState::update(float deltaTime)
+{
+}
+
+void IPlayerState::setStateAtTheEndFrame()
+{
+}
+
+void IPlayerState::handleEvent(sf::Event &event)
+{
 }
 
 sf::IntRect IPlayerState::getCurrentFrame()
@@ -39,6 +51,10 @@ void IPlayerState::CalculateNextFrame()
             m_currentFrame.y++;
             m_currentFrame.x = 0;
         }
+    }
+    else
+    {
+        m_currentFrame.x++;
     }
 }
 

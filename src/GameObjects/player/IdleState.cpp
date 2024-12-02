@@ -1,9 +1,9 @@
 #include "Character.h"
 #include "IdleState.h"
 
-IdleState::IdleState(Character* character, const std::string *texturePath, 
+IdleState::IdleState(Character* character, const char *texturePath, 
                 sf::Vector2i frameCount, 
-                float frameTime = 0.1f) : IPlayerState(character, texturePath, frameCount, frameTime)
+                float frameTime) : IPlayerState(character, texturePath, frameCount, frameTime)
 {
 
 }

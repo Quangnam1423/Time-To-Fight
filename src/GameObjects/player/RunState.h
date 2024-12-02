@@ -8,9 +8,9 @@ class Character;
 class RunState : public IPlayerState
 {
 public:
-    RunState(Character* character, const std::string* texturePath, 
+    RunState(Character* character, const char* texturePath, 
             sf::Vector2i frameCount, 
-            float frameTime = 0.1f
+            float frameTime
     );
     ~RunState();
 

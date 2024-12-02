@@ -4,7 +4,6 @@
 
 #include <SFML/Graphics.hpp>
 #include <string>
-#include <map>
 #include <unordered_map>
 
 #include "IPlayerState.h"
@@ -18,9 +17,9 @@ class Character : sf::Sprite
         Character(float x , float y);
         ~Character();
 
+        void init();
         void update();
         void render(sf::RenderWindow& gl_window);
-        void callbackEndingAnimation();
 
         void handlingEvent(sf::Event& event);
         void setState(State nextState);

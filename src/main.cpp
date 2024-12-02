@@ -1,75 +1,59 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include <thread>
 
-#include "GameObjects/Action.h"
-
-#define gameAction "Time To Fight"
-const char* const_idlePath = "../resource/Samurai/idle.png";
-const char* const_runPath = "../resource/Samurai/Run.png";
-const char* const_jumpPath = "../resource/Samurai/Jump.png";
-const char* const_walkPath = "../resource/Samurai/Walk.png";
-const char* const_attack_3Path = "../resource/Samurai/attack_3.png";
-const char* const_attack_2Path = "../resource/Samurai/attack_2.png";
-const char* const_attack_1Path = "../resource/Samurai/attack_1.png";
-const char* const_hurtPath = "../resource/Samurai/Hurt.png";
-const char* const_deadPath = "../resource/Samurai/dead.png";
-
-
-// number of action frame
-const int const_idleFrame = 6;
-const int const_runFrame = 8;
-const int const_jumpFrame = 12;
-const int const_walkFrame = 8;
-const int const_attack_3 = 3;
-const int const_attack_2 = 4;
-const int const_attack_1 = 6;
-const int const_hurt = 2;
-const int const_dead = 3;
-
-void init(sf::Sprite& character , bool isIdle = true);
-void animationCallbackFunction();
-
+#include "GameManagers/Application.h"
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(800 , 600) , gameAction);
+    std::cout << "start main function" << std::endl;
+    Application* app = new Application();
+    std::cout << "start app" << std::endl;
+    app->run();
+}
 
-    Action idle = Action(const_idlePath , const_idleFrame , 0.2f , animationCallbackFunction);
-    Action walk = Action(const_walkPath , const_walkFrame , 0.2f , animationCallbackFunction);
-    Action attack_1 = Action(const_attack_1Path , const_attack_1 , 0.2f , animationCallbackFunction);
-    Action attack_2 = Action(const_attack_2Path , const_attack_2 , 0.2f , animationCallbackFunction);
-    Action attack_3 = Action(const_attack_3Path , const_attack_3 , 0.2f , animationCallbackFunction);
 
-    sf::Sprite character;
-    character.setPosition(sf::Vector2f(100.0f , 100.0f));
-    bool isIdle = true;
-    bool isWalk = false;
-    bool isAttack_1 = false;
-    bool isAttack_2 = false;
-    bool isAttack_3 = false;
 
-    init(character , idle);
 
-    sf::Clock clock;
-    clock.restart();
-    float frameTime = 0.2f;
 
-    sf::Event event;
-    while (window.isOpen())
-    {
-        if (event.type == sf::Event::Closed)
-            window.close();
+// int main()
+// {
+//     sf::RenderWindow window(sf::VideoMode(800 , 600) , gameAction);
+
+//     Action idle = Action(const_idlePath , const_idleFrame , 0.2f , animationCallbackFunction);
+//     Action walk = Action(const_walkPath , const_walkFrame , 0.2f , animationCallbackFunction);
+//     Action attack_1 = Action(const_attack_1Path , const_attack_1 , 0.2f , animationCallbackFunction);
+//     Action attack_2 = Action(const_attack_2Path , const_attack_2 , 0.2f , animationCallbackFunction);
+//     Action attack_3 = Action(const_attack_3Path , const_attack_3 , 0.2f , animationCallbackFunction);
+
+//     sf::Sprite character;
+//     character.setPosition(sf::Vector2f(100.0f , 100.0f));
+//     bool isIdle = true;
+//     bool isWalk = false;
+//     bool isAttack_1 = false;
+//     bool isAttack_2 = false;
+//     bool isAttack_3 = false;
+
+//     init(character , idle);
+
+//     sf::Clock clock;
+//     clock.restart();
+//     float frameTime = 0.2f;
+
+//     sf::Event event;
+//     while (window.isOpen())
+//     {
+//         if (event.type == sf::Event::Closed)
+//             window.close();
         
-        //if 
-    }
-}
+//         //if 
+//     }
+// }
 
-void init(sf::Sprite& character , Action& firstAction)
-{
-    character.setTexture(firstAction.getTexture());
-    character.setTextureRect(firstAction.getCurrentFrameRect());
-}
+// void init(sf::Sprite& character , Action& firstAction)
+// {
+//     character.setTexture(firstAction.getTexture());
+//     character.setTextureRect(firstAction.getCurrentFrameRect());
+// }
 
 // int main()
 // {

@@ -9,9 +9,9 @@ class Character;
 class JumpState : public IPlayerState
 {
 public:
-    JumpState(Character* character, const std::string* texturePath, 
+    JumpState(Character* character, const char* texturePath, 
             sf::Vector2i frameCount, 
-            float frameTime = 0.1f
+            float frameTime
     );
     ~JumpState();
 

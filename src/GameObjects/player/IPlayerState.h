@@ -10,8 +10,8 @@ class IPlayerState
 {
 public:
     //IPlayerState(const std::string& animationPath , sf::Vector2i frameCount , float timeFrame);
-    IPlayerState(Character* character, const std::string* texturePath, 
-                sf::Vector2i frameCount, float timeFrame = 0.1f
+    IPlayerState(Character* character, const char* texturePath, 
+                sf::Vector2i frameCount, float timeFrame
         );
 
 

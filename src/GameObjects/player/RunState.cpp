@@ -1,9 +1,9 @@
 #include "RunState.h"
 #include "Character.h"
 
-RunState::RunState(Character* character, const std::string *texturePath, 
+RunState::RunState(Character* character, const char* texturePath, 
                 sf::Vector2i frameCount, 
-                float frameTime = 0.1f) : IPlayerState(character, texturePath, frameCount, frameTime)
+                float frameTime) : IPlayerState(character, texturePath, frameCount, frameTime)
 {
 
 }

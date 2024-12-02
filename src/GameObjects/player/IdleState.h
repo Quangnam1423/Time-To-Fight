@@ -9,9 +9,9 @@ class Character;
 class IdleState : public IPlayerState
 {
 public:
-    IdleState(Character* character, const std::string* texturePath,
+    IdleState(Character* character, const char* texturePath,
                 sf::Vector2i frameCount,
-                float frameTime = 0.1f
+                float frameTime
     );
     ~IdleState();
 

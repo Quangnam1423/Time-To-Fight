@@ -8,9 +8,9 @@ class Character;
 class WalkState : public IPlayerState
 {
 public:
-    WalkState(Character* character, const std::string* texturePath, 
+    WalkState(Character* character, const char* texturePath, 
             sf::Vector2i frameCount, 
-            float frameTime = 0.1f
+            float frameTime
     );
     ~WalkState();
 
