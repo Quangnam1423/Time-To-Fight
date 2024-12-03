@@ -24,6 +24,8 @@ class Application : public Singleton
         Character* m_character;
         sf::Clock m_clock;
 
+        float m_timer;
+
 };
 
 #endif

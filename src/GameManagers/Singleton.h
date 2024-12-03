@@ -4,15 +4,15 @@
 #include <iostream>
 #include <memory>
 
+template<typename T>
 class Singleton
 {   
 public:
-    //constructor
-    Singleton();
-
-    //destructor
-
-    virtual ~Singleton() = default;
+    static T* getInstance()
+    {
+        static T* instance;
+        return instance;
+    }
     // delete constructor
     Singleton(const Singleton&) = delete;
 
@@ -21,9 +21,11 @@ public:
 
     // delete constructor;
     static Singleton& getInstance();
-
-private:
-    static Singleton* m_instance;
+protected:
+    //constructor
+    Singleton() = default;
+    //destructor
+    virtual ~Singleton() = default;
 };
 
 #endif

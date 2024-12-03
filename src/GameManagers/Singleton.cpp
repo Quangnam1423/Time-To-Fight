@@ -1,5 +1,7 @@
 #include "Singleton.h"
 
+Singleton* Singleton::m_instance = nullptr;
+
 Singleton::Singleton()
 {
     std::cout << "Singleton instance created" << std::endl;
