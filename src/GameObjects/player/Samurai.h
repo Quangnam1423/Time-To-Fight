@@ -16,9 +16,10 @@ class Samurai : public Character
 public:
     Samurai(sf::Vector2f position);
     ~Samurai();
-    void handlingEvent(sf::Event& event) override;
+    void handlingEvent(sf::Event& event, float deltaTime) override;
     void init() override;
 private:
+
     sf::Vector2f m_position;
     bool m_onLeft;
     bool m_onRight;
@@ -34,7 +35,7 @@ private:
 
 
     // combat stats
-    float m_movementSpped;
+    float m_movementSpeed;
     float m_healing;
     float m_physicalDamage;
     float m_magicDamage;

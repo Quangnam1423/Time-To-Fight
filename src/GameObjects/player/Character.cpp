@@ -43,7 +43,7 @@ void Character::render(sf::RenderWindow &gl_window)
 }
 
 
-void Character::handlingEvent(sf::Event &event)
+void Character::handlingEvent(sf::Event &event, float deltaTime)
 {
 }
 

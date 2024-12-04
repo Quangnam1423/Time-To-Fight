@@ -3,6 +3,9 @@
 #include "JumpState.h"
 #include "IdleState.h"
 #include "RunState.h"
+#include "AttackOneState.h"
+#include "AttackTwoState.h"
+#include "AttackThreeState.h"
 
 //path of action
 const char* const_idlePath = "resource/Samurai/Idle.png";
@@ -45,7 +48,7 @@ Samurai::Samurai(sf::Vector2f position) : Character(), m_position(position)
     m_dexterity = 1.0f;
     m_constitution = 1.0f;
 
-    m_movementSpped = 3.0f;
+    m_movementSpeed = 3.0f;
     m_healing = 2.5f;
     m_physicalDamage = 2.5f;
     m_magicDamage = 2.0f;
@@ -61,9 +64,10 @@ Samurai::Samurai(sf::Vector2f position) : Character(), m_position(position)
 
 Samurai::~Samurai()
 {
+
 }
 
-void Samurai::handlingEvent(sf::Event &event)
+void Samurai::handlingEvent(sf::Event &event, float deltaTime)
 {
 }
 
@@ -84,6 +88,18 @@ void Samurai::init()
     RunState* runState = new RunState(this, const_runPath, 
                                         sf::Vector2i(const_runFrame - 1, 0), 0.05f);
     m_stateMap[State::RUN] = runState;
+
+    AttackOneState* attackOneState = new AttackOneState(this, const_attack_1Path,
+                                        sf::Vector2i(const_attack_1 - 1, 0), 0.05f);
+    m_stateMap[State::ATTACK_1] = attackOneState;    
+
+    AttackTwoState* attackTwoState = new AttackTwoState(this, const_attack_2Path,
+                                        sf::Vector2i(const_attack_2 - 1, 0), 0.05f);
+    m_stateMap[State::ATTACK_2] = attackTwoState;
+
+    AttackThreeState* attackThreeState = new AttackThreeState(this, const_attack_3Path,
+                                        sf::Vector2i(const_attack_3 - 1, 0), 0.05f);
+    m_stateMap[State::ATTACK_3] = attackThreeState;                               
 
     m_state = m_stateMap[State::IDLE];
     //setState(State::IDLE);

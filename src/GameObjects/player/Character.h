@@ -18,7 +18,7 @@ class Character : sf::Sprite
         ~Character() = default;
 
         virtual void init();
-        virtual void handlingEvent(sf::Event& event);
+        virtual void handlingEvent(sf::Event& event,  float deltaTime);
         
         void update(float deltaTime);
         void render(sf::RenderWindow& gl_window);
