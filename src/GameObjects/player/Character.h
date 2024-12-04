@@ -14,17 +14,17 @@ class Character : sf::Sprite
 {
     public:
         
-        Character(float x , float y);
-        ~Character();
+        Character();
+        ~Character() = default;
 
-        void init();
-        void update();
+        virtual void init();
+        virtual void handlingEvent(sf::Event& event);
+        
+        void update(float deltaTime);
         void render(sf::RenderWindow& gl_window);
-
-        void handlingEvent(sf::Event& event);
         void setState(State nextState);
 
-    private:
+    protected:
         sf::Sprite* m_sprite;
         sf::Clock m_animationClock;
         sf::Time m_deltaTime;

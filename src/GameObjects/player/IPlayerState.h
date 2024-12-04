@@ -39,6 +39,7 @@ protected:
     sf::Vector2i m_textUV;
     sf::IntRect m_intRect;
     float m_timeFrame;
+    float m_durationTime;
     bool m_modeStopAtTheEndFrame;   
 };
 

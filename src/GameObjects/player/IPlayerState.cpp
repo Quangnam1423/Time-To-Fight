@@ -11,11 +11,13 @@ IPlayerState::IPlayerState(Character *character,
         throw std::runtime_error("can't load texture");
     }
     m_currentFrame = sf::Vector2i(0 , 0);
+    m_durationTime = 0.0f;
     CalculateFrameSize();
 }
 
 void IPlayerState::update(float deltaTime)
 {
+
 }
 
 void IPlayerState::setStateAtTheEndFrame()
@@ -24,6 +26,7 @@ void IPlayerState::setStateAtTheEndFrame()
 
 void IPlayerState::handleEvent(sf::Event &event)
 {
+    
 }
 
 sf::IntRect IPlayerState::getCurrentFrame()
@@ -31,13 +34,14 @@ sf::IntRect IPlayerState::getCurrentFrame()
     m_textUV.x = m_currentFrame.x * m_frameSize.x;
     m_textUV.y = m_currentFrame.y * m_frameSize.y;
     m_intRect = sf::IntRect(m_textUV , (sf::Vector2i)m_frameSize);
-    CalculateNextFrame();
+    //CalculateNextFrame();
     return m_intRect;
 }
 
 void IPlayerState::reset()
 {
     m_currentFrame = sf::Vector2i(0 , 0);
+    m_durationTime = 0.0f;
 }
 
 void IPlayerState::CalculateNextFrame()

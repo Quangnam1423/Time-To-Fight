@@ -24,6 +24,7 @@ public:
     using IPlayerState::getCurrentFrame;
     using IPlayerState::getTexture;
     using IPlayerState::reset;
+    //using IPlayerState::update;
 private:
     
 };

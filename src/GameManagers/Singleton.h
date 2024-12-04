@@ -7,12 +7,9 @@
 template<typename T>
 class Singleton
 {   
+private:
+    static T* m_instance;
 public:
-    static T* getInstance()
-    {
-        static T* instance;
-        return instance;
-    }
     // delete constructor
     Singleton(const Singleton&) = delete;
 
@@ -20,12 +17,22 @@ public:
     Singleton& operator = (const Singleton&) = delete;
 
     // delete constructor;
-    static Singleton& getInstance();
+    static T* getInstance(){
+        if (m_instance == nullptr)
+        {
+            m_instance = new T();
+        }
+        return m_instance;
+    }
 protected:
     //constructor
     Singleton() = default;
     //destructor
     virtual ~Singleton() = default;
+    
 };
+
+template<typename T>
+T *Singleton<T>::m_instance = nullptr;
 
 #endif

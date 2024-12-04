@@ -5,9 +5,7 @@
 
 int main()
 {
-    std::cout << "start main function" << std::endl;
-    Application* app = new Application();
-    std::cout << "start app" << std::endl;
+    Application* app = Application::getInstance();
     app->run();
 }
 

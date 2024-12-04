@@ -8,8 +8,10 @@
 
 #include "Singleton.h"
 
-class Application : public Singleton
+class Application : public Singleton<Application>
 {
+    friend class Singleton<Application>;
+
     public:
         
         Application();
@@ -22,10 +24,10 @@ class Application : public Singleton
     private:
         sf::RenderWindow* m_window;
         Character* m_character;
-        sf::Clock m_clock;
+        sf::Clock* m_clock;
 
         float m_timer;
-
+        float m_deltaTime;
 };
 
 #endif
