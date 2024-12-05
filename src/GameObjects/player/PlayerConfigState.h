@@ -13,7 +13,16 @@ enum State{
     WALK = 5, 
     JUMP = 6, 
     HURT = 7, 
-    DEAD = 8
+    DEAD = 8,
+    SHIELD = 9
+};
+
+enum DIRECTION
+{
+    LEFT_DIRECTION,
+    RIGHT_DIRECTION,
+    SHIELD_DIRECTION,
+    JUMP_DIRECTION
 };
 
 struct EnumClassHash{

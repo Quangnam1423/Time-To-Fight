@@ -4,9 +4,10 @@
 #include <SFML/Graphics.hpp>
 
 #include "ApplicationConfig.h"
-#include "../GameObjects/player/Character.h"
 
 #include "Singleton.h"
+
+class Character;
 
 class Application : public Singleton<Application>
 {

@@ -6,7 +6,7 @@
 #include <unordered_set>
 #include <unordered_map>
 
-#include "Singleton.h"
+#include "../../GameManagers/Singleton.h"
 
 class Collision : public Singleton<Collision>
 {

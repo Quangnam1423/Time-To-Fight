@@ -1,8 +1,10 @@
 #include "Samurai.h"
+
 #include "WalkState.h"
 #include "JumpState.h"
 #include "IdleState.h"
 #include "RunState.h"
+#include "ShieldState.h"
 #include "AttackOneState.h"
 #include "AttackTwoState.h"
 #include "AttackThreeState.h"
@@ -17,6 +19,7 @@ const char* const_attack_2Path = "resource/Samurai/Attack_2.png";
 const char* const_attack_3Path = "resource/Samurai/Attack_1.png";
 const char* const_hurtPath = "resource/Samurai/Hurt.png";
 const char* const_deadPath = "resource/Samurai/Dead.png";
+const char* const_shieldPath = "resource/Samurai/Shield.png";
 
 
 // number of action frame
@@ -29,37 +32,16 @@ const int const_attack_2 = 4;
 const int const_attack_1 = 6;
 const int const_hurt = 2;
 const int const_dead = 3;
+const int const_shield = 2;
 
-Samurai::Samurai(sf::Vector2f position) : Character(), m_position(position)                                  
+Samurai::Samurai(sf::Vector2f position) : Character(position)                                
 {
     init();
     m_sprite = new sf::Sprite(m_state->getTexture());
     m_sprite->setPosition(m_position);
     m_sprite->setTextureRect(m_state->getCurrentFrame());
-
-
-    this->m_onLeft = true;
-    this->m_onRight = false;
-    this->m_deadMode = false;
-
-    m_healthPoint = 100.0f;
-    m_manaPoint = 20.0f;
-    m_strength = 5.0f;
-    m_dexterity = 1.0f;
-    m_constitution = 1.0f;
-
-    m_movementSpeed = 3.0f;
-    m_healing = 2.5f;
-    m_physicalDamage = 2.5f;
-    m_magicDamage = 2.0f;
-    m_armor = 1.0f;
-    m_magicResistance = 0.5f;
-    m_evasion = 0.1f;
-    m_block = 2.0f;
-
-    m_healthRegen = 100.0f;
-    m_manaRegen = 100.0f;
-    m_energyRegen = 50.0f;
+    m_sprite->setScale(1.f, 1.f);
+    m_sprite->setOrigin(0, 0);
 }
 
 Samurai::~Samurai()
@@ -69,6 +51,28 @@ Samurai::~Samurai()
 
 void Samurai::handlingEvent(sf::Event &event, float deltaTime)
 {
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+    {
+        //movement(deltaTime, DIRECTION::RIGHT_DIRECTION);
+        std::cout << "move right" << std::endl;
+    }
+    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+    {
+        //movement(deltaTime, DIRECTION::LEFT_DIRECTION);
+        std::cout << "move left" << std::endl;
+    }
+    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+    {
+        //jump(deltaTime, DIRECTION::JUMP_DIRECTION);
+        std::cout << "jump" << std::endl;
+    }
+    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+    {
+        //movement(deltaTime, DIRECTION::SHIELD_DIRECTION);
+        std::cout << "shield" << std::endl;
+    }
+    // state handle event from keyboard..
+    m_state->handleEvent(event);
 }
 
 void Samurai::init()
@@ -99,9 +103,25 @@ void Samurai::init()
 
     AttackThreeState* attackThreeState = new AttackThreeState(this, const_attack_3Path,
                                         sf::Vector2i(const_attack_3 - 1, 0), 0.05f);
-    m_stateMap[State::ATTACK_3] = attackThreeState;                               
+    m_stateMap[State::ATTACK_3] = attackThreeState;   
+
+    ShieldState* shieldState = new ShieldState(this, const_shieldPath,
+                                        sf::Vector2i(const_shield - 1, 0), 0.05f);   
+    m_stateMap[State::SHIELD] = shieldState;                         
 
     m_state = m_stateMap[State::IDLE];
     //setState(State::IDLE);
     return;
+}
+
+void Samurai::attack()
+{
+}
+
+void Samurai::combo_1()
+{
+}
+
+void Samurai::combo_2()
+{
 }
