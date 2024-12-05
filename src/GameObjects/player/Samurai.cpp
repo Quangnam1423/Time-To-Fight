@@ -49,67 +49,68 @@ Samurai::~Samurai()
 
 }
 
-void Samurai::handlingEvent(sf::Event &event, float deltaTime)
+void Samurai::handlingEvent(sf::Event &event)
 {
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-    {
-        //movement(deltaTime, DIRECTION::RIGHT_DIRECTION);
-        std::cout << "move right" << std::endl;
-    }
-    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-    {
-        //movement(deltaTime, DIRECTION::LEFT_DIRECTION);
-        std::cout << "move left" << std::endl;
-    }
-    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-    {
-        //jump(deltaTime, DIRECTION::JUMP_DIRECTION);
-        std::cout << "jump" << std::endl;
-    }
-    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-    {
-        //movement(deltaTime, DIRECTION::SHIELD_DIRECTION);
-        std::cout << "shield" << std::endl;
-    }
+    m_state->handlingEvent(event);
+    // if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::D)
+    // {
+    //     //movement(deltaTime, DIRECTION::RIGHT_DIRECTION);
+    //     std::cout << "move right" << std::endl;
+        
+    // }
+    // else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+    // {
+    //     //movement(deltaTime, DIRECTION::LEFT_DIRECTION);
+    //     std::cout << "move left" << std::endl;
+    // }
+    // else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+    // {
+    //     //jump(deltaTime, DIRECTION::JUMP_DIRECTION);
+    //     std::cout << "jump" << std::endl;
+    // }
+    // else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+    // {
+    //     //movement(deltaTime, DIRECTION::SHIELD_DIRECTION);
+    //     std::cout << "shield" << std::endl;
+    // }
     // state handle event from keyboard..
-    m_state->handleEvent(event);
 }
 
 void Samurai::init()
 {
     IdleState* idleState = new IdleState(this, const_idlePath, 
                                         sf::Vector2i(const_idleFrame - 1, 0), 0.05f);
-    m_stateMap[State::IDLE] = idleState;
+    m_stateMap[STATE::IDLE] = idleState;
 
     JumpState* jumpState = new JumpState(this, const_jumpPath, 
                                         sf::Vector2i(const_jumpFrame - 1, 0) , 0.1f);
-    m_stateMap[State::JUMP] = jumpState;
+    m_stateMap[STATE::JUMP] = jumpState;
 
     WalkState* walkState = new WalkState(this, const_walkPath,
-                                        sf::Vector2i(const_walkFrame - 1, 0) , 0.05f);
-    m_stateMap[State::WALK] = walkState;
+                                        sf::Vector2i(const_walkFrame - 1, 0) , 0.1f);
+    m_stateMap[STATE::WALK] = walkState;
 
     RunState* runState = new RunState(this, const_runPath, 
                                         sf::Vector2i(const_runFrame - 1, 0), 0.05f);
-    m_stateMap[State::RUN] = runState;
+    m_stateMap[STATE::RUN] = runState;
 
     AttackOneState* attackOneState = new AttackOneState(this, const_attack_1Path,
                                         sf::Vector2i(const_attack_1 - 1, 0), 0.05f);
-    m_stateMap[State::ATTACK_1] = attackOneState;    
+    m_stateMap[STATE::ATTACK_1] = attackOneState;    
 
     AttackTwoState* attackTwoState = new AttackTwoState(this, const_attack_2Path,
                                         sf::Vector2i(const_attack_2 - 1, 0), 0.05f);
-    m_stateMap[State::ATTACK_2] = attackTwoState;
+    m_stateMap[STATE::ATTACK_2] = attackTwoState;
 
     AttackThreeState* attackThreeState = new AttackThreeState(this, const_attack_3Path,
                                         sf::Vector2i(const_attack_3 - 1, 0), 0.05f);
-    m_stateMap[State::ATTACK_3] = attackThreeState;   
+    m_stateMap[STATE::ATTACK_3] = attackThreeState;   
 
     ShieldState* shieldState = new ShieldState(this, const_shieldPath,
                                         sf::Vector2i(const_shield - 1, 0), 0.05f);   
-    m_stateMap[State::SHIELD] = shieldState;                         
+    m_stateMap[STATE::SHIELD] = shieldState;                         
 
-    m_state = m_stateMap[State::IDLE];
+    m_state = m_stateMap[STATE::IDLE];
     //setState(State::IDLE);
     return;
 }

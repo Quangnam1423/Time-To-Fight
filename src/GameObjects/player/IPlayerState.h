@@ -18,7 +18,7 @@ public:
     virtual ~IPlayerState() = default;
     virtual void update(float deltaTime);
     virtual void setStateAtTheEndFrame();
-    virtual void handleEvent(sf::Event& event);
+    virtual void handlingEvent(sf::Event& event);
 
     sf::IntRect getCurrentFrame();
     void reset();
@@ -29,7 +29,7 @@ public:
 protected:
     Character* m_character;
 
-    enum State m_playerState;
+    enum STATE m_playerState;
 
     sf::Texture m_texture;
 

@@ -15,7 +15,7 @@ class Samurai : public Character
 public:
     Samurai(sf::Vector2f position);
     ~Samurai();
-    void handlingEvent(sf::Event& event, float deltaTime) override;
+    void handlingEvent(sf::Event& event) override;
     void init() override;
     void attack();
     void combo_1();

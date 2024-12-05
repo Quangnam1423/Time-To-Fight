@@ -26,9 +26,15 @@ void WalkState::update(float deltaTime)
 
 void WalkState::setStateAtTheEndFrame()
 {
-    m_character->setState(State::IDLE);
+    reset();
+    m_character->setState(STATE::IDLE);
 }
 
-void WalkState::handleEvent(sf::Event &event)
+void WalkState::handlingEvent(sf::Event &event)
 {
+    if (event.type == sf::Event::KeyReleased)
+    {
+        if (event.key.code == sf::Keyboard::D || event.key.code == sf::Keyboard::A)
+            setStateAtTheEndFrame();
+    }
 }

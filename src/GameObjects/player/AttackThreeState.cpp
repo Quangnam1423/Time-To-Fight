@@ -27,9 +27,10 @@ void AttackThreeState::update(float deltaTime)
 
 void AttackThreeState::setStateAtTheEndFrame()
 {
-    m_character->setState(State::IDLE);
+    reset();
+    m_character->setState(STATE::IDLE);
 }
 
-void AttackThreeState::handleEvent(sf::Event &event)
+void AttackThreeState::handlingEvent(sf::Event &event)
 {
 }

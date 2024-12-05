@@ -4,7 +4,7 @@
 #include <iostream>
 
 
-enum State{ 
+enum STATE{ 
     IDLE  = 0, 
     ATTACK_1 = 1, 
     ATTACK_2 = 2, 

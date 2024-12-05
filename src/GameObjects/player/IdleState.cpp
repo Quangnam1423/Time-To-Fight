@@ -27,9 +27,33 @@ void IdleState::update(float deltaTime)
 void IdleState::setStateAtTheEndFrame()
 {
     reset();
-    m_character->setState(State::IDLE);
+    m_character->setState(STATE::IDLE);
 }
 
-void IdleState::handleEvent(sf::Event &event)
+void IdleState::handlingEvent(sf::Event &event)
 {
+    if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::D)
+    {
+        std::cout << "runing ont the right direction" << std::endl;
+        m_character->setState(STATE::WALK);
+        reset();
+    }
+    else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::A)
+    {
+        std::cout << "running on the left direction" << std::endl;
+        m_character->setState(STATE::WALK);
+        reset();
+    }
+    else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::W)
+    {
+        std::cout << "jumping" << std::endl;
+        m_character->setState(STATE::JUMP);
+        reset();
+    }
+    else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::S)
+    {
+        std::cout << "shielding" << std::endl;
+        m_character->setState(STATE::SHIELD);
+        reset();
+    }
 }

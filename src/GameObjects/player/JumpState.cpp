@@ -26,9 +26,10 @@ void JumpState::update(float deltaTime)
 
 void JumpState::setStateAtTheEndFrame()
 {
-    m_character->setState(State::IDLE);
+    reset();
+    m_character->setState(STATE::IDLE);
 }
 
-void JumpState::handleEvent(sf::Event &event)
+void JumpState::handlingEvent(sf::Event &event)
 {
 }

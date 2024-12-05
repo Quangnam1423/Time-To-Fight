@@ -24,7 +24,7 @@ void IPlayerState::setStateAtTheEndFrame()
 {
 }
 
-void IPlayerState::handleEvent(sf::Event &event)
+void IPlayerState::handlingEvent(sf::Event &event)
 {
     
 }

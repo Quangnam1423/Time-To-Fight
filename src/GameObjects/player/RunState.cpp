@@ -26,9 +26,10 @@ void RunState::update(float deltaTime)
 
 void RunState::setStateAtTheEndFrame()
 {
-    m_character->setState(State::IDLE);
+    reset();
+    m_character->setState(STATE::IDLE);
 }
 
-void RunState::handleEvent(sf::Event &event)
+void RunState::handlingEvent(sf::Event &event)
 {
 }

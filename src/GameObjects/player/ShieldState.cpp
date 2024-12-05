@@ -26,9 +26,10 @@ void ShieldState::update(float deltaTime)
 
 void ShieldState::setStateAtTheEndFrame()
 {
-    m_character->setState(State::IDLE);
+    reset();
+    m_character->setState(STATE::IDLE);
 }
 
-void ShieldState::handleEvent(sf::Event &event)
+void ShieldState::handlingEvent(sf::Event &event)
 {
 }

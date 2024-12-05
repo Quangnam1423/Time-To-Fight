@@ -110,11 +110,11 @@ void Character::render(sf::RenderWindow &gl_window)
 }
 
 // virtual 
-void Character::handlingEvent(sf::Event &event, float deltaTime)
+void Character::handlingEvent(sf::Event &event)
 {
 }
 
-void Character::setState(State nextState)
+void Character::setState(STATE nextState)
 {
     m_state = m_stateMap[nextState];
     m_sprite->setTexture(m_state->getTexture());

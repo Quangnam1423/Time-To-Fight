@@ -18,11 +18,11 @@ public:
     ~Character();
 
     virtual void init();
-    virtual void handlingEvent(sf::Event& event,  float deltaTime);
+    virtual void handlingEvent(sf::Event& event);
     
     void update(float deltaTime);
     void render(sf::RenderWindow& gl_window);
-    void setState(State nextState);
+    void setState(STATE nextState);
 
     void movement(float deltaTime, DIRECTION direction);
     void jump(float deltaTime, DIRECTION direction);
@@ -38,7 +38,7 @@ protected:
     sf::Vector2f m_position;
 
     // get state for 
-    std::unordered_map<State, IPlayerState* , EnumClassHash> m_stateMap;
+    std::unordered_map<STATE, IPlayerState* , EnumClassHash> m_stateMap;
 
 
     // character attribute
