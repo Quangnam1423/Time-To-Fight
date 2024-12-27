@@ -22,7 +22,7 @@ public:
     
     void update(float deltaTime);
     void render(sf::RenderWindow& gl_window);
-    void setState(STATE nextState);
+    void setState(STATE nextState,  float durationTime);
 
     void movement(float deltaTime, DIRECTION direction);
     void jump(float deltaTime, DIRECTION direction);
@@ -40,6 +40,8 @@ protected:
     // get state for 
     std::unordered_map<STATE, IPlayerState* , EnumClassHash> m_stateMap;
 
+    float m_elapsedTime;
+    float m_durationTime;
 
     // character attribute
     bool m_onLeft;

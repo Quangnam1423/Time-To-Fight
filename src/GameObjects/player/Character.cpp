@@ -1,14 +1,14 @@
 #include "Character.h"
 
-#include "IPlayerState.h"
-#include "WalkState.h"
-#include "JumpState.h"
-#include "IdleState.h"
-#include "RunState.h"
-#include "ShieldState.h"
-#include "AttackOneState.h"
-#include "AttackTwoState.h"
-#include "AttackThreeState.h"
+#include "playerstates/IPlayerState.h"
+#include "playerstates/WalkState.h"
+#include "playerstates/JumpState.h"
+#include "playerstates/IdleState.h"
+#include "playerstates/RunState.h"
+#include "playerstates/ShieldState.h"
+#include "playerstates/AttackOneState.h"
+#include "playerstates/AttackTwoState.h"
+#include "playerstates/AttackThreeState.h"
 
 // #include "../logics/Physics.h"
 // #include "../logics/Collision.h"
@@ -20,9 +20,13 @@
 Character::Character(sf::Vector2f position) : m_position(position)
 
 {
-    this->m_onLeft = false;
-    this->m_onRight = true;
-    this->m_deadMode = false;
+    m_elapsedTime = 0.0f;
+    m_durationTime = 0.0f;
+
+
+    m_onLeft = false;
+    m_onRight = true;
+    m_deadMode = false;
 
     m_healthPoint = 100.0f;
     m_manaPoint = 20.0f;
@@ -66,6 +70,8 @@ void Character::update(float deltaTime)
 {
     m_state->update(deltaTime);
     m_sprite->setTextureRect(m_state->getCurrentFrame());
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+        return;
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
     {
@@ -114,10 +120,13 @@ void Character::handlingEvent(sf::Event &event)
 {
 }
 
-void Character::setState(STATE nextState)
+void Character::setState(STATE nextState, float durationTime)
 {
     m_state = m_stateMap[nextState];
     m_sprite->setTexture(m_state->getTexture());
+    m_state->update(durationTime);
+    m_durationTime = 0.0f;
+    return;
 }
 
 void Character::movement(float deltaTime, DIRECTION direction)
