@@ -58,7 +58,7 @@ void IdleState::update(float deltaTime)
         {
             reset();
         }
-        m_durationTime = 0.0f;
+        resetDurationTime();
     }
     return;
 }
