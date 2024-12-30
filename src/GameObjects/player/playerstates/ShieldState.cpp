@@ -74,8 +74,10 @@ void ShieldState::setStateAtTheEndFrame()
 
 void ShieldState::handlingEvent(sf::Event &event)
 {
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+        return;
     // handle attack state ....
-    if (event.type == sf::Event::KeyPressed && 
-        event.key.code == )
+
+    
     return;
 }

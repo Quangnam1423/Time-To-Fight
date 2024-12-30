@@ -70,5 +70,5 @@ void RunState::setStateAtTheEndFrame()
 
 void RunState::handlingEvent(sf::Event &event)
 {
-
+    return;
 }
