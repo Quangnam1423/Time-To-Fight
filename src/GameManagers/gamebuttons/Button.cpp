@@ -29,7 +29,7 @@ Button::Button(std::string name,
                 sf::Vector2f size) :
                 m_position(position), m_size(size)
 {
-
+    init();
 }
 
 Button::~Button()
