@@ -51,7 +51,7 @@ private:
     sf::RectangleShape m_shape;
     sf::Font m_font;
     sf::Text m_text;
-    sf::Vector2f m_posiiton;
+    sf::Vector2f m_position;
     sf::Vector2f m_size;
     
     // sf::Color m_idleColor;

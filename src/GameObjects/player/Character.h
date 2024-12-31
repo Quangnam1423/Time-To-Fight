@@ -6,8 +6,8 @@
 #include <string>
 #include <unordered_map>
 
-#include "IPlayerState.h"
-#include "PlayerConfigState.h"
+#include "playerstates/IPlayerState.h"
+#include "playerstates/PlayerConfigState.h"
 
 
 class Character : sf::Sprite

@@ -1,5 +1,5 @@
 #include "JumpState.h"
-#include "Character.h"
+#include "../Character.h"
 
 JumpState::JumpState(Character* character, const char* texturePath, 
                 sf::Vector2i frameCount, 
@@ -27,7 +27,7 @@ void JumpState::update(float deltaTime)
 void JumpState::setStateAtTheEndFrame()
 {
     reset();
-    m_character->setState(STATE::IDLE);
+    m_character->setState(STATE::IDLE, m_durationTime);
 }
 
 void JumpState::handlingEvent(sf::Event &event)

@@ -51,7 +51,7 @@ void AttackTwoState::update(float deltaTime)
 void AttackTwoState::setStateAtTheEndFrame()
 {
     reset();
-    m_character->setState(STATE::IDLE);
+    m_character->setState(STATE::IDLE,  m_durationTime);
 }
 
 void AttackTwoState::handlingEvent(sf::Event &event)

@@ -1,5 +1,5 @@
 dependencies/
 x64/
 
-
+.vs/
 *.dll
