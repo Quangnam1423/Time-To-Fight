@@ -38,10 +38,23 @@ Button::~Button()
 
 void Button::init(std::string name)
 {
+    m_name = name;
+    m_pathTexture = "resource/menubuttons/" + name + "button.png";
+    sf::Texture texture;
+    if (!texture.loadFromFile(m_name))
+    {
+        throw std::runtime_error("can't load texture from" + m_name);
+    }
+    m_shape = sf::RectangleShape(m_position);
+    m_shape.setSize(m_size);
+    
+    m_text.setString
 }
 
 void Button::render(sf::RenderWindow &window)
 {
+    window.draw(m_shape);
+    window.draw(m_text);
 }
 
 void Button::update(float deltaTime)

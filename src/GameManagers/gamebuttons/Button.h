@@ -53,10 +53,10 @@ private:
     sf::Text m_text;
     sf::Vector2f m_position;
     sf::Vector2f m_size;
+    std::string m_name;
+    std::string m_pathTexture;
     
-    // sf::Color m_idleColor;
-    // sf::Color m_hoverColor;
-    // sf::Color m_activeColor;
+    
     enum BUTTON_STATE m_ButtonState;
 };
 
