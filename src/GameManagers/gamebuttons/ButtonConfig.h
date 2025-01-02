@@ -22,42 +22,18 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-#ifndef BUTTON_H
-#define BUTTON_H
 
-#include <SFML/Graphics.hpp>
-#include "ButtonConfig.h"
+#ifndef BUTTONCONFIG_H
+#define BUTTONCONFIG_H
 
+#define _RESOURCE_TEXTURE_MENU_BUTTON "resource/menubuttons/largebuttons/coloredlargebuttons"
 
-class Button
-{
-public:
-    Button(std::string name, 
-            sf::Vector2f position,
-            sf::Vector2f size);
-    ~Button();
-    void init(std::string name);
-    void render(sf::RenderWindow& window);
-    void update(float deltaTime);
-
-    bool isClicked(sf::RenderWindow& window);
-
-    std::string getName();
-    void setCallbackFunction(void (*buttonClickedFunction)());
-    bool checkHover(sf::RenderWindow& window);
-
-private:
-    void (*m_buttonClickedFunction)();
-    sf::Sprite* m_sprite;
-    sf::Texture* m_texture;
-    sf::RectangleShape m_hoverShape;
-    sf::Vector2f m_position;
-    sf::Vector2f m_size;
-    std::string m_name;
-    std::string m_pathTexture;
-    
-    float m_elapsedTime;
-    enum BUTTON_STATE m_buttonState;
+enum class BUTTON_STATE{
+    IDLE,
+    HOVER,
+    ACTIVE
 };
+
+
 
 #endif
