@@ -22,39 +22,45 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-#ifndef HITBOX_H
-#define HITBOX_H
+#ifndef CAMERA_H
+#define CAMERA_H
 
 #include <SFML/Graphics.hpp>
-#include <iostream>
+#include <SFML/Graphics/View.hpp>
 
-enum class HITBOX_TYPE
-{
-    CHARACTER,
-    MONSTER,
-    MAP,
-    SAW,
-    SAND,
-    WIND,
-    FLOOR
-};
+#define _ZOOM_LEVEL 45.0f
+//#define 
 
+class GameManager;
+class Character;
 
-
-class Hitbox : public sf::RectangleShape
+class Camera
 {
 public:
-    Hitbox(sf::Vector2f& size, HITBOX_TYPE type);
-    ~Hitbox();
+    Camera(); // default contructor
+    Camera(sf::Vector2f size, sf::Vector2f center);
+    ~Camera();
+    void init();
+    void update(float deltaTime);
+    void handleEvent(sf::Event& event);
+    sf::View* getView();
+    void setCharater(Character* character);
+    void setGameManager(GameManager* gameManager);
+    Character* getCharacter();
+    GameManager* getGameManager();
+    void setAspect(sf::Vector2u windowSize);
 
-    bool isColliding(Hitbox& other) const;
-    HITBOX_TYPE getType();
 private:
-    sf::Vector2f m_velocity;
-    enum HITBOX_TYPE m_type;
-    bool m_isAlive;
-    bool m_isOnPlatform;
-    sf::Vector2f m_offset;
+    GameManager* m_gameManager;
+    Character* m_character;
+    sf::View* m_view;
+    float m_durationTime;
+    float m_elapsedTime;
+    float m_aspect;
+
+    sf::Vector2f m_cameraPosition;
+    sf::Vector2f m_size;
+    sf::Vector2f m_cameraDirection;
 };
 
-#endif
+#endif  

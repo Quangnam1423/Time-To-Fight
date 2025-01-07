@@ -25,9 +25,17 @@ SOFTWARE.
 #include "Hitbox.h"
 
 Hitbox::Hitbox(sf::Vector2f &size, HITBOX_TYPE type)
-    : sf::RectangleShape(size), m_type(type)
+    :   sf::RectangleShape(size), 
+        m_type(type),
+        m_isAlive(true),
+        m_isOnPlatform(true)
+        
 {
     std::cout << "create hitbox" << std::endl;
+}
+
+Hitbox::~Hitbox()
+{
 }
 
 bool Hitbox::isColliding(Hitbox &other) const

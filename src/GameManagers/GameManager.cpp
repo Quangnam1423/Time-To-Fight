@@ -22,39 +22,24 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-#ifndef HITBOX_H
-#define HITBOX_H
+#include "GameManager.h"
+#include "Camera.h"
 
-#include <SFML/Graphics.hpp>
-#include <iostream>
-
-enum class HITBOX_TYPE
+GameManager::GameManager()
 {
-    CHARACTER,
-    MONSTER,
-    MAP,
-    SAW,
-    SAND,
-    WIND,
-    FLOOR
-};
+}
 
-
-
-class Hitbox : public sf::RectangleShape
+GameManager::~GameManager()
 {
-public:
-    Hitbox(sf::Vector2f& size, HITBOX_TYPE type);
-    ~Hitbox();
+}
 
-    bool isColliding(Hitbox& other) const;
-    HITBOX_TYPE getType();
-private:
-    sf::Vector2f m_velocity;
-    enum HITBOX_TYPE m_type;
-    bool m_isAlive;
-    bool m_isOnPlatform;
-    sf::Vector2f m_offset;
-};
+void GameManager::init()
+{
+    init m_gameStatemap
+    return;
+}
 
-#endif
+void GameManager::run()
+{
+    return;
+}

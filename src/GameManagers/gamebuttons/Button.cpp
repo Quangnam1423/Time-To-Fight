@@ -29,9 +29,11 @@ Button::Button(std::string name,
                 sf::Vector2f size) :
                 m_position(position), 
                 m_size(size),
-                m_elapsedTime(0.0f)
+                m_elapsedTime(0.0f),
+                m_durationTime(0.0f),
+                m_animationTime(0.05f),
+                m_animationActiveTime(0.0f)
 {
-    m_texture = nullptr;
     init(name);
 }
 
@@ -48,6 +50,7 @@ void Button::init(std::string name)
 {
     // config texturePath and name of Button
     m_name = name;
+    m_texture = nullptr;
     m_pathTexture = _RESOURCE_TEXTURE_MENU_BUTTON 
                     + name 
                     + "button.png";
@@ -68,7 +71,6 @@ void Button::init(std::string name)
 
 void Button::render(sf::RenderWindow &window)
 {
-    window.draw(*m_sprite);
     if (m_buttonState == BUTTON_STATE::HOVER)
     {
         window.draw(m_hoverShape);

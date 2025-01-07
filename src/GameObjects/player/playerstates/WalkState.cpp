@@ -79,8 +79,11 @@ void WalkState::handlingEvent(sf::Event &event)
             !sf::Keyboard::isKeyPressed(sf::Keyboard::A)
             )
         {
-            if (event.key.code == sf::Keyboard::D || event.key.code == sf::Keyboard::A)
+            if (event.key.code == sf::Keyboard::D || 
+                    event.key.code == sf::Keyboard::A)
+            {
                 setStateAtTheEndFrame();
+            }
         }
     }
     if (event.type == sf::Event::KeyPressed)

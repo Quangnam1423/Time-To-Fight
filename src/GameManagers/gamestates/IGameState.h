@@ -27,6 +27,18 @@ SOFTWARE.
 
 #include <SFML/Graphics.hpp>
 
+enum class GAMESTATE
+{
+    MENU_STATE,
+    INTRODUCE_STATE,
+    PLAYIN_STATE,
+    PAUSE_STATE,
+    GAME_OVER_STATE,
+    LOADING_STATE,
+    CREDIT_STATE,
+    SETTINGS_STATE
+};
+
 class IGameState
 {
 public:

@@ -22,39 +22,38 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-#ifndef HITBOX_H
-#define HITBOX_H
+#ifndef GAMEMANAGER_H
+#define GAMEMANAGER_H
 
 #include <SFML/Graphics.hpp>
-#include <iostream>
+#include <unordered_map>
 
-enum class HITBOX_TYPE
+#include "Singleton.h"
+#include "gamestates/IGameState.h"
+#include "gamestates/MenuGameState.h"
+#include "../GameObjects/player/playerstates/IPlayerState.h"
+
+
+class Camera;
+
+class GameManager : public Singleton<GameManager>
 {
-    CHARACTER,
-    MONSTER,
-    MAP,
-    SAW,
-    SAND,
-    WIND,
-    FLOOR
-};
-
-
-
-class Hitbox : public sf::RectangleShape
-{
+friend class Singleton<GameManager>;
 public:
-    Hitbox(sf::Vector2f& size, HITBOX_TYPE type);
-    ~Hitbox();
+    GameManager();
+    ~GameManager();
+    void init();
+    void run();
 
-    bool isColliding(Hitbox& other) const;
-    HITBOX_TYPE getType();
 private:
-    sf::Vector2f m_velocity;
-    enum HITBOX_TYPE m_type;
-    bool m_isAlive;
-    bool m_isOnPlatform;
-    sf::Vector2f m_offset;
+    MenuGameState* m_menuGameState;
+    Camera* m_camera;
+    sf::RenderWindow* m_window;
+    enum GAMESTATE m_gameState;
+    
+
+    // map to get game state
+    std::unordered_map<GAMESTATE, IGameState*, EnumClassHash> m_gameStateMap;
 };
 
 #endif

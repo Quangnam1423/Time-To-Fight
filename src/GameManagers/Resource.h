@@ -26,6 +26,22 @@ SOFTWARE.
 #define RESOURCE_H
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio/Sound.hpp>
+#include <filesystem>
+#include <unordered_map>
+
+#include "Singleton.h"
+
+#define _PATH_RESOURCE "resource/"
+#define _PATH_TEXTURE_FIGHTER "resource/Fighter/"
+#define _PATH_TEXTURE_SAMURAI "resource/Samurai/"
+#define _PATH_TEXTURE_SHINOBI "resource/Shinobi/"
+#define _PATH_TEXTURE_LARGE_BUTTON "resource/largebuttons/coloredlargebuttons"
+#define _PATH_TEXTURE_SQUARE_BUTTON "resource/squarebuttons/"
+
+#define _PATH_FONT "resource/fonts/"
+#define _PATH_SOUND_CHARACTER "resource/sounds/character/"
+#define _PATH_SOUND_EFFECT "resource/sounds/effect/"
 
 enum ResourceType
 {
@@ -56,6 +72,28 @@ struct FontPath
 {
     enum ResourceType resourceType;
     char* fontPath;
+};
+
+class Resource
+{
+public:
+    Resource();
+    ~Resource();
+    sf::Sound* getSound(std::string soundName);
+    sf::Texture* getTexture(std::string textureName);
+    sf::Font* getFont(std::string fontName);
+
+    void addSound(sf::Sound* sound, std::string soundPath);
+    void addTexture(sf::Texture* texture, std::string texturePath);
+    void addFont(sf::Font* font, std::string fontPath);
+
+private:
+    void init();
+private:
+    std::unordered_map<std::string, sf::Texture*> _TEXTURE_MAP;
+    std::unordered_map<std::string, sf::Font*> _FONT_MAP;
+    std::unordered_map<std::string, sf::Sound*> _SOUND_MAP;
+
 };
 
 #endif

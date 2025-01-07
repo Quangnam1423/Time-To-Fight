@@ -57,6 +57,9 @@ private:
     std::string m_pathTexture;
     
     float m_elapsedTime;
+    float m_animationTime;
+    float m_durationTime;
+    float m_animationActiveTime;
     enum BUTTON_STATE m_buttonState;
 };
 

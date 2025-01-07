@@ -1,0 +1,97 @@
+/*
+MIT License
+
+Copyright (c) 2024 Quangnam1423
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+*/
+
+#include "Resource.h"
+
+Resource::Resource()
+{
+    init();
+}
+
+void Resource::init()
+{
+}
+
+Resource::~Resource()
+{
+    for (auto& pair : _FONT_MAP)
+    {
+        if (pair.second != nullptr)
+            delete pair.second;
+    }
+    for (auto& pair : _TEXTURE_MAP)
+    {
+        if (pair.second != nullptr)
+            delete pair.second;
+    }
+    for (auto& pair : _SOUND_MAP)
+    {
+        if (pair.second !=nullptr)
+            delete pair.second;
+    }
+    return;
+}
+
+sf::Sound *Resource::getSound(std::string soundName)
+{
+    return nullptr;
+}
+
+sf::Texture *Resource::getTexture(std::string textureName)
+{
+    return nullptr;
+}
+
+sf::Font *Resource::getFont(std::string fontName)
+{
+    std::string path = _PATH_FONT + fontName;
+    return _FONT_MAP[path];
+}
+
+void Resource::addSound(sf::Sound* sound, std::string soundPath)
+{
+    if (_SOUND_MAP[soundPath] == _SOUND_MAP.end())
+        return;
+    else
+        _SOUND_MAP[SoundPath] = sound;
+    return;
+}
+
+void Resource::addTexture(sf::Texture* texture, std::string texturePath)
+{
+    if (_TEXTURE_MAP[texturePath] == _TEXTURE_MAP.end())
+        return;
+    else 
+        _TEXTURE_MAP[texturePath] = texture;
+    return;
+}
+
+void Resource::addFont(sf::Font* font, std::string fontPath)
+{
+    if (_FONT_MAP[fontPath] = _FONT_MAP.end())
+        return;
+    else
+        _FONT_MAP[fontPath] = font;
+    return;
+}
