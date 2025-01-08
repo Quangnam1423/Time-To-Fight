@@ -1,4 +1,3 @@
-#pragma once
 /*
 	MIT License
 
@@ -22,7 +21,38 @@
 	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 	SOFTWARE.
 */
+#ifndef FLOOR_H
+#define FLOOR_H
+
+#include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
+
+#define _FLOOR_LEVEL 100.0f
+
+class Hitbox;
+
 class Floor
 {
+public:
+	Floor();
+	~Floor();
+	void init();
+	void update(float deltaTime);
+	void render(sf::RenderWindow& window);
+	Hitbox* getHitbox();
+	void setPosition(sf::Vector2f position);
+	void setSize(sf::Vector2f size);
+	void setStatus(bool drawable);
+private:
+	sf::Sprite* m_sprite;
+	Hitbox* m_hitbox;
+	sf::Vector2f m_position;
+	sf::vector2f m_size;
+
+	float m_elapsedTime;
+	float m_durationTime;
+	float deltaTime;
+	bool m_drawable;
 };
 
+#endif

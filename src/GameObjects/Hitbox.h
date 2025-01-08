@@ -28,6 +28,8 @@ SOFTWARE.
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
+#define _CHECk_COLLISION(x, y) Hitbox::isColliding(x, y)
+
 enum class HITBOX_TYPE
 {
     CHARACTER,
@@ -48,6 +50,7 @@ public:
     ~Hitbox();
 
     bool isColliding(Hitbox& other) const;
+    static bool isColliding(Hitbox& first, Hitbox& second) const;
     HITBOX_TYPE getType();
 private:
     sf::Vector2f m_velocity;

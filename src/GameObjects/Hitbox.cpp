@@ -43,6 +43,11 @@ bool Hitbox::isColliding(Hitbox &other) const
     return getGlobalBounds().intersects(other.getGlobalBounds());
 }
 
+bool Hitbox::isColliding(Hitbox &first, Hitbox &second) const
+{
+    return first.getGlobalBounds().intersects(second.getGlobalBounds());
+}
+
 HITBOX_TYPE Hitbox::getType()
 {
     return m_type;

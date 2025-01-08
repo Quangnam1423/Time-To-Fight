@@ -23,3 +23,64 @@ SOFTWARE.
 */
 
 #include "Floor.h"
+#include "Hitbox.h"
+
+Floor::Floor() : m_elapsedTime(0.0f),
+                 m_durationTime(0.0f),
+                 m_deltaTime(0.0f),
+                 m_drawable(true)
+{
+    init();
+}
+
+Floor::~Floor()
+{
+    if (m_hitbox != nullptr)
+        delete m_hitbox;
+    if (m_sprite != nullptr)
+        delete m_sprite;
+    return;
+}
+
+void Floor::init()
+{
+    return;
+}
+
+void Floor::update(float deltaTime)
+{
+    m_elapsedTime += deltaTime;
+    return;
+}
+
+void Floor::render(sf::RenderWindow &window)
+{
+    if (!m_drawable)
+        return;
+    m_sprite->setPosition(m_position);
+    window.draw(m_sprite);
+    return;
+}
+
+Hitbox* Floor::getHitbox()
+{
+    return m_hitbox;
+}
+
+void Floor::setPosition(sf::Vector2f position)
+{
+    m_position = position;
+    return;
+}
+
+void Floor::setSize(sf::Vector2f size)
+{
+    m_size = size;
+    return;
+}
+
+void Floor::setStatus(bool drawable)
+{
+    m_drawable = drawable;
+    return;
+}
