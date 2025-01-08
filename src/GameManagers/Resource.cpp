@@ -55,7 +55,7 @@ Resource::~Resource()
 
 sf::Sound *Resource::getSound(std::string soundName)
 {
-    return nullptr;
+    std::string path = _P
 }
 
 sf::Texture *Resource::getTexture(std::string textureName)
