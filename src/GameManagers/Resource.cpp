@@ -122,6 +122,27 @@ sf::Texture *Resource::getTexture(std::string textureName, enum TEXTURE_TYPE typ
     {
         texturePath = _PATH_BUTTON + textureName + _POST_TEXTURE;
     }
+    else if (type == TEXTURE_TYPE::SAMURAI)
+    {
+        texturePath = _PATH_SAMURAI + textureName + _POST_TEXTURE;
+    }
+    else if (type == TEXTURE_TYPE::SHINOBI)
+    {
+        texturePath = _PATH_SHINOBI + textureName + _POST_TEXTURE;
+    }
+    else if (type == TEXTURE_TYPE::FIGHTER)
+    {
+        texturePath = _PATH_FIGHTER + textureName + _POST_TEXTURE;
+    }
+    else if (type == TEXTURE_TYPE::ENEMY)
+    {
+        texturePath = _PATH_ENEMY + textureName + _POST_TEXTURE;
+    }
+    else if (type == TEXTURE_TYPE::ENVIROMENT)
+    {
+        texturePath = _PATH_ENVIROMENT + textureName + _POST_TEXTURE;
+    }
+    return _TEXTURE_MAP[texturePath];
 }
 
 sf::Font *Resource::getFont(std::string fontName)

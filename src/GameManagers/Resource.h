@@ -38,9 +38,9 @@ SOFTWARE.
 // path for charater
 #define _PATH_CHARACTER "resource/characters/"
 // path detail character
-#define _PATH_FIGHTER "Fighter/"
-#define _PATH_SAMURAI "Samurai/"
-#define _PATH_SHINOBI "Shinobi/"
+#define _PATH_FIGHTER "resource/characters/Fighter/"
+#define _PATH_SAMURAI "resource.characters/Samurai/"
+#define _PATH_SHINOBI "resource/characters/Shinobi/"
 
 // path for others
 #define _PATH_ENEMY "resource/enmies/"
