@@ -44,6 +44,7 @@ SOFTWARE.
 
 // path for others
 #define _PATH_ENEMY "resource/enmies/"
+#define _PATH_BUTTON "resource/buttons/"
 
 // path for enviroment
 #define _PATH_ENVIROMENT "resource/enviroment/"
@@ -51,11 +52,16 @@ SOFTWARE.
 // resource for font
 #define _PATH_FONT "resource/fonts/"
 
-#define _PATH_SOUND_CHARACTER "resource/sounds/character/"
-#define _PATH_SOUND_EFFECT "resource/sound/effect/"
+#define _PATH_SOUND_CHARACTER "resource/soundpacket/character/"
+#define _PATH_SOUND_EFFECT "resource/soundpacket/effect/"
 
 // path for music game
 #define _PATH_MUSIC "resource/soundpacket/musics/"
+
+#define _POST_MUSIC ".mp3"
+#define _POST_TEXTURE ".png"
+#define _POST_FONT ".txt"
+#define _POST_SOUND ".mp3"
 
 enum RESOURCE_TYPE
 {
@@ -63,6 +69,15 @@ enum RESOURCE_TYPE
     FONT, 
     MUSIC,
     SOUND
+};
+enum TEXTURE_TYPE
+{
+    BUTTON,
+    SAMURAI, 
+    FIGHTER,
+    SHINOBI,
+    ENEMY,
+    ENVIROMENT
 };
 
 
@@ -94,10 +109,10 @@ public:
     Resource();
     ~Resource();
 
-    bool loadResource(std::string path, enum RESOURCE_TYPE);
+    bool loadResource(std::string path, enum RESOURCE_TYPE type);
 
     sf::Sound* getSound(std::string soundName);
-    sf::Texture* getTexture(std::string textureName);
+    sf::Texture* getTexture(std::string textureName, enum TEXTURE_TYPE type);
     sf::Font* getFont(std::string fontName);
     sf::Music* getMusic(std::string musicName);
 

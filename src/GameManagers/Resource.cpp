@@ -23,6 +23,7 @@ SOFTWARE.
 */
 
 #include "Resource.h"
+#include <SFML/Audio/SoundBuffer.hpp>
 
 Resource::Resource()
 {
@@ -31,6 +32,7 @@ Resource::Resource()
 
 void Resource::init()
 {
+    return;
 }
 
 Resource::~Resource()
@@ -53,30 +55,85 @@ Resource::~Resource()
     return;
 }
 
-bool Resource::loadResource(std::string path, RESOURCE_TYPE)
+bool Resource::loadResource(std::string path, enum RESOURCE_TYPE type)
 {
+    if (type == RESOURCE_TYPE::TEXTURE)
+    {
+        sf::Texture* texture = new sf::Texture();
+        if (!texture->loadFromFile(path))
+        {
+            throw std::runtime_error("can't load texture from texture path " + path);
+            return false;
+        }
+        addTexture(texture, path);
+        return true;
+    }
+    else if (type == RESOURCE_TYPE::FONT)
+    {
+        sf::Font* font = new sf::Font();
+        if (!font->loadFromFile(path))
+        {
+            throw std::runtime_error("can't load font from font path " + path);
+            return false;
+        }
+        addFont(font, path);
+        return true;
+    }
+    else if (type == RESOURCE_TYPE::SOUND)
+    {
+        sf::SoundBuffer buffer;
+        if (!buffer.loadFromFile(path))
+        {
+            throw std::runtime_error("can't load sound from path " + path);
+            return false;
+        }
+        else
+        {
+            sf::Sound* sound = new sf::Sound();
+            sound->setBuffer(buffer);
+            addSound(sound, path);
+            return true;
+        }
+    }
+    else if ( type == RESOURCE_TYPE::MUSIC)
+    {
+        sf::Music* music = new sf::Music();
+        if (!music->openFromFile(path))
+        {
+            throw std::runtime_error("can't open music from path " + path);
+            return false;
+        }
+        addMusic(music, path);
+        return true;
+    }
     return false;
 }
 
 sf::Sound *Resource::getSound(std::string soundName)
-{
-    return nullptr;
+{   
+    std::string soundPath = _PATH_SOUND_EFFECT + soundName +_POST_SOUND;
+    return _SOUND_MAP[soundPath];
 }
 
-sf::Texture *Resource::getTexture(std::string textureName)
+sf::Texture *Resource::getTexture(std::string textureName, enum TEXTURE_TYPE type)
 {
-    return nullptr;
+    std::string texturePath = "";
+    if (type == TEXTURE_TYPE::BUTTON)
+    {
+        texturePath = _PATH_BUTTON + textureName + _POST_TEXTURE;
+    }
 }
 
 sf::Font *Resource::getFont(std::string fontName)
 {
-    std::string path = _PATH_FONT + fontName;
+    std::string path = _PATH_FONT + fontName + _POST_FONT;
     return _FONT_MAP[path];
 }
 
 sf::Music* Resource::getMusic(std::string musicName)
 {
-    return nullptr;
+    std::string musicPath = _PATH_MUSIC + musicName + _POST_MUSIC;
+    return _MUSIC_MAP[musicPath];
 }
 
 void Resource::addSound(sf::Sound* sound, std::string soundPath)
