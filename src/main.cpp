@@ -29,6 +29,6 @@ SOFTWARE.
 
 int main()
 {
-    Application* app = Application::getInstance();
-    app->run();
+    Application::getInstance()->run();
+    return 0;
 }

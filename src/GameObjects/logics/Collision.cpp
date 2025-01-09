@@ -24,3 +24,10 @@ SOFTWARE.
 
 #include "Collision.h"
 
+Collison::Collison()
+{
+}
+
+Collison::~Collison()
+{
+}

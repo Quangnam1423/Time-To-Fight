@@ -57,6 +57,10 @@ void Application::init()
     m_window = new sf::RenderWindow(sf::VideoMode(_WIDTH, _HEIGHT),_GAME_NAME);
     m_character = new Samurai(sf::Vector2f(100.0f, 100.0f));
     m_clock = new sf::Clock();
+
+    m_window->setFramerateLimit(60);
+    m_window->setVerticalSyncEnabled(false);
+
     m_timer = 0.0f;
     m_deltaTime = 0.0f;
 }

@@ -35,11 +35,17 @@ GameManager::~GameManager()
 
 void GameManager::init()
 {
-    init m_gameStatemap
+
     return;
 }
 
 void GameManager::run()
 {
+    return;
+}
+
+void GameManager::setState(GAMESTATE newState)
+{
+    m_currentGameState = m_gameStateMap[newState];
     return;
 }

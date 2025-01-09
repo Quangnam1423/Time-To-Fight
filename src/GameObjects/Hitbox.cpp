@@ -23,6 +23,11 @@ SOFTWARE.
 */
 
 #include "Hitbox.h"
+// static method
+bool Hitbox::isColliding(Hitbox& first, Hitbox& second)
+{
+    return first.getGlobalBounds().intersects(second.getGlobalBounds());
+}
 
 Hitbox::Hitbox(sf::Vector2f &size, HITBOX_TYPE type)
     :   sf::RectangleShape(size), 
@@ -41,11 +46,6 @@ Hitbox::~Hitbox()
 bool Hitbox::isColliding(Hitbox &other) const
 {
     return getGlobalBounds().intersects(other.getGlobalBounds());
-}
-
-bool Hitbox::isColliding(Hitbox &first, Hitbox &second) const
-{
-    return first.getGlobalBounds().intersects(second.getGlobalBounds());
 }
 
 HITBOX_TYPE Hitbox::getType()

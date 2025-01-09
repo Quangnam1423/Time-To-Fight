@@ -46,11 +46,12 @@ enum class HITBOX_TYPE
 class Hitbox : public sf::RectangleShape
 {
 public:
+    static bool isColliding(Hitbox& first, Hitbox& second);
+public:
     Hitbox(sf::Vector2f& size, HITBOX_TYPE type);
     ~Hitbox();
 
     bool isColliding(Hitbox& other) const;
-    static bool isColliding(Hitbox& first, Hitbox& second) const;
     HITBOX_TYPE getType();
 private:
     sf::Vector2f m_velocity;

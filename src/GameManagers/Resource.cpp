@@ -53,9 +53,14 @@ Resource::~Resource()
     return;
 }
 
+bool Resource::loadResource(std::string path, RESOURCE_TYPE)
+{
+    return false;
+}
+
 sf::Sound *Resource::getSound(std::string soundName)
 {
-    std::string path = _P
+    return nullptr;
 }
 
 sf::Texture *Resource::getTexture(std::string textureName)
@@ -69,29 +74,43 @@ sf::Font *Resource::getFont(std::string fontName)
     return _FONT_MAP[path];
 }
 
+sf::Music* Resource::getMusic(std::string musicName)
+{
+    return nullptr;
+}
+
 void Resource::addSound(sf::Sound* sound, std::string soundPath)
 {
-    if (_SOUND_MAP[soundPath] == _SOUND_MAP.end())
+    if (_SOUND_MAP.find(soundPath) == _SOUND_MAP.end())
+        _SOUND_MAP[soundPath] = sound;
+    else 
         return;
-    else
-        _SOUND_MAP[SoundPath] = sound;
     return;
 }
 
 void Resource::addTexture(sf::Texture* texture, std::string texturePath)
 {
-    if (_TEXTURE_MAP[texturePath] == _TEXTURE_MAP.end())
-        return;
-    else 
+    if (_TEXTURE_MAP.find(texturePath) == _TEXTURE_MAP.end())
         _TEXTURE_MAP[texturePath] = texture;
+    else 
+        return;
     return;
 }
 
 void Resource::addFont(sf::Font* font, std::string fontPath)
 {
-    if (_FONT_MAP[fontPath] = _FONT_MAP.end())
-        return;
-    else
+    if (_FONT_MAP.find(fontPath) == _FONT_MAP.end())
         _FONT_MAP[fontPath] = font;
+    else 
+        return;
+    return;
+}
+
+void Resource::addMusic(sf::Music* music, std::string musicPath)
+{
+    if (_MUSIC_MAP.find(musicPath) == _MUSIC_MAP.end())
+        _MUSIC_MAP[musicPath] = music;
+    else
+        return;
     return;
 }

@@ -33,6 +33,8 @@ SOFTWARE.
 #include "gamestates/MenuGameState.h"
 #include "../GameObjects/player/playerstates/IPlayerState.h"
 
+// define smartly syntax
+#define GM GameManager::getInstance()
 
 class Camera;
 
@@ -45,13 +47,13 @@ public:
     void init();
     void run();
 
+    void setState(enum GAMESTATE newState);
+
 private:
-    MenuGameState* m_menuGameState;
+    IGameState* m_currentGameState;
     Camera* m_camera;
-    sf::RenderWindow* m_window;
     enum GAMESTATE m_gameState;
     
-
     // map to get game state
     std::unordered_map<GAMESTATE, IGameState*, EnumClassHash> m_gameStateMap;
 };

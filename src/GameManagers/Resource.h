@@ -27,65 +27,84 @@ SOFTWARE.
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio/Sound.hpp>
+#include <SFML/Audio/Music.hpp>
 #include <filesystem>
 #include <unordered_map>
 
 #include "Singleton.h"
 
+// path for allr resource
 #define _PATH_RESOURCE "resource/"
-#define _PATH_TEXTURE_FIGHTER "resource/Fighter/"
-#define _PATH_TEXTURE_SAMURAI "resource/Samurai/"
-#define _PATH_TEXTURE_SHINOBI "resource/Shinobi/"
-#define _PATH_TEXTURE_LARGE_BUTTON "resource/largebuttons/coloredlargebuttons"
-#define _PATH_TEXTURE_SQUARE_BUTTON "resource/squarebuttons/"
+// path for charater
+#define _PATH_CHARACTER "resource/characters/"
+// path detail character
+#define _PATH_FIGHTER "Fighter/"
+#define _PATH_SAMURAI "Samurai/"
+#define _PATH_SHINOBI "Shinobi/"
 
+// path for others
+#define _PATH_ENEMY "resource/enmies/"
+
+// path for enviroment
+#define _PATH_ENVIROMENT "resource/enviroment/"
+
+// resource for font
 #define _PATH_FONT "resource/fonts/"
-#define _PATH_SOUND_CHARACTER "resource/sounds/character/"
-#define _PATH_SOUND_EFFECT "resource/sounds/effect/"
 
-enum ResourceType
+#define _PATH_SOUND_CHARACTER "resource/sounds/character/"
+#define _PATH_SOUND_EFFECT "resource/sound/effect/"
+
+// path for music game
+#define _PATH_MUSIC "resource/soundpacket/musics/"
+
+enum RESOURCE_TYPE
 {
-    TEXTURE = 0,
-    FONT = 1, 
-    ICON = 2,
-    MUSIC = 3,
-    FONT = 4,
-    SOUND_EFFECT = 5
+    TEXTURE,
+    FONT, 
+    MUSIC,
+    SOUND
 };
 
 
 struct TexturePath
 {
-    enum ResourceType resourceType;
+    enum RESOURCE_TYPE resourceType;
     char* texturePath;
     sf::Vector2i frameCount;
 };
 
 struct SoundPath
 {
-    enum ResourceType resourceType;
+    enum RESOURCE_TYPE resourceType;
     char* soundPath;
     float lengthSound;
 };
 
 struct FontPath
 {
-    enum ResourceType resourceType;
+    enum RESOURCE_TYPE resourceType;
     char* fontPath;
 };
 
-class Resource
+class Resource : Singleton<Resource>
 {
+friend class Singleton<Resource>;
+
 public:
     Resource();
     ~Resource();
+
+    bool loadResource(std::string path, enum RESOURCE_TYPE);
+
     sf::Sound* getSound(std::string soundName);
     sf::Texture* getTexture(std::string textureName);
     sf::Font* getFont(std::string fontName);
+    sf::Music* getMusic(std::string musicName);
 
     void addSound(sf::Sound* sound, std::string soundPath);
     void addTexture(sf::Texture* texture, std::string texturePath);
     void addFont(sf::Font* font, std::string fontPath);
+    void addMusic(sf::Music* music, std::string musicPath);
 
 private:
     void init();
@@ -93,7 +112,7 @@ private:
     std::unordered_map<std::string, sf::Texture*> _TEXTURE_MAP;
     std::unordered_map<std::string, sf::Font*> _FONT_MAP;
     std::unordered_map<std::string, sf::Sound*> _SOUND_MAP;
-
+    std::unordered_map<std::string, sf::Music*> _MUSIC_MAP;
 };
 
 #endif

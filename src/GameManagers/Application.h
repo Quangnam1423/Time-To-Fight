@@ -32,6 +32,7 @@ SOFTWARE.
 #include "Singleton.h"
 
 class Character;
+class GameManager;
 
 class Application : public Singleton<Application>
 {
@@ -47,6 +48,7 @@ class Application : public Singleton<Application>
         void update();
         void render();
     private:
+        
         sf::RenderWindow* m_window;
         Character* m_character;
         sf::Clock* m_clock;

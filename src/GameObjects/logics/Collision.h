@@ -30,15 +30,11 @@ SOFTWARE.
 #include <unordered_set>
 #include <unordered_map>
 
-#include "../../GameManagers/Singleton.h"
-
-class Collision : public Singleton<Collision>
+class Collison
 {
-
-friend class Singleton;
-
 public:
-
+	Collison();
+	~Collison();
 private:
 
 };
