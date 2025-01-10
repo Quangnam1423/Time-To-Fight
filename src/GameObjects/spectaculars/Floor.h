@@ -47,11 +47,11 @@ private:
 	sf::Sprite* m_sprite;
 	Hitbox* m_hitbox;
 	sf::Vector2f m_position;
-	sf::vector2f m_size;
+	sf::Vector2f m_size;
 
 	float m_elapsedTime;
 	float m_durationTime;
-	float deltaTime;
+	float m_deltaTime;
 	bool m_drawable;
 };
 

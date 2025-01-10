@@ -23,7 +23,7 @@ SOFTWARE.
 */
 
 #include "Floor.h"
-#include "Hitbox.h"
+#include "../Hitbox.h"
 
 Floor::Floor() : m_elapsedTime(0.0f),
                  m_durationTime(0.0f),
