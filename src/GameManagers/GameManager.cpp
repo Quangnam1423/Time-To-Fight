@@ -23,7 +23,7 @@ SOFTWARE.
 */
 
 #include "GameManager.h"
-#include "Camera.h"
+#include "../GameObjects/Camera.h"
 
 GameManager::GameManager()
 {

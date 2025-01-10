@@ -24,17 +24,25 @@ SOFTWARE.
 
 #include "Button.h"
 
-Button::Button(std::string name, 
+Button::Button(IGameState* gameState, 
+                sf::Texture* texture, 
+                void(*buttonClickedFunction)(), 
                 sf::Vector2f position, 
-                sf::Vector2f size) :
-                m_position(position), 
-                m_size(size),
-                m_elapsedTime(0.0f),
-                m_durationTime(0.0f),
-                m_animationTime(0.05f),
-                m_animationActiveTime(0.0f)
+                std::string name, 
+                BUTTON_TYPE type) :
+        m_gameState(gameState),
+        m_texture(texture),
+        m_buttonClickedFunction(buttonClickedFunction),
+        m_position(position),
+        m_name(name),
+        m_buttonType(type),
+        m_buttonState(BUTTON_STATE::IDLE),
+        m_elapsedTime(0.0f),
+        m_animationTime(0.0f),
+        m_animationActiveTime(0.0f)
 {
-    init(name);
+    m_sprite = nullptr;
+    init();
 }
 
 Button::~Button()
@@ -46,43 +54,41 @@ Button::~Button()
     return;
 }
 
-void Button::init(std::string name)
+void Button::init()
 {
-    // config texturePath and name of Button
-    m_name = name;
-    m_texture = nullptr;
-    m_pathTexture = _RESOURCE_TEXTURE_MENU_BUTTON 
-                    + name 
-                    + "button.png";
-
-    m_texture = new sf::Texture();
-    if (!m_texture->loadFromFile(m_pathTexture))
-    {
-        throw std::runtime_error("can't load texture from" + m_name);
-    }
-
     m_sprite = new sf::Sprite(*m_texture);
-    m_sprite->setPosition(m_position);
-    //config the shape and sprite
-    m_hoverShape = sf::RectangleShape(m_position);
-    // set default state for the button.
-    m_buttonState = BUTTON_STATE::IDLE;
+    m_sprite->setOrigin(m_position);
+    m_sprite->setScale(_IDLE_SCALE);
+
+    sf::Vector2u textureSize = m_texture->getSize();
+    m_hoverShape = sf::RectangleShape((sf::Vector2f)textureSize);
+    m_hoverShape.setOrigin(m_position);
+    m_hoverShape.setScale(_IDLE_SCALE);
+    m_hoverShape.setFillColor(_HOVERSHAPE_COLOR);
+    return;
 }
 
 void Button::render(sf::RenderWindow &window)
 {
     if (m_buttonState == BUTTON_STATE::HOVER)
     {
+        m_hoverShape.setScale(_HOVER_SCALE);
+        m_sprite->setScale(_IDLE_SCALE);
         window.draw(m_hoverShape);
+
     }
     else if (m_buttonState == BUTTON_STATE::ACTIVE)
     {
-
+        m_hoverShape.setScale(_IDLE_SCALE);
+        m_sprite->setScale(_ACTIVE_SCALE);
+        window.draw(m_hoverShape);
     }
     else 
     {
-
+        m_hoverShape.setScale(_IDLE_SCALE);
+        m_sprite->setScale(_IDLE_SCALE);
     }
+    window.draw(m_hoverShape);
     return;
 }
 
@@ -125,3 +131,18 @@ bool Button::checkHover(sf::RenderWindow& window)
     }
     return false;
 }
+
+void Button::setGameState(IGameState* gameState)
+{
+    m_gameState = gameState;
+    return;
+}
+
+void Button::setPosition(sf::Vector2f position)
+{
+    m_position = position;
+    m_sprite->setPosition(m_position);
+    m_hoverShape.setPosition(m_position);
+    return;
+}
+

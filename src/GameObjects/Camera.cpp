@@ -23,7 +23,7 @@ SOFTWARE.
 */
 
 #include "Camera.h"
-#include "GameManager.h"
+#include "../GameManagers/GameManager.h"
 #include "../GameObjects/player/Character.h"
 
 #include <iostream>

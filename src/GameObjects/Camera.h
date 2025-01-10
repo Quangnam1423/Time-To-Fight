@@ -22,54 +22,47 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-#ifndef BUTTON_H
-#define BUTTON_H
+#ifndef CAMERA_H
+#define CAMERA_H
 
 #include <SFML/Graphics.hpp>
-#include "ButtonConfig.h"
-#include "../gamestates/IGameState.h"
+#include <SFML/Graphics/View.hpp>
 
-class Button
+#include "../GameManagers/Singleton.h"
+
+#define _ZOOM_LEVEL 45.0f
+//#define 
+
+class GameManager;
+class Character;
+
+class Camera
 {
 public:
-    Button(IGameState* gameState,
-        sf::Texture* texture,
-        void (*buttonClickedFunction)(),
-        sf::Vector2f position,
-        std::string name,
-        BUTTON_TYPE type
-        );
-    ~Button();
+    Camera(); // default contructor
+    Camera(sf::Vector2f size, sf::Vector2f center);
+    ~Camera();
     void init();
-    void render(sf::RenderWindow& window);
     void update(float deltaTime);
-
-    bool isClicked(sf::RenderWindow& window);
-
-    std::string getName();
-    void setCallbackFunction(void (*buttonClickedFunction)());
-    bool checkHover(sf::RenderWindow& window);
-
-    void setGameState(IGameState* gameState);
-    void setPosition(sf::Vector2f position);
+    void handleEvent(sf::Event& event);
+    sf::View* getView();
+    void setCharater(Character* character);
+    void setGameManager(GameManager* gameManager);
+    Character* getCharacter();
+    GameManager* getGameManager();
+    void setAspect(sf::Vector2u windowSize);
 
 private:
-    IGameState* m_gameState;
-    void (*m_buttonClickedFunction)();
-    sf::Sprite* m_sprite;
-    sf::Texture* m_texture;
-    sf::RectangleShape m_hoverShape;
-    sf::Vector2f m_position;
-    sf::Vector2f m_size;
-    std::string m_name;
-    
+    GameManager* m_gameManager;
+    Character* m_character;
+    sf::View* m_view;
+    float m_durationTime;
     float m_elapsedTime;
-    float m_animationTime;
-    float m_animationActiveTime;
+    float m_aspect;
 
-
-    enum BUTTON_STATE m_buttonState;
-    enum BUTTON_TYPE m_buttonType;
+    sf::Vector2f m_cameraPosition;
+    sf::Vector2f m_size;
+    sf::Vector2f m_cameraDirection;
 };
 
-#endif
+#endif  

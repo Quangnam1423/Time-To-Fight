@@ -22,57 +22,28 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+#ifndef EVENTCONFIG_H
+#define EVENTCONFIG_H
 
-#ifndef BUTTONCONFIG_H
-#define BUTTONCONFIG_H
+#include <SFML/Graphics.hpp>
 
-//#define _RESOURCE_TEXTURE_MENU_BUTTON 
-//"resource/menubuttons/largebuttons/coloredlargebuttons"
-
-// scale point for drawable objects
-#define _IDLE_SCALE sf::Vector2f(0.5f, 0.05)
-#define _HOVER_SCALE sf::Vector2f(0.6f, 0.6f)
-#define _ACTIVE_SCALE sf::Vector2f(0.4f, 0.4f)
-
-// color for hover shape
-#define _HOVERSHAPE_COLOR sf::Color(255, 0, 0, 100)
-
-enum class BUTTON_STATE{
-    IDLE,
-    HOVER,
-    ACTIVE
+enum class EVENT_TYPE
+{
+	PLAYIN_MODE,
+	SETTINGS_MODE,
+	KEYBOARD_PRESSED,
+	KEYBOARD_RELEASED,
+	KEYBOARD_HOLDING,
+	LEFT_MOUSE_CLICKED,
+	RIGHT_MOUSE_CLICKED,
+	LEFT_MOUSE_RELEASED,
+	RIGHT_MOUSE_RELEASED
 };
 
-enum class BUTTON_TYPE
+struct EventObject
 {
-    AUDIO_ICON_BUTTON,
-    BACK_BUTTON,
-    CONTINUE_BUTTON,
-    CONTROLS_BUTTON,
-    DOWN_ICON_BUTTON,
-    EXIT_BUTTON,
-    HOME_ICON_BUTTON,
-    INFO_ICON_BUTTON,
-    LEFT_ICON_BUTTON,
-    LOAD_BUTTON,
-    MENU_BUTTON,
-    MUSIC_ICON_BUTTON,
-    NEW_GAME_BUTTON,
-    ON_OFF_BUTTON,
-    OPTIONS_BUTTON,
-    PAUSE_ICON_BUTTON,
-    PLAY_BUTTON,
-    PLAY_ICON_BUTTON,
-    QUESTIONMARK_ICON_BUTTON,
-    QUIT_BUTTON,
-    RESUME_BUTTON,
-    RETURN_ICON_BUTTON,
-    SETTINGS_BUTTON,
-    SETTINGS_ICON_BUTTON,
-    START_BUTTON,
-    UP_ICON_BUTTON,
-    V_ICON_BUTTON,
-    X_ICON_BUTTON
+	sf::Event event;
+	enum EVENT_TYPE type;
 };
 
 #endif

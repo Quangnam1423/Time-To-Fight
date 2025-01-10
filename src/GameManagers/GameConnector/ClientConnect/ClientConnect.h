@@ -22,57 +22,35 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+#ifndef CLIENTCONNECT_H
+#define CLIENTCONNECT_H
 
-#ifndef BUTTONCONFIG_H
-#define BUTTONCONFIG_H
+#include <SFML/Network.hpp>
+#include <SFML/Network/IpAddress.hpp>
+#include <SFML/System.hpp>
 
-//#define _RESOURCE_TEXTURE_MENU_BUTTON 
-//"resource/menubuttons/largebuttons/coloredlargebuttons"
+#include <thread>
+#include <iostream>
+#include <string>
 
-// scale point for drawable objects
-#define _IDLE_SCALE sf::Vector2f(0.5f, 0.05)
-#define _HOVER_SCALE sf::Vector2f(0.6f, 0.6f)
-#define _ACTIVE_SCALE sf::Vector2f(0.4f, 0.4f)
+#include "../../Singleton.h"
 
-// color for hover shape
-#define _HOVERSHAPE_COLOR sf::Color(255, 0, 0, 100)
-
-enum class BUTTON_STATE{
-    IDLE,
-    HOVER,
-    ACTIVE
-};
-
-enum class BUTTON_TYPE
+class ClientConnect : public Singleton<ClientConnect>
 {
-    AUDIO_ICON_BUTTON,
-    BACK_BUTTON,
-    CONTINUE_BUTTON,
-    CONTROLS_BUTTON,
-    DOWN_ICON_BUTTON,
-    EXIT_BUTTON,
-    HOME_ICON_BUTTON,
-    INFO_ICON_BUTTON,
-    LEFT_ICON_BUTTON,
-    LOAD_BUTTON,
-    MENU_BUTTON,
-    MUSIC_ICON_BUTTON,
-    NEW_GAME_BUTTON,
-    ON_OFF_BUTTON,
-    OPTIONS_BUTTON,
-    PAUSE_ICON_BUTTON,
-    PLAY_BUTTON,
-    PLAY_ICON_BUTTON,
-    QUESTIONMARK_ICON_BUTTON,
-    QUIT_BUTTON,
-    RESUME_BUTTON,
-    RETURN_ICON_BUTTON,
-    SETTINGS_BUTTON,
-    SETTINGS_ICON_BUTTON,
-    START_BUTTON,
-    UP_ICON_BUTTON,
-    V_ICON_BUTTON,
-    X_ICON_BUTTON
+friend class Singleton<ClientConnect>;
+public:
+	ClientConnect(int32_t serverHost, sf::Int16 serverPort);
+	void init();
+	void startConnect();
+	~ClientConnect();
+private:
+	sf::TcpSocket* m_socket;
+	sf::Socket::Status m_status;
+	sf::Int32 m_serverHost;
+	sf::IpAddress m_serverIPAddress;
+	sf::Int16 m_serverPort;
+
+	//sf::Thread m_thread;
 };
 
 #endif

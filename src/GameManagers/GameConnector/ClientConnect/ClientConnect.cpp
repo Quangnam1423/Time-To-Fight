@@ -22,47 +22,28 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-#ifndef CAMERA_H
-#define CAMERA_H
+#include "ClientConnect.h"
 
-#include <SFML/Graphics.hpp>
-#include <SFML/Graphics/View.hpp>
-
-#include "Singleton.h"
-
-#define _ZOOM_LEVEL 45.0f
-//#define 
-
-class GameManager;
-class Character;
-
-class Camera
+ClientConnect::ClientConnect(int32_t serverHost, sf::Int16 serverPort) :
+		m_serverHost((sf::Int32)serverHost),
+	m_serverPort((sf::Int16)serverPort)
 {
-public:
-    Camera(); // default contructor
-    Camera(sf::Vector2f size, sf::Vector2f center);
-    ~Camera();
-    void init();
-    void update(float deltaTime);
-    void handleEvent(sf::Event& event);
-    sf::View* getView();
-    void setCharater(Character* character);
-    void setGameManager(GameManager* gameManager);
-    Character* getCharacter();
-    GameManager* getGameManager();
-    void setAspect(sf::Vector2u windowSize);
+	init();
+}
 
-private:
-    GameManager* m_gameManager;
-    Character* m_character;
-    sf::View* m_view;
-    float m_durationTime;
-    float m_elapsedTime;
-    float m_aspect;
+void ClientConnect::init()
+{
+	m_serverIPAddress = sf::IpAddress(m_serverHost);
+}
 
-    sf::Vector2f m_cameraPosition;
-    sf::Vector2f m_size;
-    sf::Vector2f m_cameraDirection;
-};
+void ClientConnect::startConnect()
+{
 
-#endif  
+}
+
+ClientConnect::~ClientConnect()
+{
+	if (m_socket != nullptr)
+		delete m_socket;
+	return;
+}
