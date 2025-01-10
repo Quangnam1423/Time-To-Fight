@@ -22,43 +22,18 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-#ifndef IGAMESTATE_H
-#define IGAMESTATE_H    
+#ifndef GAMESTATE_H
+#define GAMESTATE_H
 
-#include <SFML/Graphics.hpp>
-
-enum class GAMESTATE
-{
-    MENU_STATE,
-    INTRODUCE_STATE,
-    PLAYIN_STATE,
-    PAUSE_STATE,
-    GAME_OVER_STATE,
-    LOADING_STATE,
-    CREDIT_STATE,
-    SETTINGS_STATE
-};
-
-class IGameState
-{
-public:
-    virtual ~IGameState() = default;
-
-    virtual void init() = 0;
-    virtual void cleanup() = 0;
-
-    // handle state loop
-
-    virtual void handleEvent(sf::Event &event) = 0;
-    virtual void update(float deltaTime) = 0;
-    virtual void render(sf::RenderWindow& window) = 0;
-
-    // manage states   
-    virtual void pause() = 0;
-    virtual void resume() = 0;
-
-    // check state if complete
-    virtual bool isFinished() const = 0;
-};
+#include "PlayerConfigState.h"
+#include "IPlayerState.h"
+#include "CreditGameState.h"
+#include "GameOverState.h"
+#include "IntroduceGameState.h"
+#include "LoadingState.h"
+#include "MenuGameState.h"
+#include "PauseState.h"
+#include "PlayinGameState.h"
+#include "SettingGameState.h"
 
 #endif
