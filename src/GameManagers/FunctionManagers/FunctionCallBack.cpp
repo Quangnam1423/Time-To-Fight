@@ -24,7 +24,7 @@ SOFTWARE.
 
 
 
-#include "CBfunctionGameManager.h"
+#include "FunctionCallBack.h"
 
 #include <SFML/Graphics.hpp>
 #include <iostream>

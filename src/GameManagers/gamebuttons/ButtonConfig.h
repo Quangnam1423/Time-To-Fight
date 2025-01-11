@@ -37,6 +37,8 @@ SOFTWARE.
 // color for hover shape
 #define _HOVERSHAPE_COLOR sf::Color(255, 0, 0, 100)
 
+#define _REACT_TIME_BUTTON 2.0f
+
 enum class BUTTON_STATE{
     IDLE,
     HOVER,

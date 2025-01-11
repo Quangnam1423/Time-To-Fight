@@ -26,10 +26,10 @@ SOFTWARE.
 #define APPLICATION_H
 
 #include <SFML/Graphics.hpp>
-
 #include "ApplicationConfig.h"
-
 #include "Singleton.h"
+
+#define _APPLICATION Application->getInstance()
 
 class Character;
 class GameManager;
@@ -39,7 +39,6 @@ class Application : public Singleton<Application>
     friend class Singleton<Application>;
 
     public:
-        
         Application();
         ~Application();
         void run();

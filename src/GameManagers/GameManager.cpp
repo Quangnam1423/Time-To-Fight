@@ -44,8 +44,13 @@ void GameManager::run()
     return;
 }
 
-void GameManager::setState(GAMESTATE newState)
+void GameManager::setState(enum GAMESTATE newState)
 {
     m_currentGameState = m_gameStateMap[newState];
     return;
+}
+
+IGameState* GameManager::getCurrentState()
+{
+    return m_currentGameState;
 }

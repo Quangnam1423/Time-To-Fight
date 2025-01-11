@@ -34,7 +34,7 @@ SOFTWARE.
 #include "../GameObjects/player/playerstates/IPlayerState.h"
 
 // define smartly syntax
-#define GM GameManager::getInstance()
+#define _GM GameManager::getInstance()
 
 class Camera;
 
@@ -48,7 +48,7 @@ public:
     void run();
 
     void setState(enum GAMESTATE newState);
-
+    IGameState* getCurrentState();
 private:
     IGameState* m_currentGameState;
     Camera* m_camera;

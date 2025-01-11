@@ -105,10 +105,13 @@
     <ClCompile Include="src\GameManagers\gamestates\SettingGameState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GameManagers\FunctionManagers\CBfunctionGameManager.cpp">
+    <ClCompile Include="src\GameManagers\FunctionManagers\FunctionCallBack.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\GameManagers\GameConnector\ClientConnect\ClientConnect.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameManagers\WindowManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -218,10 +221,16 @@
     <ClInclude Include="src\GameManagers\gamestates\SettingGameState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GameManagers\FunctionManagers\CBfunctionGameManager.h">
+    <ClInclude Include="src\GameManagers\FunctionManagers\FunctionCallBack.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GameManagers\GameConnector\ClientConnect\ClientConnect.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameManagers\EventConfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameManagers\WindowManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -22,16 +22,24 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-#ifndef GAMESTATE_H
-#define GAMESTATE_H
+#ifndef WINDOWMANAGER_H
+#define WINDOWMANAGER_H
 
-#include "CreditGameState.h"
-#include "GameOverState.h"
-#include "IntroduceGameState.h"
-#include "LoadingState.h"
-#include "MenuGameState.h"
-#include "PauseState.h"
-#include "PlayinGameState.h"
-#include "SettingGameState.h"
+#include <SFML/Graphics.hpp>
+#include "Singleton.h"
+
+#define _WINDOW_MANAGER WindowManager::getInstance()
+
+class WindowManager : public Singleton<WindowManager>
+{
+	friend class Singleton<WindowManager>;
+public:
+	WindowManager();
+	~WindowManager();
+	void setWindow(sf::RenderWindow* window);
+	sf::RenderWindow* getWindow();
+private:
+	sf::RenderWindow* m_window;
+};
 
 #endif

@@ -23,10 +23,12 @@ SOFTWARE.
 */
 
 #include "Button.h"
+#include "../gamestates/GameState.h"
+#include "../WindowManager.h"
 
 Button::Button(IGameState* gameState, 
                 sf::Texture* texture, 
-                void(*buttonClickedFunction)(), 
+                void(*buttonClickedFunction)(IGameState*), 
                 sf::Vector2f position, 
                 std::string name, 
                 BUTTON_TYPE type) :
@@ -37,9 +39,8 @@ Button::Button(IGameState* gameState,
         m_name(name),
         m_buttonType(type),
         m_buttonState(BUTTON_STATE::IDLE),
-        m_elapsedTime(0.0f),
-        m_animationTime(0.0f),
-        m_animationActiveTime(0.0f)
+        m_reactTime(_REACT_TIME_BUTTON),
+        m_isClicked(false)
 {
     m_sprite = nullptr;
     init();
@@ -88,18 +89,33 @@ void Button::render(sf::RenderWindow &window)
         m_hoverShape.setScale(_IDLE_SCALE);
         m_sprite->setScale(_IDLE_SCALE);
     }
-    window.draw(m_hoverShape);
+    window.draw(*m_sprite);
     return;
 }
 
 void Button::update(float deltaTime)
 {   
-    m_elapsedTime += deltaTime;
+    if (m_isClicked)
+    {
+        m_reactTime -= deltaTime;
+        if (m_reactTime <= 0)
+            m_buttonClickedFunction(m_gameState);
+    }
+    if (checkHover())
+    {
+        m_buttonState = BUTTON_STATE::HOVER;
+    }
+    if (checkIsClicked())
+    {
+        m_buttonState = BUTTON_STATE::HOVER;
+        m_isClicked = true;
+    }
+    return;
 }
 
-bool Button::isClicked(sf::RenderWindow& window)
+bool Button::checkIsClicked()
 { 
-    if (checkHover(window) &&
+    if (checkHover() &&
         sf::Mouse::isButtonPressed(sf::Mouse::Left))
     {
          return true;
@@ -112,15 +128,9 @@ std::string Button::getName()
     return m_name;
 }
 
-void Button::setCallbackFunction(void (*buttonClickedFunction)())
+bool Button::checkHover()
 {
-    m_buttonClickedFunction = buttonClickedFunction;
-    return;
-}
-
-bool Button::checkHover(sf::RenderWindow& window)
-{
-    sf::Vector2i mousePosition = sf::Mouse::getPosition(window);
+    sf::Vector2i mousePosition = sf::Mouse::getPosition(*_WINDOW_MANAGER->getWindow());
     float x_mousePos = static_cast<float>(mousePosition.x);
     float y_mousePos = static_cast<float>(mousePosition.y);
 
@@ -146,3 +156,10 @@ void Button::setPosition(sf::Vector2f position)
     return;
 }
 
+void Button::reset()
+{
+    m_isClicked = false;
+    m_reactTime = _REACT_TIME_BUTTON;
+    m_buttonState = BUTTON_STATE::IDLE;
+    return;
+}

@@ -22,16 +22,24 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-#ifndef GAMESTATE_H
-#define GAMESTATE_H
+#include "WindowManager.h"
 
-#include "CreditGameState.h"
-#include "GameOverState.h"
-#include "IntroduceGameState.h"
-#include "LoadingState.h"
-#include "MenuGameState.h"
-#include "PauseState.h"
-#include "PlayinGameState.h"
-#include "SettingGameState.h"
+WindowManager::WindowManager()
+{
+	m_window = nullptr;
+}
 
-#endif
+WindowManager::~WindowManager()
+{
+}
+
+void WindowManager::setWindow(sf::RenderWindow* window)
+{
+	m_window = window;
+	return;
+}
+
+sf::RenderWindow* WindowManager::getWindow()
+{
+	return m_window;
+}
