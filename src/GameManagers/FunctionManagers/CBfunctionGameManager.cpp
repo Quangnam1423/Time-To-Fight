@@ -22,53 +22,125 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+
+
 #include "CBfunctionGameManager.h"
 
-void callBackMenuButton(sf::RenderWindow *window, Button *menuButton, GameManager *gameManager)
+#include <SFML/Graphics.hpp>
+#include <iostream>
+#include <cstring>
+#include <cmath>
+
+#include "../gamebuttons/Button.h"
+#include "../GameManager.h"
+#include "../../GameObjects/player/Character.h"
+#include "../../GameObjects/Hitbox.h"
+#include "../../GameObjects/spectaculars/Floor.h"
+
+void audioIconButtonCallBack(IGameState* gameState)
 {
 }
 
-void callBackIntroduceButton(sf::RenderWindow *window, Button *introduceButton, GameManager *gameManager)
+void backButtonCallBack(IGameState* gameState)
 {
 }
 
-void callBackPlayinButton(sf::RenderWindow *window, Button *playButton, GameManager *gameManager)
+void continueButtonCallBack(IGameState* gameState)
 {
 }
 
-void callBackPauseButton(sf::RenderWindow *window, Button *pauseButton, GameManager *gameManager)
+void controlsButtonCallBack(IGameState* gameState)
 {
 }
 
-void callBackNextButton(sf::RenderWindow *window, Button *nextButton, GameManager *gameManager)
+void downIconButtonCallBack(IGameState* gameState)
 {
 }
 
-void callBackContinueButton(sf::RenderWindow *window, Button *continueButton, GameManager *gameManager)
+void exitButtonCallBack(IGameState* gameState)
 {
 }
 
-void callBackSettingButton(sf::RenderWindow *window, Button *settingutton, GameManager *gameManager)
+void homeIconButtonCallBack(IGameState* gameState)
 {
 }
 
-bool callBackNewGameButton(sf::RenderWindow *window, Button *newGameButton, GameManager *gameManager)
-{
-    return false;
-}
-
-void callBackQuitButton(sf::RenderWindow *window, Button *quitButton, GameManager *gameManager)
+void infoIconButtonCallBack(IGameState* gameState)
 {
 }
 
-void callBackResumeButton(sf::RenderWindow *window, Button *resumeButton, GameManager *gameManager)
+void loadButtonCallBack(IGameState* gameState)
 {
 }
 
-void callBackOptionButton(sf::RenderWindow *window, Button *optionButton, GameManager *gameManger)
+void menuButtonCallBack(IGameState* gameState)
 {
 }
 
-void callBackStartButton(sf::RenderWindow *window, Button *startButton, GameManager *gameManager)
+void musicButtonCallBack(IGameState* gameState)
+{
+}
+
+void newGameButtonCallBack(IGameState* gameState)
+{
+}
+
+void onOffButtonCallBack(IGameState* gameState)
+{
+}
+
+void optionsButtonCallBack(IGameState* gameState)
+{
+}
+
+void pauseIconButtonCallBack(IGameState* gameState)
+{
+}
+
+void playButtonCallBack(IGameState* gameState)
+{
+}
+
+void playIconButtonCallBack(IGameState* gameState)
+{
+}
+
+void questionmarkIconButtonCallBack(IGameState* gameState)
+{
+}
+
+void quitButtonCallBack(IGameState* gameState)
+{
+}
+
+void resumeIconButtonCallBack(IGameState* gameState)
+{
+}
+
+void returnIconButtonCallBack(IGameState* gameState)
+{
+}
+
+void settingButtonCallBack(IGameState* gameState)
+{
+}
+
+void settingIconButtonCallBack(IGameState* gameState)
+{
+}
+
+void startButtonCallBack(IGameState* gameState)
+{
+}
+
+void upIconButtonCallBack(IGameState* gameState)
+{
+}
+
+void vIconButtonCallBack(IGameState* gameState)
+{
+}
+
+void xIconButtonCallBack(IGameState* gameState)
 {
 }
