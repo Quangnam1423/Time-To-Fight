@@ -80,7 +80,6 @@ enum TEXTURE_TYPE
     ENVIROMENT
 };
 
-
 struct TexturePath
 {
     enum RESOURCE_TYPE resourceType;
@@ -100,6 +99,9 @@ struct FontPath
     enum RESOURCE_TYPE resourceType;
     char* fontPath;
 };
+
+// get instance of Resource class 
+#define _RESOURCE_LOADER Resource::getInstance()
 
 class Resource : Singleton<Resource>
 {
