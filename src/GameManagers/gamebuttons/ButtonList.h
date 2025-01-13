@@ -21,45 +21,39 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
+#ifndef BUTTONLIST_H
+#define BUTTONLIST_H
 
-#ifndef IGAMESTATE_H
-#define IGAMESTATE_H    
-
-#include <SFML/Graphics.hpp>
-#include <unordered_map>
-
-enum class GAMESTATE
+class Button;
+namespace QT
 {
-    MENU_STATE,
-    INTRODUCE_STATE,
-    PLAYIN_STATE,
-    PAUSE_STATE,
-    GAME_OVER_STATE,
-    LOADING_STATE,
-    CREDIT_STATE,
-    SETTINGS_STATE
-};
+	struct Node
+	{
+		Button* button;
+		struct Node* nextNode;
+		struct Node* preNode;
+		int position;
+	};
+	struct Iterator {
 
-class IGameState
-{
-public:
-    virtual ~IGameState() = default;
+	};
 
-    virtual void init() = 0;
-    virtual void cleanup() = 0;
-
-    // handle state loop
-
-    virtual void handleEvent(sf::Event &event) = 0;
-    virtual void update(float deltaTime) = 0;
-    virtual void render(sf::RenderWindow& window) = 0;
-
-    // manage states   
-    virtual void pause() = 0;
-    virtual void resume() = 0;
-
-    // check state if complete
-    virtual bool isFinished() const = 0;
-};
+	class ButtonList
+	{
+	public:
+		ButtonList();
+		~ButtonList();
+		void insertHead(Button& button);
+		void insertAfter(Button& button);
+		void insert(Button& button,unsigned int position);
+		void deleteButton();
+		Node* begin();
+		Node* rbegin();
+	private:
+		Node* m_head;
+		Node* m_root;
+		int m_size;
+	};
+}
 
 #endif
