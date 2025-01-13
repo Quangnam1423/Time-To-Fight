@@ -28,7 +28,7 @@ SOFTWARE.
 #include <SFML/Network.hpp>
 #include <SFML/Network/IpAddress.hpp>
 #include <SFML/System.hpp>
-#include "nlohmann/json.hpp""
+#include <nlohmann/json.hpp>
 #include <thread>
 #include <iostream>
 #include <string>
