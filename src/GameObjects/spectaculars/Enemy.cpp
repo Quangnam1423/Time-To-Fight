@@ -22,44 +22,42 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-#ifndef HITBOX_H
-#define HITBOX_H
+#include "Enemy.h"
+#include "../Hitbox.h"
 
-#include <SFML/Graphics.hpp>
-#include <iostream>
-
-#define _CHECk_COLLISION(x, y) Hitbox::isColliding(x, y)
-
-enum class HITBOX_TYPE
+Enemy::Enemy(sf::Texture *texture, sf::Vector2f position) :
+                m_sprite(nullptr),
+                m_texture(texture),
+                m_position(position)
 {
-    CHARACTER,
-    MONSTER,
-    MAP,
-    SAW,
-    SAND,
-    WIND,
-    FLOOR
-};
+    init();
+}
 
-
-
-class Hitbox : public sf::RectangleShape
+Enemy::~Enemy()
 {
-public:
-    static bool isColliding(Hitbox& first, Hitbox& second);
-public:
-    Hitbox(sf::Vector2f position, sf::Vector2f& size, HITBOX_TYPE type);
-    ~Hitbox();
+    if (m_sprite != nullptr)
+        delete m_sprite;
+    if (m_hitbox != nullptr)
+        delete m_hitbox;
+    return;
+}
 
-    bool isColliding(Hitbox& other) const;
-    HITBOX_TYPE getType();
-private:
-    sf::Vector2f m_position;
-    sf::Vector2f m_velocity;
-    enum HITBOX_TYPE m_type;
-    bool m_isAlive;
-    bool m_isOnPlatform;
-    sf::Vector2f m_offset;
-};
+void Enemy::init()
+{
+    m_sprite = new sf::Sprite(m_texture);
+    m_hitbox = new Hitbox()
+}
 
-#endif
+void Enemy::update(float deltaTime)
+{
+}
+
+void Enemy::render(sf::RenderWindow &window)
+{
+    window.draw(m_sprite);
+    return;
+}
+
+void Enemy::handleEvent(sf::Event &event)
+{
+}

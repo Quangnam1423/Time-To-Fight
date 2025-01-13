@@ -29,8 +29,9 @@ bool Hitbox::isColliding(Hitbox& first, Hitbox& second)
     return first.getGlobalBounds().intersects(second.getGlobalBounds());
 }
 
-Hitbox::Hitbox(sf::Vector2f &size, HITBOX_TYPE type)
-    :   sf::RectangleShape(size), 
+Hitbox::Hitbox(sf::Vector2f posittion, sf::Vector2f &size, HITBOX_TYPE type)
+    :   m_position(position),
+        sf::RectangleShape(size), 
         m_type(type),
         m_isAlive(true),
         m_isOnPlatform(true)

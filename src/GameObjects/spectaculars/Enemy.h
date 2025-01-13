@@ -22,44 +22,38 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-#ifndef HITBOX_H
-#define HITBOX_H
+#ifndef ENEMY_H
+#define ENEMY_H
 
 #include <SFML/Graphics.hpp>
-#include <iostream>
 
-#define _CHECk_COLLISION(x, y) Hitbox::isColliding(x, y)
+class Hitbox;
 
-enum class HITBOX_TYPE
+enum ENEMY_TYPE
 {
-    CHARACTER,
-    MONSTER,
-    MAP,
-    SAW,
-    SAND,
-    WIND,
-    FLOOR
+
 };
 
-
-
-class Hitbox : public sf::RectangleShape
+class Enemy
 {
 public:
-    static bool isColliding(Hitbox& first, Hitbox& second);
-public:
-    Hitbox(sf::Vector2f position, sf::Vector2f& size, HITBOX_TYPE type);
-    ~Hitbox();
+    Enemy(sf::Texture* texture, sf::Vector2f position);
+    ~Enemy();
 
-    bool isColliding(Hitbox& other) const;
-    HITBOX_TYPE getType();
+    void init();
+    void update(float deltaTime);
+    void render(sf::RenderWindow& window);
+    void handleEvent(sf::Event& event);
 private:
+    sf::Sprite m_sprite;
+    sf::Texture* m_texture;
     sf::Vector2f m_position;
-    sf::Vector2f m_velocity;
-    enum HITBOX_TYPE m_type;
-    bool m_isAlive;
-    bool m_isOnPlatform;
-    sf::Vector2f m_offset;
-};
+    
+    float m_healthPoint;
+    Hitbox* m_hitbox;
+    
+    float m_deltaTime;
+    enum ENEMY_TYPE m_type;
+}
 
-#endif
+#endif 
