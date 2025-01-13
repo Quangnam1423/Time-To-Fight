@@ -32,23 +32,28 @@ SOFTWARE.
 #include <thread>
 #include <iostream>
 #include <string>
+#include <windows.data.json.h>
+#include <thread>
 
 #include "../../Singleton.h"
+
+void sendData(ClientConnect& connect);
+void receiveData(ClientConnect& connect);
 
 class ClientConnect : public Singleton<ClientConnect>
 {
 friend class Singleton<ClientConnect>;
+friend void senDate(ClientConnect& connect);
 public:
-	ClientConnect(int32_t serverHost, sf::Int16 serverPort);
+	ClientConnect(std::string serverHost, int port);
+	~ClientConnect();
 	void init();
 	void startConnect();
-	~ClientConnect();
 private:
 	sf::TcpSocket* m_socket;
 	sf::Socket::Status m_status;
-	sf::Int32 m_serverHost;
-	sf::IpAddress m_serverIPAddress;
-	sf::Int16 m_serverPort;
+	sf::Int32 m_serverPort;
+	sf::IpAddress m_serverAddress;
 
 	//sf::Thread m_thread;
 };

@@ -24,21 +24,11 @@ SOFTWARE.
 
 #include "ClientConnect.h"
 
-ClientConnect::ClientConnect(int32_t serverHost, sf::Int16 serverPort) :
-		m_serverHost((sf::Int32)serverHost),
-	m_serverPort((sf::Int16)serverPort)
+ClientConnect::ClientConnect(std::string serverHost, int port)
 {
+	m_serverAddress = sf::IpAddress(serverHost);
+	m_serverPort = port;
 	init();
-}
-
-void ClientConnect::init()
-{
-	m_serverIPAddress = sf::IpAddress(m_serverHost);
-}
-
-void ClientConnect::startConnect()
-{
-
 }
 
 ClientConnect::~ClientConnect()
@@ -46,4 +36,14 @@ ClientConnect::~ClientConnect()
 	if (m_socket != nullptr)
 		delete m_socket;
 	return;
+}
+
+void ClientConnect::init()
+{
+
+}
+
+void ClientConnect::startConnect()
+{
+
 }
