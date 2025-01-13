@@ -2,12 +2,19 @@
 
 2D Game Project built with sfml library
 
+# Dependencies 
+
+[SFML](https://www.sfml-dev.org/)
+[nlohmann](https://github.com/nlohmann/json.git)
+
+
 # Linux version
 
 Clone branch main:
 
 > sudo apt update
 > sudo apt install libsfml-dev
+> sudo apt install nlohmann-json3-dev
 > cd Time-To-Fight
 use GNU make installed in your device
 > command: 
@@ -23,6 +30,8 @@ Clone branch windows:
 Config dependencies and binaies files
 Use 64bit version if you want to run asolutely or use 32bit(if you know config Visual Studio)
 Download [sfml library](https://www.sfml-dev.org/download/)
+Download [nlohmann](https://github.com/nlohmann/json.git)
+add header folder of nlohmann library
 Another dependencies and binaries file include:
 * openai32.dll
 * kernel32.dll
