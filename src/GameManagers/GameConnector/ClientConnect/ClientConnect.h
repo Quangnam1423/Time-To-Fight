@@ -28,27 +28,32 @@ SOFTWARE.
 #include <SFML/Network.hpp>
 #include <SFML/Network/IpAddress.hpp>
 #include <SFML/System.hpp>
-
+#include "nlohmann/json.hpp""
 #include <thread>
 #include <iostream>
 #include <string>
-#include <windows.data.json.h>
 #include <thread>
 
 #include "../../Singleton.h"
 
+using json = nlohmann::json;
+
+
 void sendData(ClientConnect& connect);
-void receiveData(ClientConnect& connect);
+json receiveData(ClientConnect& connect);
 
 class ClientConnect : public Singleton<ClientConnect>
 {
 friend class Singleton<ClientConnect>;
-friend void senDate(ClientConnect& connect);
+friend void sendDate(ClientConnect& connect);
+friend json receiveData(ClientConnect& connect);
 public:
 	ClientConnect(std::string serverHost, int port);
 	~ClientConnect();
-	void init();
 	void startConnect();
+	sf::TcpSocket* getSocket();
+	void setStatus(sf::Socket::Status status);
+	sf::Socket::Status getStatus();
 private:
 	sf::TcpSocket* m_socket;
 	sf::Socket::Status m_status;

@@ -28,7 +28,7 @@ ClientConnect::ClientConnect(std::string serverHost, int port)
 {
 	m_serverAddress = sf::IpAddress(serverHost);
 	m_serverPort = port;
-	init();
+	m_status = sf::Socket::Disconnected;
 }
 
 ClientConnect::~ClientConnect()
@@ -38,12 +38,66 @@ ClientConnect::~ClientConnect()
 	return;
 }
 
-void ClientConnect::init()
-{
-
-}
-
 void ClientConnect::startConnect()
 {
+	if (m_socket.connect(m_serverAddress, m_serverPort) != sf::Socket::Done)
+	{
+		m_status = sf::Socket::Done;
+	}
+	else 
+		m_status = sf::Socket::Disconnected;
+	return;
+}
 
+sf::TcpSocket *ClientConnect::getSocket()
+{
+    return return m_socket;
+}
+
+void ClientConnect::setStatus(sf::Socket::Status status)
+{
+	m_status = status;
+	return;
+}
+
+sf::Socket::Status ClientConnect::getStatus()
+{
+    return m_status;
+}
+
+void sendData(ClientConnect &connect)
+{
+	json data = {
+		{"type", "message"},
+		{"content", "Hello, message"},
+		{"timestamp", "22:00:00"}
+	};
+	std::string jsonString = data.dump();
+	if (connect.getSocket()->send(jsonString.c_str(), jsonString.size()) == sf::Socket::Done)
+	{
+		connect.setStatus(sf::Socket::Done);
+	}
+	else 
+	{
+		connect.setStatus(sf::Socket::Error);
+	}
+	return;
+}
+
+json receiveData(ClientConnect &connect)
+{
+	char buffer[1024];
+	std::size_t received;
+	if (connect.getSocket()->receive(buffer , sizeof(buffer), received) == sf::Socket::Done)
+	{
+		std::string jsonString (buffer, received);
+		connect->setStatus(sf::Socket::Done);
+		return json::parse(jsonString);
+	}
+	else 
+	{
+		connect->setStatus(sf::Socket::Error);
+		return json();
+	}
+	return json();
 }
