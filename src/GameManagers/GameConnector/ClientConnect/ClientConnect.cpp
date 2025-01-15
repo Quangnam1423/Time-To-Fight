@@ -40,7 +40,7 @@ ClientConnect::~ClientConnect()
 
 void ClientConnect::startConnect()
 {
-	if (m_socket.connect(m_serverAddress, m_serverPort) != sf::Socket::Done)
+	if (m_socket->connect(m_serverAddress, m_serverPort) != sf::Socket::Done)
 	{
 		m_status = sf::Socket::Done;
 	}
@@ -51,7 +51,7 @@ void ClientConnect::startConnect()
 
 sf::TcpSocket *ClientConnect::getSocket()
 {
-    return return m_socket;
+    return m_socket;
 }
 
 void ClientConnect::setStatus(sf::Socket::Status status)
@@ -91,13 +91,23 @@ json receiveData(ClientConnect &connect)
 	if (connect.getSocket()->receive(buffer , sizeof(buffer), received) == sf::Socket::Done)
 	{
 		std::string jsonString (buffer, received);
-		connect->setStatus(sf::Socket::Done);
+		connect.setStatus(sf::Socket::Done);
 		return json::parse(jsonString);
 	}
 	else 
 	{
-		connect->setStatus(sf::Socket::Error);
+		connect.setStatus(sf::Socket::Error);
 		return json();
 	}
 	return json();
+}
+
+json jsonEncoding(std::string str)
+{
+	return json::parse(str);
+}
+
+std::string jsonDecoding(json json)
+{
+	return json.dump();
 }
