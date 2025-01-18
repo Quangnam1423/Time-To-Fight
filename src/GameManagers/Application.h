@@ -29,7 +29,7 @@ SOFTWARE.
 #include "ApplicationConfig.h"
 #include "Singleton.h"
 
-#define _APPLICATION Application->getInstance()
+#define _APPLICATION Application::getInstance()
 
 class Character;
 class GameManager;
@@ -47,12 +47,10 @@ class Application : public Singleton<Application>
         void update();
         void render();
     private:
-        
-        sf::RenderWindow* m_window;
-        Character* m_character;
+        //sf::RenderWindow* m_window;
         sf::Clock* m_clock;
 
-        float m_timer;
+        float m_elapsedTime;
         float m_deltaTime;
 };
 

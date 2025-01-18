@@ -23,29 +23,37 @@ SOFTWARE.
 */
 
 #include "Application.h"
-
-#include "../GameObjects/player/Character.h"
-#include "../GameObjects/player/Samurai.h"
+#include "GameManager.h"
+#include "WindowManager.h"
+#include "Resource.h"
 
 #include <iostream>
 
-Application::Application()
+/*
+* _RM get instance of Resource which is single object
+* _MAIN_WINDOW get instance of WindowManager which is single object
+* _GM get instance of GameManager which is single object
+* references : "GameManager.h", "Resource.h", "WindowManager.h"
+*/
+
+Application::Application() :
+    m_elapsedTime(0.0f),
+    m_deltaTime(0.0f)
 {
     init();
 }
 
 Application::~Application()
 {
-    if (m_window != nullptr)
-        delete m_window;
-    if (m_character != nullptr)
-        delete m_character;
+    delete _GM;
+    delete _RM;
+    delete _MAIN_WINDOW;
 }
 
 void Application::run()
 {
     m_clock->restart();
-    while (m_window->isOpen())
+    while (_MAIN_WINDOW->isOpen())
     {
         update();
         render();
@@ -54,37 +62,28 @@ void Application::run()
 
 void Application::init()
 {
-    m_window = new sf::RenderWindow(sf::VideoMode(_WIDTH, _HEIGHT),_GAME_NAME);
-    m_character = new Samurai(sf::Vector2f(100.0f, 100.0f));
+    _MAIN_WINDOW->setWindow(new sf::RenderWindow(sf::VideoMode(_WIDTH, _HEIGHT), _GAME_NAME));
+    _MAIN_WINDOW->windowConfig(60, false);
+    //m_window = new sf::RenderWindow(sf::VideoMode(_WIDTH, _HEIGHT),_GAME_NAME);
     m_clock = new sf::Clock();
-
-    m_window->setFramerateLimit(60);
-    m_window->setVerticalSyncEnabled(false);
-
-    m_timer = 0.0f;
-    m_deltaTime = 0.0f;
 }
 
 void Application::update()
 {
     sf::Event event;
-    while (m_window->pollEvent(event))
+    while (_MAIN_WINDOW->getWindow()->pollEvent(event))
     {
         if (event.type == sf::Event::Closed)
-            m_window->close(); 
-        m_character->handlingEvent(event); 
+            _MAIN_WINDOW->close();
     }
-
     m_deltaTime = m_clock->restart().asSeconds();
-    m_timer += m_deltaTime;
-    m_character->update(m_deltaTime);
+    m_elapsedTime += m_deltaTime;
+    _GM->getCurrentState()->update(m_deltaTime);
 }
 
 void Application::render()
 {
-    m_window->clear();
-
-    m_character->render(*m_window);
-
-    m_window->display();
+    _MAIN_WINDOW->readyToDraw();
+    _GM->getCurrentState()->render(*_MAIN_WINDOW->getWindow());
+    _MAIN_WINDOW->display();
 }

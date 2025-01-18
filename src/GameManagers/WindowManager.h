@@ -28,16 +28,21 @@ SOFTWARE.
 #include <SFML/Graphics.hpp>
 #include "Singleton.h"
 
-#define _WINDOW_MANAGER WindowManager::getInstance()
+#define _MAIN_WINDOW WindowManager::getInstance()
 
 class WindowManager : public Singleton<WindowManager>
 {
-	friend class Singleton<WindowManager>;
+friend class Singleton<WindowManager>;
 public:
 	WindowManager();
 	~WindowManager();
 	void setWindow(sf::RenderWindow* window);
+	void windowConfig(int frameRateLimit, bool verticalSync);
 	sf::RenderWindow* getWindow();
+	bool isOpen();
+	void readyToDraw();
+	void close();
+	void display();
 private:
 	sf::RenderWindow* m_window;
 };

@@ -39,7 +39,34 @@ void WindowManager::setWindow(sf::RenderWindow* window)
 	return;
 }
 
+void WindowManager::windowConfig(int frameRateLimit, bool verticalSync)
+{
+	m_window->setFramerateLimit(frameRateLimit);
+	m_window->setVerticalSyncEnabled(verticalSync);
+}
+
 sf::RenderWindow* WindowManager::getWindow()
 {
 	return m_window;
+}
+
+bool WindowManager::isOpen()
+{
+	return m_window->isOpen();
+}
+
+void WindowManager::readyToDraw()
+{
+	m_window->clear(sf::Color::White);
+	return;
+}
+
+void WindowManager::close()
+{
+	m_window->close();
+}
+
+void WindowManager::display()
+{
+	m_window->display();
 }
