@@ -29,6 +29,9 @@ SOFTWARE.
 
 int main()
 {
+    // start the application
     Application::getInstance()->run();
+    // release memory
+    delete Application::getInstance();
     return 0;
 }

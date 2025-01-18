@@ -28,38 +28,28 @@ SOFTWARE.
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
+#include "GameDefinition.h"
+
 #define _CHECk_COLLISION(x, y) Hitbox::isColliding(x, y)
-
-enum class HITBOX_TYPE
-{
-    CHARACTER,
-    MONSTER,
-    MAP,
-    SAW,
-    SAND,
-    WIND,
-    FLOOR
-};
-
-
 
 class Hitbox : public sf::RectangleShape
 {
-public:
-    static bool isColliding(Hitbox& first, Hitbox& second);
-public:
-    Hitbox(sf::Vector2f position, sf::Vector2f& size, HITBOX_TYPE type);
-    ~Hitbox();
-
-    bool isColliding(Hitbox& other) const;
-    HITBOX_TYPE getType();
 private:
-    sf::Vector2f m_position;
     sf::Vector2f m_velocity;
-    enum HITBOX_TYPE m_type;
-    bool m_isAlive;
-    bool m_isOnPlatform;
-    sf::Vector2f m_offset;
+    Status m_status;
+    enum HITBOX_TYPE m_hitboxType;
+public:
+    Hitbox(sf::Vector2f size, sf::Vector2f position);
+    ~Hitbox();
+    // use setPosition of sf::RectangleShape
+    void setVelocity(sf::Vector2f velocity);
+    // use getPosition of sf::RectangleShape
+    // use getSize of sf::RectangleShape
+    //void move(float deltaTime, DIRECTTION direction);
+    bool checkCollison(const Hitbox& other) const;
+    void setStatus(Status status);
+    Status getStatus();
 };
+
 
 #endif

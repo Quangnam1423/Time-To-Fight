@@ -39,10 +39,10 @@
     <ClCompile Include="src\GameObjects\spectaculars\Floor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GameManagers\gamestates\MenuGameState.cpp">
+    <ClCompile Include="src\GameManagers\GAMESTATE\MenuGameState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GameManagers\gamebuttons\Button.cpp">
+    <ClCompile Include="src\GameManagers\Button.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\GameObjects\player\playerstates\AttackOneState.cpp">
@@ -84,25 +84,25 @@
     <ClCompile Include="src\GameManagers\Camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GameManagers\gamestates\CreditGameState.cpp">
+    <ClCompile Include="src\GameManagers\GAMESTATE\CreditGameState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GameManagers\gamestates\GameOverState.cpp">
+    <ClCompile Include="src\GameManagers\GAMESTATE\GameOverState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GameManagers\gamestates\IntroduceGameState.cpp">
+    <ClCompile Include="src\GameManagers\GAMESTATE\IntroduceGameState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GameManagers\gamestates\LoadingState.cpp">
+    <ClCompile Include="src\GameManagers\GAMESTATE\LoadingState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GameManagers\gamestates\PauseState.cpp">
+    <ClCompile Include="src\GameManagers\GAMESTATE\PauseState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GameManagers\gamestates\PlayinGameState.cpp">
+    <ClCompile Include="src\GameManagers\GAMESTATE\PlayinGameState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GameManagers\gamestates\SettingGameState.cpp">
+    <ClCompile Include="src\GameManagers\GAMESTATE\SettingGameState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\GameManagers\FunctionManagers\FunctionCallBack.cpp">
@@ -114,7 +114,7 @@
     <ClCompile Include="src\GameManagers\WindowManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GameManagers\gamestates\IGameState.cpp">
+    <ClCompile Include="src\GameManagers\GAMESTATE\IGameState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\GameObjects\Camera.cpp">
@@ -123,10 +123,13 @@
     <ClCompile Include="src\GameObjects\spectaculars\Enemy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GameManagers\gamebuttons\ButtonList.cpp">
+    <ClCompile Include="src\GameManagers\ButtonList.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\GameManagers\GameConnector\ServerConnect\ServerListener.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameObjects\spectaculars\Background.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -161,13 +164,13 @@
     <ClInclude Include="src\GameObjects\spectaculars\Floor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GameManagers\gamestates\IGameState.h">
+    <ClInclude Include="src\GameManagers\GAMESTATE\IGameState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GameManagers\gamestates\MenuGameState.h">
+    <ClInclude Include="src\GameManagers\GAMESTATE\MenuGameState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GameManagers\gamebuttons\Button.h">
+    <ClInclude Include="src\GameManagers\Button.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GameObjects\player\playerstates\AttackOneState.h">
@@ -209,31 +212,31 @@
     <ClInclude Include="src\GameManagers\Camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GameManagers\gamebuttons\ButtonConfig.h">
+    <ClInclude Include="src\GameManagers\ButtonConfig.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GameManagers\gamestates\CreditGameState.h">
+    <ClInclude Include="src\GameManagers\GAMESTATE\CreditGameState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GameManagers\gamestates\GameOverState.h">
+    <ClInclude Include="src\GameManagers\GAMESTATE\GameOverState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GameManagers\gamestates\GameState.h">
+    <ClInclude Include="src\GameManagers\GAMESTATE\GameState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GameManagers\gamestates\IntroduceGameState.h">
+    <ClInclude Include="src\GameManagers\GAMESTATE\IntroduceGameState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GameManagers\gamestates\LoadingState.h">
+    <ClInclude Include="src\GameManagers\GAMESTATE\LoadingState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GameManagers\gamestates\PauseState.h">
+    <ClInclude Include="src\GameManagers\GAMESTATE\PauseState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GameManagers\gamestates\PlayinGameState.h">
+    <ClInclude Include="src\GameManagers\GAMESTATE\PlayinGameState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GameManagers\gamestates\SettingGameState.h">
+    <ClInclude Include="src\GameManagers\GAMESTATE\SettingGameState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GameManagers\FunctionManagers\FunctionCallBack.h">
@@ -254,10 +257,16 @@
     <ClInclude Include="src\GameObjects\spectaculars\Enemy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GameManagers\gamebuttons\ButtonList.h">
+    <ClInclude Include="src\GameManagers\ButtonList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GameManagers\GameConnector\ServerConnect\ServerListener.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameObjects\GameDefinition.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameObjects\spectaculars\Background.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

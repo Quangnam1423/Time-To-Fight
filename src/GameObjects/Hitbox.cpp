@@ -23,33 +23,37 @@ SOFTWARE.
 */
 
 #include "Hitbox.h"
-// static method
-bool Hitbox::isColliding(Hitbox& first, Hitbox& second)
-{
-    return first.getGlobalBounds().intersects(second.getGlobalBounds());
-}
 
-Hitbox::Hitbox(sf::Vector2f posittion, sf::Vector2f &size, HITBOX_TYPE type)
-    :   m_position(position),
-        sf::RectangleShape(size), 
-        m_type(type),
-        m_isAlive(true),
-        m_isOnPlatform(true)
-        
+Hitbox::Hitbox(sf::Vector2f size, sf::Vector2f position)
+			:
+	sf::RectangleShape(size)
 {
-    std::cout << "create hitbox" << std::endl;
+	
+	setPosition(position);
 }
 
 Hitbox::~Hitbox()
 {
 }
 
-bool Hitbox::isColliding(Hitbox &other) const
+void Hitbox::setVelocity(sf::Vector2f velocity)
 {
-    return getGlobalBounds().intersects(other.getGlobalBounds());
+	m_velocity = velocity;
+	return;
 }
 
-HITBOX_TYPE Hitbox::getType()
+bool Hitbox::checkCollison(const Hitbox& other) const
 {
-    return m_type;
+	return this->getGlobalBounds().intersects(other.getGlobalBounds());
+}
+
+void Hitbox::setStatus(Status status)
+{
+	m_status = status;
+	return;
+}
+
+Status Hitbox::getStatus()
+{
+	return m_status;
 }

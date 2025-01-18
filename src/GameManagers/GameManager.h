@@ -29,11 +29,10 @@ SOFTWARE.
 #include <unordered_map>
 
 #include "Singleton.h"
-#include "gamestates/IGameState.h"
-#include "gamestates/MenuGameState.h"
+#include "GAMESTATE/IGameState.h"
+#include "GAMESTATE/MenuGameState.h"
 #include "../GameObjects/player/playerstates/IPlayerState.h"
 
-// define smartly syntax
 #define _GM GameManager::getInstance()
 
 class Camera;

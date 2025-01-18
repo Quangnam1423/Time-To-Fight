@@ -74,7 +74,10 @@ void Application::update()
     while (_MAIN_WINDOW->getWindow()->pollEvent(event))
     {
         if (event.type == sf::Event::Closed)
+        {
             _MAIN_WINDOW->close();
+        }
+        _GM->getCurrentState()->handleEvent(event);
     }
     m_deltaTime = m_clock->restart().asSeconds();
     m_elapsedTime += m_deltaTime;
