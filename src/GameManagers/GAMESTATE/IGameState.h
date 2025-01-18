@@ -31,15 +31,18 @@ SOFTWARE.
 
 enum class GAMESTATE
 {
+    INVALID,
     MENU_STATE,
     INTRODUCE_STATE,
     PLAYIN_STATE,
     PAUSE_STATE,
-    GAME_OVER_STATE,
+    END_STATE,
     LOADING_STATE,
     CREDIT_STATE,
-    SETTINGS_STATE
+    SETTINGS_STATE,
+    TUTORIAL_STATE
 };
+
 class Button;
 
 class IGameState
@@ -64,9 +67,6 @@ public:
     virtual bool isFinished() const = 0;
 
     void addButton(Button* button);
-
-private:
-    std::vector<Button*> m_buttons;
 };
 
 #endif
