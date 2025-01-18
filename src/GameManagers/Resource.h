@@ -80,30 +80,10 @@ enum TEXTURE_TYPE
     ENVIROMENT
 };
 
-struct TexturePath
-{
-    enum RESOURCE_TYPE resourceType;
-    char* texturePath;
-    sf::Vector2i frameCount;
-};
-
-struct SoundPath
-{
-    enum RESOURCE_TYPE resourceType;
-    char* soundPath;
-    float lengthSound;
-};
-
-struct FontPath
-{
-    enum RESOURCE_TYPE resourceType;
-    char* fontPath;
-};
-
 // get instance of Resource class 
-#define _RESOURCE_LOADER Resource::getInstance()
+#define _RM Resource::getInstance()
 
-class Resource : Singleton<Resource>
+class Resource : public Singleton<Resource>
 {
 friend class Singleton<Resource>;
 
