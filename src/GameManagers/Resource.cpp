@@ -32,6 +32,7 @@ Resource::Resource()
 
 void Resource::init()
 {
+    std::cout << "Resource created" << std::endl;
     return;
 }
 
@@ -141,6 +142,18 @@ sf::Texture *Resource::getTexture(std::string textureName, enum TEXTURE_TYPE typ
     else if (type == TEXTURE_TYPE::ENVIROMENT)
     {
         texturePath = _PATH_ENVIROMENT + textureName + _POST_TEXTURE;
+    }
+    // check if the texture pointer are holded on texture map
+    if (_TEXTURE_MAP.find(texturePath) == _TEXTURE_MAP.end())
+    {
+        if (loadResource(texturePath, RESOURCE_TYPE::TEXTURE))
+        {
+            std::cout << "loaded texture successfully to resource map" << std::endl;
+        }
+        else
+        {
+            std::cout << "can't load texture!" + texturePath << std::endl;
+        }
     }
     return _TEXTURE_MAP[texturePath];
 }
