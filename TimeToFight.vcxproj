@@ -160,7 +160,6 @@
     <ClCompile Include="src\GameManagers\GameManager.cpp" />
     <ClCompile Include="src\GameManagers\GAMESTATE\CreditGameState.cpp" />
     <ClCompile Include="src\GameManagers\GAMESTATE\GameOverState.cpp" />
-    <ClCompile Include="src\GameManagers\GAMESTATE\IGameState.cpp" />
     <ClCompile Include="src\GameManagers\GAMESTATE\IntroduceGameState.cpp" />
     <ClCompile Include="src\GameManagers\GAMESTATE\LoadingState.cpp" />
     <ClCompile Include="src\GameManagers\GAMESTATE\MenuGameState.cpp" />
