@@ -65,8 +65,6 @@ public:
 
     // check state if complete
     virtual bool isFinished() const = 0;
-
-    void addButton(Button* button);
 };
 
 #endif

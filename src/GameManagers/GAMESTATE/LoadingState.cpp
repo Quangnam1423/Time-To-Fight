@@ -21,3 +21,71 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
+
+#include "LoadingState.h"
+#include "../Resource.h"
+
+LoadingState::LoadingState()
+{
+	init();
+}
+
+LoadingState::~LoadingState()
+{
+	cleanup();
+	return;
+}
+
+void LoadingState::init()
+{
+	m_dotCount = 0;
+	m_ready = true;
+	sf::Font* font = _RM->getFont("gameFont");
+
+}
+
+void LoadingState::cleanup()
+{
+	if (m_logo != nullptr)
+		delete m_logo;
+	if (m_background != nullptr)
+		delete m_background;
+	return;
+}
+
+void LoadingState::handleEvent(sf::Event& event)
+{
+}
+
+void LoadingState::update(float deltaTime)
+{
+	m_durationTime += deltaTime;
+	if (m_durationTime >= _UPDATE_TIME)
+	{
+		m_durationTime = 0.0f;
+		m_dotCount = (m_dotCount + 1) % 5;
+	}
+	m_textLoading.setString(_TEXT_LOAD + std::string(m_dotCount, '.'));
+}
+
+void LoadingState::render(sf::RenderWindow& window)
+{
+}
+
+void LoadingState::pause()
+{
+}
+
+void LoadingState::resume()
+{
+}
+
+bool LoadingState::isFinished() const
+{
+	return false;
+}
+
+void LoadingState::resetState()
+{
+	m_durationTime = 0.0f;
+}

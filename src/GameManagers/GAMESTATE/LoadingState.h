@@ -21,3 +21,43 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
+
+#ifndef LOADINGSTATE_H
+#define LOADINGSTATE_H
+
+#include <SFML/Graphics.hpp>
+#include "IGameState.h"
+
+#define _TEXT_LOAD "Loading"
+#define _TEXT_SIZE 36
+#define _UPDATE_TIME 0.5f
+#define _TEXT_COLOR sf::Color::White
+
+class LoadingState : public IGameState
+{
+private:
+	sf::Sprite* m_logo;
+	sf::Sprite* m_background;
+	sf::Text m_textLoading;
+	bool m_ready;
+	float m_durationTime;
+	int m_dotCount;
+public:
+	LoadingState();
+	~LoadingState();
+
+	void init() override;
+	void cleanup() override;
+	void handleEvent(sf::Event& event) override;
+	void update(float deltaTime) override;
+	void render(sf::RenderWindow& window) override;
+
+	void pause() override;
+	void resume() override;
+
+	bool isFinished() const override;
+public:
+	void resetState();
+};
+
+#endif
