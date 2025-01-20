@@ -32,6 +32,8 @@ SOFTWARE.
 #define _TEXT_SIZE 36
 #define _UPDATE_TIME 0.5f
 #define _TEXT_COLOR sf::Color::White
+#define _BACK_GROUND_SCALE 0.02f
+#define _BACK_GROUND_POSITION sf::Vector2f(100.f, 200.f)
 
 class LoadingState : public IGameState
 {

@@ -77,7 +77,8 @@ enum TEXTURE_TYPE
     FIGHTER,
     SHINOBI,
     ENEMY,
-    ENVIROMENT
+    ENVIROMENT,
+    LOGO
 };
 
 // get instance of Resource class 

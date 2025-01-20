@@ -143,6 +143,10 @@ sf::Texture *Resource::getTexture(std::string textureName, enum TEXTURE_TYPE typ
     {
         texturePath = _PATH_ENVIROMENT + textureName + _POST_TEXTURE;
     }
+    else if (type == TEXTURE_TYPE::LOGO)
+    {
+        texturePath = textureName + _POST_TEXTURE;
+    }
     // check if the texture pointer are holded on texture map
     if (_TEXTURE_MAP.find(texturePath) == _TEXTURE_MAP.end())
     {
