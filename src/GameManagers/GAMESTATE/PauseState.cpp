@@ -21,3 +21,49 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
+
+#include "PauseState.h"
+
+PauseState::PauseState()
+{
+	m_background = nullptr;
+	m_logo = nullptr;
+	init();
+}
+
+PauseState::~PauseState()
+{
+}
+
+void PauseState::init()
+{
+}
+
+void PauseState::cleanup()
+{
+}
+
+void PauseState::handleEvent(sf::Event& event)
+{
+}
+
+void PauseState::update(float deltaTime)
+{
+}
+
+void PauseState::render(sf::RenderWindow& window)
+{
+}
+
+void PauseState::pause()
+{
+}
+
+void PauseState::resume()
+{
+}
+
+bool PauseState::isFinished() const
+{
+	return false;
+}
