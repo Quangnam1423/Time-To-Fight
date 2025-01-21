@@ -23,10 +23,13 @@ SOFTWARE.
 */
 
 #include "PauseState.h"
+#include "../Resource.h"
+#include "../Button.h"
+#include "../FunctionManagers/FunctionCallBack.h"
+#include "../WindowManager.h"
 
 PauseState::PauseState()
 {
-	m_background = nullptr;
 	m_logo = nullptr;
 	init();
 }
@@ -37,6 +40,38 @@ PauseState::~PauseState()
 
 void PauseState::init()
 {
+	// overlay layer
+	{
+		sf::RenderWindow* window = _MAIN_WINDOW->getWindow();
+		m_overlay = sf::RectangleShape((sf::Vector2f)window->getSize());
+		m_overlay.setFillColor(sf::Color(0, 0, 0, 128));
+	}
+	// Home button
+	{
+		Button* homeButton = new Button(this,
+			_RM->getTexture("Home Icon", TEXTURE_TYPE::BUTTON),
+			_HOME_ICON_CB,
+			sf::Vector2f(100.0f, 10.0f),
+			"Home Icon",
+			BUTTON_TYPE::HOME_ICON_BUTTON
+		);
+		m_buttons.push_back(homeButton);
+	}
+	// continue button
+	{
+		Button* continueButton = new Button(this,
+			_RM->getTexture("Continue", TEXTURE_TYPE::BUTTON),
+			_CONTINUE_CB,
+			"Continue",
+			BUTTON_TYPE::CONTINUE_BUTTON
+		);
+		m_buttons.push_back(continueButton);
+	}
+	// logo
+	{
+		m_logo = new sf::Sprite(*_RM->getTexture("Logo", TEXTURE_TYPE::LOGO));
+	}
+	return;
 }
 
 void PauseState::cleanup()
@@ -53,6 +88,13 @@ void PauseState::update(float deltaTime)
 
 void PauseState::render(sf::RenderWindow& window)
 {
+	window.draw(m_overlay);
+	window.draw(*m_logo);
+	for (Button* button : m_buttons)
+	{
+		button->render(window);
+	}
+	return;
 }
 
 void PauseState::pause()

@@ -24,6 +24,8 @@ SOFTWARE.
 
 #include "LoadingState.h"
 #include "../Resource.h"
+#include "../Button.h"
+#include "../FunctionManagers/FunctionCallBack.h"
 
 LoadingState::LoadingState()
 {

@@ -46,9 +46,10 @@ public:
 	void resume() override;
 	bool isFinished() const override;
 private:
-	sf::Sprite* m_background;
+	//sf::Sprite* m_background;
 	sf::Sprite* m_logo;
 	std::list<Button*> m_buttons;
+	sf::RectangleShape m_overlay;
 };
 
 #endif
