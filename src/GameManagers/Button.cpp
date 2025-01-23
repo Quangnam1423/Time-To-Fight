@@ -23,116 +23,80 @@ SOFTWARE.
 */
 
 #include "Button.h"
-#include "GAMESTATE/GameState.h"
-#include "GameManager.h"
-#include "WindowManager.h"
+#include <iostream>
 
-Button::Button(IGameState* gameState,
-    sf::Texture* texture,
-    void (*buttonClickedFunction)(IGameState*),
-    sf::Vector2f position,
-    std::string name,
-    BUTTON_TYPE type
-) :
-    m_gameState(gameState),
-    m_texture(texture),
-    m_buttonClickedFunction(buttonClickedFunction),
-    m_position(position),
-    m_name(name),
-    m_buttonType(type),
-    m_buttonState(BUTTON_STATE::IDLE),
-    m_reactTime(_REACT_TIME_BUTTON),
-    m_isClicked(false)
+
+Button::Button(IGameState* gameState,sf::Texture* texture, sf::Vector2f position, BUTTON_TYPE type) 
+    :
+    m_gameState(gameState)
 {
-    m_sprite = nullptr;
-    init();
+    init(texture, position, type);
 }
 
 Button::~Button()
 {
     if (m_sprite != nullptr)
         delete m_sprite;
-    if (m_texture != nullptr)
-        delete m_texture;
     return;
 }
 
-void Button::init()
+void Button::init(sf::Texture* texture, sf::Vector2f position, BUTTON_TYPE type)
 {
-    m_sprite = new sf::Sprite(*m_texture);
-    m_sprite->setOrigin(m_position);
-    m_sprite->setScale(_IDLE_SCALE);
+    // button type and button state
+    m_buttonType = type;
+    m_buttonState = BUTTON_STATE::DEFAULT;
 
-    sf::Vector2u textureSize = m_texture->getSize();
-    m_hoverShape = sf::RectangleShape((sf::Vector2f)textureSize);
-    m_hoverShape.setOrigin(m_position);
-    m_hoverShape.setScale(_IDLE_SCALE);
-    m_hoverShape.setFillColor(_HOVERSHAPE_COLOR);
+    //button sprite and texture config
+    m_sprite = new sf::Sprite(*texture);
+    m_sprite->setPosition(position);
+    m_sprite->setColor(ButtonDefaultColor);
+    m_sprite->setScale(ButtonDefaultSize);
     return;
 }
 
-void Button::render(sf::RenderWindow &window)
+void Button::render(sf::RenderWindow& window)
 {
-    if (m_buttonState == BUTTON_STATE::HOVER)
-    {
-        m_hoverShape.setScale(_HOVER_SCALE);
-        m_sprite->setScale(_IDLE_SCALE);
-        window.draw(m_hoverShape);
-
-    }
-    else if (m_buttonState == BUTTON_STATE::ACTIVE)
-    {
-        m_hoverShape.setScale(_IDLE_SCALE);
-        m_sprite->setScale(_ACTIVE_SCALE);
-        window.draw(m_hoverShape);
-    }
-    else 
-    {
-        m_hoverShape.setScale(_IDLE_SCALE);
-        m_sprite->setScale(_IDLE_SCALE);
-    }
     window.draw(*m_sprite);
     return;
 }
 
-void Button::update(float deltaTime)
-{   
-    if (m_isClicked)
+void Button::update(float deltaTime, sf::RenderWindow& window)
+{
+    if (checkHover(window))
     {
-        m_reactTime -= deltaTime;
-        if (m_reactTime <= 0)
-            m_buttonClickedFunction(m_gameState);
+        if (checkIsClicked(window))
+        {
+            m_sprite->setColor(ButtonActiveColor);
+            m_sprite->setScale(ButtonActiveSize);
+        }
+        else
+        {
+            m_sprite->setColor(ButtonHoverColor);
+            m_sprite->setScale(ButtonHoverSize);
+        }
     }
-    if (checkHover())
+    else
     {
-        m_buttonState = BUTTON_STATE::HOVER;
-    }
-    if (checkIsClicked())
-    {
-        m_buttonState = BUTTON_STATE::HOVER;
-        m_isClicked = true;
+        m_sprite->setColor(ButtonDefaultColor);
+        m_sprite->setScale(ButtonDefaultSize);
     }
     return;
 }
 
-bool Button::checkIsClicked()
-{ 
-    if (checkHover() &&
-        sf::Mouse::isButtonPressed(sf::Mouse::Left))
+bool Button::checkIsClicked(sf::RenderWindow& window)
+{
+    bool check = sf::Mouse::isButtonPressed(sf::Mouse::Left);
+    if (check)
     {
-         return true;
+        std::cout << "clicked button" << std::endl;
     }
-    return false;
+    return check;
 }
 
-std::string Button::getName()
-{
-    return m_name;
-}
 
-bool Button::checkHover()
+bool Button::checkHover(sf::RenderWindow& window)
 {
-    sf::Vector2i mousePosition = sf::Mouse::getPosition(*_MAIN_WINDOW->getWindow());
+    sf::Vector2i mousePosition = sf::Mouse::getPosition(window);
     float x_mousePos = static_cast<float>(mousePosition.x);
     float y_mousePos = static_cast<float>(mousePosition.y);
 
@@ -142,26 +106,4 @@ bool Button::checkHover()
         return true;
     }
     return false;
-}
-
-void Button::setGameState(IGameState* gameState)
-{
-    m_gameState = gameState;
-    return;
-}
-
-void Button::setPosition(sf::Vector2f position) 
-{
-    m_position = position;
-    m_sprite->setPosition(m_position);
-    m_hoverShape.setPosition(m_position);
-    return;
-}
-
-void Button::reset()
-{
-    m_isClicked = false;
-    m_reactTime = _REACT_TIME_BUTTON;
-    m_buttonState = BUTTON_STATE::IDLE;
-    return;
 }

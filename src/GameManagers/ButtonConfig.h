@@ -25,22 +25,22 @@ SOFTWARE.
 
 #ifndef BUTTONCONFIG_H
 #define BUTTONCONFIG_H
-
-//#define _RESOURCE_TEXTURE_MENU_BUTTON 
-//"resource/menubuttons/largebuttons/coloredlargebuttons"
-
-// scale point for drawable objects
-#define _IDLE_SCALE sf::Vector2f(0.5f, 0.05)
-#define _HOVER_SCALE sf::Vector2f(0.6f, 0.6f)
-#define _ACTIVE_SCALE sf::Vector2f(0.4f, 0.4f)
-
-// color for hover shape
-#define _HOVERSHAPE_COLOR sf::Color(255, 0, 0, 100)
+#include <SFML/Graphics.hpp>
 
 #define _REACT_TIME_BUTTON 2.0f
 
+// button size 
+#define ButtonDefaultSize sf::Vector2f(0.5f, 0.5f)
+#define ButtonHoverSize sf::Vector2f(0.51f, 0.51f)
+#define ButtonActiveSize sf::Vector2f(0.49f, 0.49f)
+
+// button color 
+#define ButtonDefaultColor sf::Color::White
+#define ButtonHoverColor sf::Color(200, 200, 255)
+#define ButtonActiveColor sf::Color(100, 100, 255)
+
 enum class BUTTON_STATE{
-    IDLE,
+    DEFAULT,
     HOVER,
     ACTIVE
 };

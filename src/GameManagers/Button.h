@@ -33,43 +33,18 @@ class IGameState;
 class Button
 {
 public:
-    Button(IGameState* gameState,
-        sf::Texture* texture,
-        void (*buttonClickedFunction)(IGameState*),
-        sf::Vector2f position,
-        std::string name,
-        BUTTON_TYPE type
-    );
+    Button(IGameState* gameState,sf::Texture* texture, sf::Vector2f position, BUTTON_TYPE type);
     ~Button();
-    void init();
+    void init(sf::Texture* texture, sf::Vector2f position, BUTTON_TYPE type);
     void render(sf::RenderWindow& window);
-    void update(float deltaTime);
-
-    bool checkIsClicked();
-
-    std::string getName();
-    bool checkHover();
-
-    void setGameState(IGameState* gameState);
-    void setPosition(sf::Vector2f position);
-    void reset();
-
+    void update(float deltaTime, sf::RenderWindow& window);
+    bool checkHover(sf::RenderWindow& window);
+    bool checkIsClicked(sf::RenderWindow& window);
 private:
     IGameState* m_gameState;
-    void (*m_buttonClickedFunction)(IGameState*);
     sf::Sprite* m_sprite;
-    sf::Texture* m_texture;
-    sf::RectangleShape m_hoverShape;
-    sf::Vector2f m_position;
-    sf::Vector2f m_size;
-    std::string m_name;
-
-    float m_reactTime;
-
-    bool m_isClicked;
-
-    enum BUTTON_STATE m_buttonState;
     enum BUTTON_TYPE m_buttonType;
+    enum BUTTON_STATE m_buttonState;
 };
 
 #endif
