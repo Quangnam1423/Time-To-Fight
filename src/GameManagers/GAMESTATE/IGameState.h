@@ -65,6 +65,7 @@ public:
 
     // check state if complete
     virtual bool isFinished() const = 0;
+    static IGameState* createState(GAMESTATE newGameState);
 };
 
 #endif

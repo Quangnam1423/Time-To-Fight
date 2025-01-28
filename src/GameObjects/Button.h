@@ -33,15 +33,18 @@ class IGameState;
 class Button
 {
 public:
-    Button(IGameState* gameState,sf::Texture* texture, sf::Vector2f position, BUTTON_TYPE type);
+    Button(sf::Texture* texture, 
+            sf::Vector2f position, 
+            BUTTON_TYPE type);
     ~Button();
     void init(sf::Texture* texture, sf::Vector2f position, BUTTON_TYPE type);
     void render(sf::RenderWindow& window);
     void update(float deltaTime, sf::RenderWindow& window);
     bool checkHover(sf::RenderWindow& window);
     bool checkIsClicked(sf::RenderWindow& window);
+    void setCallBack(void(*callbackfunction)());
 private:
-    IGameState* m_gameState;
+    void (*m_callbackFunction)();
     sf::Sprite* m_sprite;
     enum BUTTON_TYPE m_buttonType;
     enum BUTTON_STATE m_buttonState;

@@ -149,14 +149,15 @@
     <None Include="sfml-window-d-2.dll" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\GameManagers\GAMESTATE\IGameState.cpp" />
     <ClCompile Include="src\GameObjects\spectaculars\Background.cpp" />
     <ClCompile Include="src\GameManagers\GameConnector\ServerConnect\ServerListener.cpp" />
     <ClCompile Include="src\GameManagers\ButtonList.cpp" />
     <ClCompile Include="src\GameManagers\GameConnector\ClientConnect\ClientConnect.cpp" />
-    <ClCompile Include="src\GameManagers\Application.cpp" />
+    <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="src\GameManagers\Camera.cpp" />
     <ClCompile Include="src\GameManagers\FunctionManagers\FunctionCallBack.cpp" />
-    <ClCompile Include="src\GameManagers\Button.cpp" />
+    <ClCompile Include="src\GameObjects\Button.cpp" />
     <ClCompile Include="src\GameManagers\GameManager.cpp" />
     <ClCompile Include="src\GameManagers\GAMESTATE\CreditGameState.cpp" />
     <ClCompile Include="src\GameManagers\GAMESTATE\GameOverState.cpp" />
@@ -191,14 +192,13 @@
   <ItemGroup>
     <ClInclude Include="src\GameObjects\spectaculars\Background.h" />
     <ClInclude Include="src\GameManagers\GameConnector\ServerConnect\ServerListener.h" />
-    <ClInclude Include="src\GameManagers\EventConfig.h" />
     <ClInclude Include="src\GameManagers\ButtonList.h" />
     <ClInclude Include="src\GameManagers\GameConnector\ClientConnect\ClientConnect.h" />
-    <ClInclude Include="src\GameManagers\Application.h" />
-    <ClInclude Include="src\GameManagers\ApplicationConfig.h" />
+    <ClInclude Include="src\Application.h" />
+    <ClInclude Include="src\ApplicationConfig.h" />
     <ClInclude Include="src\GameManagers\Camera.h" />
     <ClInclude Include="src\GameManagers\FunctionManagers\FunctionCallBack.h" />
-    <ClInclude Include="src\GameManagers\Button.h" />
+    <ClInclude Include="src\GameObjects\Button.h" />
     <ClInclude Include="src\GameManagers\ButtonConfig.h" />
     <ClInclude Include="src\GameManagers\GameManager.h" />
     <ClInclude Include="src\GameManagers\GAMESTATE\CreditGameState.h" />
@@ -212,7 +212,7 @@
     <ClInclude Include="src\GameManagers\GAMESTATE\PlayinGameState.h" />
     <ClInclude Include="src\GameManagers\GAMESTATE\SettingGameState.h" />
     <ClInclude Include="src\GameManagers\Resource.h" />
-    <ClInclude Include="src\GameManagers\Singleton.h" />
+    <ClInclude Include="src\Singleton.h" />
     <ClInclude Include="src\GameObjects\Camera.h" />
     <ClInclude Include="src\GameObjects\GameDefinition.h" />
     <ClInclude Include="src\GameObjects\Hitbox.h" />

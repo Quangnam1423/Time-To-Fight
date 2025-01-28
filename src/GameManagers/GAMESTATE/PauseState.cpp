@@ -24,7 +24,7 @@ SOFTWARE.
 
 #include "PauseState.h"
 #include "../Resource.h"
-#include "../Button.h"
+#include "../../GameObjects/Button.h"
 #include "../FunctionManagers/FunctionCallBack.h"
 #include "../WindowManager.h"
 

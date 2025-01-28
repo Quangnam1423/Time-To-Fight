@@ -21,77 +21,43 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
+#include "IGameState.h"
+#include "CreditGameState.h"
+#include "GameOverState.h"
+#include "IntroduceGameState.h"
+#include "LoadingState.h"
+#include "MenuGameState.h"
+#include "PauseState.h"
+#include "PlayinGameState.h"
+#include "SettingGameState.h"
 
-#include "GameManager.h"
-#include "GAMESTATE/GameState.h"
-
-GameManager::GameManager()
+IGameState* IGameState::createState(GAMESTATE newGameState)
 {
-	m_activeState = nullptr;
-	m_nextState = nullptr;
-}
-
-GameManager::~GameManager()
-{
-	while (!m_gameStateStack.empty())
+    IGameState* newGS = nullptr;
+	switch (newGameState)
 	{
-		delete m_gameStateStack.back();
-		m_gameStateStack.pop_back();
+	case GAMESTATE::INVALID:
+		break;
+	case GAMESTATE::MENU_STATE:
+		break;
+	case GAMESTATE::INTRODUCE_STATE:
+		break;
+	case GAMESTATE::PLAYIN_STATE:
+		break;
+	case GAMESTATE::PAUSE_STATE:
+		break;
+	case GAMESTATE::END_STATE:
+		break;
+	case GAMESTATE::LOADING_STATE:
+		break;
+	case GAMESTATE::CREDIT_STATE:
+		break;
+	case GAMESTATE::SETTINGS_STATE:
+		break;
+	case GAMESTATE::TUTORIAL_STATE:
+		break;
+	default:
+		break;
 	}
-
-	if (m_activeState != nullptr)
-		delete m_activeState;
-	if (m_nextState != nullptr)
-		delete m_nextState;
-	
-	m_activeState = nullptr;
-	m_nextState = nullptr;
-	return;
-}
-
-void GameManager::changeState(IGameState* gameState)
-{
-	m_nextState = gameState;
-	return;
-}
-
-void GameManager::changeState(GAMESTATE gameState)
-{
-}
-
-void GameManager::pushState(GAMESTATE gameState)
-{
-
-}
-
-void GameManager::popState()
-{
-}
-
-void GameManager::performStateChange()
-{
-}
-
-IGameState* GameManager::currentState()
-{
-	return m_activeState;
-}
-
-IGameState* GameManager::nextState()
-{
-	return m_nextState;
-}
-
-bool GameManager::needToChangeState()
-{
-	return false;
-}
-
-bool GameManager::hasState()
-{
-	return m_gameStateStack.size();
-}
-
-void GameManager::changeState(GAMESTATE gameState)
-{
+	return newGS;
 }

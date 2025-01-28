@@ -26,9 +26,7 @@ SOFTWARE.
 #include <iostream>
 
 
-Button::Button(IGameState* gameState,sf::Texture* texture, sf::Vector2f position, BUTTON_TYPE type) 
-    :
-    m_gameState(gameState)
+Button::Button(sf::Texture* texture, sf::Vector2f position, BUTTON_TYPE type) 
 {
     init(texture, position, type);
 }
@@ -37,6 +35,7 @@ Button::~Button()
 {
     if (m_sprite != nullptr)
         delete m_sprite;
+    m_callbackFunction = nullptr;
     return;
 }
 
@@ -51,6 +50,8 @@ void Button::init(sf::Texture* texture, sf::Vector2f position, BUTTON_TYPE type)
     m_sprite->setPosition(position);
     m_sprite->setColor(ButtonDefaultColor);
     m_sprite->setScale(ButtonDefaultSize);
+    sf::FloatRect bounds = m_sprite->getGlobalBounds();
+    m_sprite->setOrigin(bounds.width / 2 , bounds.height / 2);
     return;
 }
 
@@ -91,6 +92,12 @@ bool Button::checkIsClicked(sf::RenderWindow& window)
         std::cout << "clicked button" << std::endl;
     }
     return check;
+}
+
+void Button::setCallBack(void(*callbackfunction)())
+{
+    m_callbackFunction = callbackfunction;
+    return;
 }
 
 

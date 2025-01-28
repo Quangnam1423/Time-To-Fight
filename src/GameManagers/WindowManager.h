@@ -26,7 +26,7 @@ SOFTWARE.
 #define WINDOWMANAGER_H
 
 #include <SFML/Graphics.hpp>
-#include "Singleton.h"
+#include "../Singleton.h"
 
 #define _MAIN_WINDOW WindowManager::getInstance()
 

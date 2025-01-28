@@ -28,14 +28,11 @@ SOFTWARE.
 #include <SFML/Graphics.hpp>
 #include <unordered_map>
 
-#include "Singleton.h"
-#include "GAMESTATE/IGameState.h"
-#include "GAMESTATE/MenuGameState.h"
-#include "../GameObjects/player/playerstates/IPlayerState.h"
+#include "../Singleton.h"
 
 #define _GM GameManager::getInstance()
 
-class Camera;
+class IGameState;
 
 class GameManager : public Singleton<GameManager>
 {
@@ -43,18 +40,20 @@ friend class Singleton<GameManager>;
 public:
     GameManager();
     ~GameManager();
-    void init();
-    void run();
 
-    void setState(enum GAMESTATE newState);
-    IGameState* getCurrentState();
+    void changeState(IGameState* gameState);
+    void changeState(enum GAMESTATE gameState);
+    void pushState(GAMESTATE gameState);
+    void popState();
+    void performStateChange();
+    IGameState* currentState();
+    IGameState* nextState();
+    bool needToChangeState();
+    bool hasState();
 private:
-    IGameState* m_currentGameState;
-    Camera* m_camera;
-    enum GAMESTATE m_gameState;
-    
-    // map to get game state
-    std::unordered_map<GAMESTATE, IGameState*, EnumClassHash> m_gameStateMap;
+    std::list<IGameState*> m_gameStateStack;
+    IGameState* m_activeState;
+    IGameState* m_nextState;
 };
 
 #endif

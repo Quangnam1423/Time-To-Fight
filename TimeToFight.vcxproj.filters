@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\GameManagers\Application.cpp">
+    <ClCompile Include="src\Application.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\GameObjects\logics\Collision.cpp">
@@ -42,7 +42,7 @@
     <ClCompile Include="src\GameManagers\GAMESTATE\MenuGameState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GameManagers\Button.cpp">
+    <ClCompile Include="src\GameObjects\Button.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\GameObjects\player\playerstates\AttackOneState.cpp">
@@ -129,18 +129,21 @@
     <ClCompile Include="src\GameObjects\spectaculars\Background.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\GameManagers\GAMESTATE\IGameState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\GameManagers\Application.h">
+    <ClInclude Include="src\Application.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GameManagers\ApplicationConfig.h">
+    <ClInclude Include="src\ApplicationConfig.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GameManagers\Resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GameManagers\Singleton.h">
+    <ClInclude Include="src\Singleton.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GameObjects\logics\Collision.h">
@@ -167,7 +170,7 @@
     <ClInclude Include="src\GameManagers\GAMESTATE\MenuGameState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GameManagers\Button.h">
+    <ClInclude Include="src\GameObjects\Button.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GameObjects\player\playerstates\AttackOneState.h">
@@ -240,9 +243,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GameManagers\GameConnector\ClientConnect\ClientConnect.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GameManagers\EventConfig.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GameManagers\WindowManager.h">

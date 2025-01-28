@@ -36,110 +36,110 @@ SOFTWARE.
 #include "../../GameObjects/Hitbox.h"
 #include "../../GameObjects/spectaculars/Floor.h"
 
-void audioIconButtonCallBack(IGameState* gameState)
+void audioIconButtonCallBack()
 {
 }
 
-void backButtonCallBack(IGameState* gameState)
+void backButtonCallBack()
 {
 }
 
-void continueButtonCallBack(IGameState* gameState)
+void continueButtonCallBack()
 {
 }
 
-void controlsButtonCallBack(IGameState* gameState)
+void controlsButtonCallBack()
 {
 }
 
-void downIconButtonCallBack(IGameState* gameState)
+void downIconButtonCallBack()
 {
 }
 
-void exitButtonCallBack(IGameState* gameState)
+void exitButtonCallBack()
 {
 }
 
-void homeIconButtonCallBack(IGameState* gameState)
+void homeIconButtonCallBack()
 {
 }
 
-void infoIconButtonCallBack(IGameState* gameState)
+void infoIconButtonCallBack()
 {
 }
 
-void loadButtonCallBack(IGameState* gameState)
+void loadButtonCallBack()
 {
 }
 
-void menuButtonCallBack(IGameState* gameState)
+void menuButtonCallBack()
 {
 }
 
-void musicButtonCallBack(IGameState* gameState)
+void musicButtonCallBack()
 {
 }
 
-void newGameButtonCallBack(IGameState* gameState)
+void newGameButtonCallBack()
 {
 }
 
-void onOffButtonCallBack(IGameState* gameState)
+void onOffButtonCallBack()
 {
 }
 
-void optionsButtonCallBack(IGameState* gameState)
+void optionsButtonCallBack()
 {
 }
 
-void pauseIconButtonCallBack(IGameState* gameState)
+void pauseIconButtonCallBack()
 {
 }
 
-void playButtonCallBack(IGameState* gameState)
+void playButtonCallBack()
 {
 }
 
-void playIconButtonCallBack(IGameState* gameState)
+void playIconButtonCallBack()
 {
 }
 
-void questionmarkIconButtonCallBack(IGameState* gameState)
+void questionmarkIconButtonCallBack()
 {
 }
 
-void quitButtonCallBack(IGameState* gameState)
+void quitButtonCallBack()
 {
 }
 
-void resumeIconButtonCallBack(IGameState* gameState)
+void resumeIconButtonCallBack()
 {
 }
 
-void returnIconButtonCallBack(IGameState* gameState)
+void returnIconButtonCallBack()
 {
 }
 
-void settingButtonCallBack(IGameState* gameState)
+void settingButtonCallBack()
 {
 }
 
-void settingIconButtonCallBack(IGameState* gameState)
+void settingIconButtonCallBack()
 {
 }
 
-void startButtonCallBack(IGameState* gameState)
+void startButtonCallBack()
 {
 }
 
-void upIconButtonCallBack(IGameState* gameState)
+void upIconButtonCallBack()
 {
 }
 
-void vIconButtonCallBack(IGameState* gameState)
+void vIconButtonCallBack()
 {
 }
 
-void xIconButtonCallBack(IGameState* gameState)
+void xIconButtonCallBack()
 {
 }

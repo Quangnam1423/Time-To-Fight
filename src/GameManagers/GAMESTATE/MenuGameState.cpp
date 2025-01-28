@@ -24,7 +24,7 @@ SOFTWARE.
 
 #include "MenuGameState.h"
 #include "../Resource.h"
-#include "../Button.h"
+#include "../../GameObjects/Button.h"
 #include "../FunctionManagers/FunctionCallBack.h"
 #include <iostream>
 

@@ -23,9 +23,10 @@ SOFTWARE.
 */
 
 #include "Application.h"
-#include "GameManager.h"
-#include "WindowManager.h"
-#include "Resource.h"
+#include "GameManagers/GAMESTATE/GameState.h"
+#include "GameManagers/GameManager.h"
+#include "GameManagers/WindowManager.h"
+#include "GameManagers/Resource.h"
 
 #include <iostream>
 
@@ -77,16 +78,16 @@ void Application::update()
         {
             _MAIN_WINDOW->close();
         }
-        _GM->getCurrentState()->handleEvent(event);
+        _GM->currentState()->handleEvent(event);
     }
     m_deltaTime = m_clock->restart().asSeconds();
     m_elapsedTime += m_deltaTime;
-    _GM->getCurrentState()->update(m_deltaTime);
+    _GM->currentState()->update(m_deltaTime);
 }
 
 void Application::render()
 {
     _MAIN_WINDOW->readyToDraw();
-    _GM->getCurrentState()->render(*_MAIN_WINDOW->getWindow());
+    _GM->currentState()->render(*_MAIN_WINDOW->getWindow());
     _MAIN_WINDOW->display();
 }

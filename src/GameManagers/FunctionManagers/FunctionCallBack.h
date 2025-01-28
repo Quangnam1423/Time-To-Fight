@@ -28,33 +28,33 @@ SOFTWARE.
 class IGameState;
 
 // button call back
-void audioIconButtonCallBack(IGameState* gameState);
-void backButtonCallBack(IGameState* gameState);
-void continueButtonCallBack(IGameState* gameState);
-void controlsButtonCallBack(IGameState* gameState);
-void downIconButtonCallBack(IGameState* gameState);
-void exitButtonCallBack(IGameState* gameState);
-void homeIconButtonCallBack(IGameState* gameState);
-void infoIconButtonCallBack(IGameState* gameState);
-void loadButtonCallBack(IGameState* gameState);
-void menuButtonCallBack(IGameState* gameState);
-void musicButtonCallBack(IGameState* gameState);
-void newGameButtonCallBack(IGameState* gameState);
-void onOffButtonCallBack(IGameState* gameState);
-void optionsButtonCallBack(IGameState* gameState);
-void pauseIconButtonCallBack(IGameState* gameState);
-void playButtonCallBack(IGameState* gameState);
-void playIconButtonCallBack(IGameState* gameState);
-void questionmarkIconButtonCallBack(IGameState* gameState);
-void quitButtonCallBack(IGameState* gameState);
-void resumeIconButtonCallBack(IGameState* gameState);
-void returnIconButtonCallBack(IGameState* gameState);
-void settingButtonCallBack(IGameState* gameState);
-void settingIconButtonCallBack(IGameState* gameState);
-void startButtonCallBack(IGameState* gameState);
-void upIconButtonCallBack(IGameState* gameState);
-void vIconButtonCallBack(IGameState* gameState);
-void xIconButtonCallBack(IGameState* gameState);
+void audioIconButtonCallBack();
+void backButtonCallBack();
+void continueButtonCallBack();
+void controlsButtonCallBack();
+void downIconButtonCallBack();
+void exitButtonCallBack();
+void homeIconButtonCallBack();
+void infoIconButtonCallBack();
+void loadButtonCallBack();
+void menuButtonCallBack();
+void musicButtonCallBack();
+void newGameButtonCallBack();
+void onOffButtonCallBack();
+void optionsButtonCallBack();
+void pauseIconButtonCallBack();
+void playButtonCallBack();
+void playIconButtonCallBack();
+void questionmarkIconButtonCallBack();
+void quitButtonCallBack();
+void resumeIconButtonCallBack();
+void returnIconButtonCallBack();
+void settingButtonCallBack();
+void settingIconButtonCallBack();
+void startButtonCallBack();
+void upIconButtonCallBack();
+void vIconButtonCallBack();
+void xIconButtonCallBack();
 
 // macro function call back pointer
 #define _AUDIO_ICON_CB &audioIconButtonCallBack

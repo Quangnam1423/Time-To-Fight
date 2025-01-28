@@ -31,7 +31,7 @@ SOFTWARE.
 #include <filesystem>
 #include <unordered_map>
 
-#include "Singleton.h"
+#include "../Singleton.h"
 
 // path for allr resource
 #define _PATH_RESOURCE "resource/"
