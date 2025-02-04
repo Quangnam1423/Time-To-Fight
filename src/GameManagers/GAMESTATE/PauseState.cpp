@@ -109,6 +109,10 @@ void PauseState::resume()
 {
 }
 
+void PauseState::exit()
+{
+}
+
 bool PauseState::isFinished() const
 {
 	return false;

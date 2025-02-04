@@ -44,6 +44,7 @@ public:
 	void render(sf::RenderWindow& window) override;
 	void pause() override;
 	void resume() override;
+	void exit() override;
 	bool isFinished() const override;
 private:
 	//sf::Sprite* m_background;

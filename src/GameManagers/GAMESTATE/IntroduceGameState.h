@@ -21,3 +21,41 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
+
+#ifndef INTRODUCE_GAME_STATE_H
+#define INTRODUCE_GAME_STATE_H
+
+#include "IGameState.h"
+#include <list>
+
+class Button;
+
+class IntroduceState : public IGameState
+{
+public:
+	IntroduceState();
+	~IntroduceState();
+
+	void init() override;
+	void cleanup() override;
+	
+	// handle state loop
+
+	void handleEvent(sf::Event& event) override;
+	void update(float deltaTime) override;
+	void render(sf::RenderWindow& window) override;
+
+	//manager state
+	void pause() override;
+	void resume() override;
+	void exit() override;
+
+	// check state if complete
+	bool isFinished() const override;
+
+private:
+	sf::Sprite* m_background;
+	std::list<Button*> m_buttons;
+};
+
+#endif

@@ -1,3 +1,4 @@
+#include "IntroduceGameState.h"
 /*
 MIT License
 
@@ -21,3 +22,48 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
+
+IntroduceState::IntroduceState()
+{
+}
+
+IntroduceState::~IntroduceState()
+{
+}
+
+void IntroduceState::init()
+{
+}
+
+void IntroduceState::cleanup()
+{
+}
+
+void IntroduceState::handleEvent(sf::Event& event)
+{
+}
+
+void IntroduceState::update(float deltaTime)
+{
+}
+
+void IntroduceState::render(sf::RenderWindow& window)
+{
+}
+
+void IntroduceState::pause()
+{
+}
+
+void IntroduceState::resume()
+{
+}
+
+void IntroduceState::exit()
+{
+}
+
+bool IntroduceState::isFinished() const
+{
+	return false;
+}

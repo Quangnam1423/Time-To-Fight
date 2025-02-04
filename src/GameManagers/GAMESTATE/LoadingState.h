@@ -56,6 +56,7 @@ public:
 
 	void pause() override;
 	void resume() override;
+	void exit() override;
 
 	bool isFinished() const override;
 public:

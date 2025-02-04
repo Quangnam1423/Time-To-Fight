@@ -62,6 +62,7 @@ public:
     // manage states   
     virtual void pause() = 0;
     virtual void resume() = 0;
+    virtual void exit() = 0;
 
     // check state if complete
     virtual bool isFinished() const = 0;

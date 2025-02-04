@@ -49,6 +49,7 @@ public:
     // manage state
     void pause() override;
     void resume() override;
+    void exit() override;
 
     // check state if complete
     bool isFinished() const override;

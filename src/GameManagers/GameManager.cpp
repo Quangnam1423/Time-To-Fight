@@ -57,24 +57,58 @@ void GameManager::changeState(IGameState* gameState)
 
 void GameManager::changeState(GAMESTATE gameState)
 {
+	IGameState* gs = IGameState::createState(gameState);
+	changeState(gs);
+	return;
 }
 
 void GameManager::pushState(GAMESTATE gameState)
 {
-
+	IGameState* gs = IGameState::createState(gameState);
+	if (!m_gameStateStack.empty())
+	{
+		m_gameStateStack.back()->pause();
+	}
+	m_nextState = gs;
+	return;
 }
 
 void GameManager::popState()
 {
+	if (hasState())
+	{
+		m_gameStateStack.pop_back();
+	}
+	if (hasState())
+	{
+		m_activeState = m_gameStateStack.back();
+	}
+	return;
 }
 
 void GameManager::performStateChange()
 {
+	if (m_nextState != nullptr)
+	{
+		if (hasState())
+		{
+			m_gameStateStack.back()->exit();
+		}
+		m_gameStateStack.push_back(m_nextState);
+		m_gameStateStack.back()->init();
+		m_activeState = m_gameStateStack.back();
+	}
+	m_nextState = nullptr;
+	return;
 }
 
 IGameState* GameManager::currentState()
 {
-	return m_activeState;
+	if (hasState())
+	{
+		return m_gameStateStack.back();
+	}
+	return nullptr;
 }
 
 IGameState* GameManager::nextState()
@@ -84,14 +118,10 @@ IGameState* GameManager::nextState()
 
 bool GameManager::needToChangeState()
 {
-	return false;
+	return m_nextState != nullptr;
 }
 
 bool GameManager::hasState()
 {
 	return m_gameStateStack.size();
-}
-
-void GameManager::changeState(GAMESTATE gameState)
-{
 }
