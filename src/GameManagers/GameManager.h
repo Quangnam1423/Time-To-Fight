@@ -29,6 +29,7 @@ SOFTWARE.
 #include <unordered_map>
 
 #include "../Singleton.h"
+#include "GAMESTATE/GameState.h"
 
 #define _GM GameManager::getInstance()
 

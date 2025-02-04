@@ -157,6 +157,10 @@ void MenuGameState::resume()
     return;
 }
 
+void MenuGameState::exit()
+{
+}
+
 bool MenuGameState::isFinished() const
 {
     // check if State is Finished or not ?

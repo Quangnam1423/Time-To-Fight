@@ -67,6 +67,7 @@ void Application::init()
     _MAIN_WINDOW->windowConfig(60, false);
     //m_window = new sf::RenderWindow(sf::VideoMode(_WIDTH, _HEIGHT),_GAME_NAME);
     m_clock = new sf::Clock();
+    _GM->changeState(GAMESTATE::MENU_STATE);
 }
 
 void Application::update()
@@ -82,6 +83,10 @@ void Application::update()
     }
     m_deltaTime = m_clock->restart().asSeconds();
     m_elapsedTime += m_deltaTime;
+    if (_GM->needToChangeState())
+    {
+        _GM->performStateChange();
+    }
     _GM->currentState()->update(m_deltaTime);
 }
 
