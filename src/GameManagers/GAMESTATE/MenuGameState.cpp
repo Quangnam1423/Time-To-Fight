@@ -26,6 +26,7 @@ SOFTWARE.
 #include "../Resource.h"
 #include "../../GameObjects/Button.h"
 #include "../FunctionManagers/FunctionCallBack.h"
+#include "../WindowManager.h"
 #include <iostream>
 
 MenuGameState::MenuGameState()
@@ -42,14 +43,15 @@ MenuGameState::~MenuGameState()
 void MenuGameState::init()
 {
     std::cout << "Menu" << std::endl;
-    Button* playButton = new Button(this, 
-                _RM->getTexture("Play", TEXTURE_TYPE::BUTTON),
-                _PLAY_CB,
-                sf::Vector2f(100.0f, 10.0f),
-                "Play Button",
-                BUTTON_TYPE::PLAY_BUTTON);
+    Button* playButton = new Button(_RM->getTexture("Play", TEXTURE_TYPE::BUTTON),
+                                    sf::Vector2f(100.0f, 10.0f),
+                                    BUTTON_TYPE::PLAY_BUTTON);
+    playButton->setCallBack([]()
+        {
+            std::cout << "set call back function for playButton" << std::endl;
+        });
     m_buttons.push_back(playButton);
-
+/*
     Button* settingsButton = new Button(this,
                 _RM->getTexture("Settings", TEXTURE_TYPE::BUTTON),
                 _SETTING_CB,
@@ -94,9 +96,9 @@ void MenuGameState::init()
                 BUTTON_TYPE::INFO_ICON_BUTTON
         );
     m_buttons.push_back(infoIconButton);
-
+*/
     // load background 
-    m_background = new sf::Sprite(*_RM->getTexture("Menu BackGround", TEXTURE_TYPE::ENVIROMENT));
+    m_background = new sf::Sprite(*_RM->getTexture("Main BackGround", TEXTURE_TYPE::ENVIROMENT));
     m_background->setScale(sf::Vector2f(2.0f, 2.0f));
     m_background->setOrigin((sf::Vector2f)m_background->getTexture()->getSize() / 2.0f);
     return;
@@ -127,7 +129,7 @@ void MenuGameState::update(float deltaTime)
 {
     for (Button* button : m_buttons)
     {
-        button->update(deltaTime);
+        button->update(deltaTime, *_MAIN_WINDOW->getWindow());
     }
     return;
 }

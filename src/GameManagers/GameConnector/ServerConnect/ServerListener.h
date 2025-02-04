@@ -37,7 +37,7 @@ public:
 	ServerListener();
 	~ServerListener();
 private:
-	sf::TcpSocket *  
+	//sf::TcpSocket *  
 };
 
 #endif

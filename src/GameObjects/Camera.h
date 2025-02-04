@@ -28,7 +28,7 @@ SOFTWARE.
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/View.hpp>
 
-#include "../GameManagers/Singleton.h"
+#include "../Singleton.h"
 
 #define _ZOOM_LEVEL 45.0f
 //#define 

@@ -120,9 +120,6 @@
     <ClCompile Include="src\GameObjects\spectaculars\Enemy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GameManagers\ButtonList.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\GameManagers\GameConnector\ServerConnect\ServerListener.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -212,7 +209,7 @@
     <ClInclude Include="src\GameManagers\Camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GameManagers\ButtonConfig.h">
+    <ClInclude Include="src\GameObjects\ButtonConfig.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GameManagers\GAMESTATE\CreditGameState.h">
@@ -252,9 +249,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GameObjects\spectaculars\Enemy.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GameManagers\ButtonList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GameManagers\GameConnector\ServerConnect\ServerListener.h">

@@ -44,8 +44,8 @@ Enemy::~Enemy()
 
 void Enemy::init()
 {
-    m_sprite = new sf::Sprite(m_texture);
-    m_hitbox = new Hitbox()
+    //m_sprite = new sf::Sprite(m_texture);
+    //m_hitbox = new Hitbox()
 }
 
 void Enemy::update(float deltaTime)
@@ -54,7 +54,7 @@ void Enemy::update(float deltaTime)
 
 void Enemy::render(sf::RenderWindow &window)
 {
-    window.draw(m_sprite);
+    window.draw(*m_sprite);
     return;
 }
 

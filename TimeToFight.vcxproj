@@ -152,7 +152,6 @@
     <ClCompile Include="src\GameManagers\GAMESTATE\IGameState.cpp" />
     <ClCompile Include="src\GameObjects\spectaculars\Background.cpp" />
     <ClCompile Include="src\GameManagers\GameConnector\ServerConnect\ServerListener.cpp" />
-    <ClCompile Include="src\GameManagers\ButtonList.cpp" />
     <ClCompile Include="src\GameManagers\GameConnector\ClientConnect\ClientConnect.cpp" />
     <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="src\GameManagers\Camera.cpp" />
@@ -192,14 +191,13 @@
   <ItemGroup>
     <ClInclude Include="src\GameObjects\spectaculars\Background.h" />
     <ClInclude Include="src\GameManagers\GameConnector\ServerConnect\ServerListener.h" />
-    <ClInclude Include="src\GameManagers\ButtonList.h" />
     <ClInclude Include="src\GameManagers\GameConnector\ClientConnect\ClientConnect.h" />
     <ClInclude Include="src\Application.h" />
     <ClInclude Include="src\ApplicationConfig.h" />
     <ClInclude Include="src\GameManagers\Camera.h" />
     <ClInclude Include="src\GameManagers\FunctionManagers\FunctionCallBack.h" />
     <ClInclude Include="src\GameObjects\Button.h" />
-    <ClInclude Include="src\GameManagers\ButtonConfig.h" />
+    <ClInclude Include="src\GameObjects\ButtonConfig.h" />
     <ClInclude Include="src\GameManagers\GameManager.h" />
     <ClInclude Include="src\GameManagers\GAMESTATE\CreditGameState.h" />
     <ClInclude Include="src\GameManagers\GAMESTATE\GameOverState.h" />

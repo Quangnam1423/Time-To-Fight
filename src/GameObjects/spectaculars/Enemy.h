@@ -45,7 +45,7 @@ public:
     void render(sf::RenderWindow& window);
     void handleEvent(sf::Event& event);
 private:
-    sf::Sprite m_sprite;
+    sf::Sprite* m_sprite;
     sf::Texture* m_texture;
     sf::Vector2f m_position;
     
