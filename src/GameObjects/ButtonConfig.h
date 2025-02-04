@@ -30,9 +30,9 @@ SOFTWARE.
 #define _REACT_TIME_BUTTON 2.0f
 
 // button size 
-#define ButtonDefaultSize sf::Vector2f(0.5f, 0.5f)
-#define ButtonHoverSize sf::Vector2f(0.51f, 0.51f)
-#define ButtonActiveSize sf::Vector2f(0.49f, 0.49f)
+#define ButtonDefaultSize sf::Vector2f(0.3f, 0.3f)
+#define ButtonHoverSize sf::Vector2f(0.31f, 0.31f)
+#define ButtonActiveSize sf::Vector2f(0.29f, 0.29f)
 
 // button color 
 #define ButtonDefaultColor sf::Color::White
