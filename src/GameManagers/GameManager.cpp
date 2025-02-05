@@ -37,13 +37,7 @@ GameManager::~GameManager()
 	{
 		delete m_gameStateStack.back();
 		m_gameStateStack.pop_back();
-	}
-
-	if (m_activeState != nullptr)
-		delete m_activeState;
-	if (m_nextState != nullptr)
-		delete m_nextState;
-	
+	}	
 	m_activeState = nullptr;
 	m_nextState = nullptr;
 	return;
@@ -122,6 +116,11 @@ bool GameManager::needToChangeState()
 }
 
 bool GameManager::hasState()
+{
+	return m_gameStateStack.size();
+}
+
+int GameManager::getSize()
 {
 	return m_gameStateStack.size();
 }

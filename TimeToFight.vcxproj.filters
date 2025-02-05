@@ -36,9 +36,6 @@
     <ClCompile Include="src\GameObjects\player\Character.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GameObjects\spectaculars\Floor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\GameManagers\GAMESTATE\MenuGameState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -81,9 +78,6 @@
     <ClCompile Include="src\GameManagers\GameManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GameManagers\Camera.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\GameManagers\GAMESTATE\CreditGameState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -105,28 +99,13 @@
     <ClCompile Include="src\GameManagers\GAMESTATE\SettingGameState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GameManagers\FunctionManagers\FunctionCallBack.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GameManagers\GameConnector\ClientConnect\ClientConnect.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\GameManagers\WindowManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GameObjects\Camera.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GameObjects\spectaculars\Enemy.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GameManagers\GameConnector\ServerConnect\ServerListener.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GameObjects\spectaculars\Background.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\GameManagers\GAMESTATE\IGameState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameManagers\OperationsManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -156,9 +135,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GameObjects\player\Character.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GameObjects\spectaculars\Floor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GameManagers\GAMESTATE\IGameState.h">
@@ -206,12 +182,6 @@
     <ClInclude Include="src\GameManagers\GameManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GameManagers\Camera.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GameObjects\ButtonConfig.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\GameManagers\GAMESTATE\CreditGameState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -236,28 +206,16 @@
     <ClInclude Include="src\GameManagers\GAMESTATE\SettingGameState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GameManagers\FunctionManagers\FunctionCallBack.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GameManagers\GameConnector\ClientConnect\ClientConnect.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\GameManagers\WindowManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GameObjects\Camera.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GameObjects\spectaculars\Enemy.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GameManagers\GameConnector\ServerConnect\ServerListener.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GameObjects\GameDefinition.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GameObjects\spectaculars\Background.h">
+    <ClInclude Include="src\GameManagers\InputLockManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameManagers\OperationsManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -22,16 +22,14 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-#include <SFML/Graphics.hpp>
-#include <iostream>
-
-#include "GameManagers/Application.h"
+#include "Application.h"
 
 int main()
 {
     // start the application
     Application::getInstance()->run();
     // release memory
-    delete Application::getInstance();
+    if (Application::getInstance() != nullptr)
+        delete Application::getInstance();
     return 0;
 }

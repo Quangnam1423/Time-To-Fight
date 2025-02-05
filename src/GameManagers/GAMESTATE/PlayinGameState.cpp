@@ -1,3 +1,4 @@
+#include "PlayinGameState.h"
 /*
 MIT License
 
@@ -21,3 +22,133 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
+#include "PlayinGameState.h"
+#include "../GameManager.h"
+#include "../WindowManager.h"
+#include "../InputLockManager.h"
+#include "../Resource.h"
+#include "../../GameObjects/Button.h"
+
+#include <iostream>
+
+PlayInState::PlayInState()
+{
+}
+
+PlayInState::~PlayInState()
+{
+	cleanup();
+}
+
+void PlayInState::init()
+{
+	// MAIN BACKGROUND............................
+	m_background = new sf::Sprite(*_RM->getTexture("Main BackGround", TEXTURE_TYPE::ENVIROMENT));
+	m_background->setScale(sf::Vector2f(1.4f, 1.4f));
+	m_background->setOrigin((sf::Vector2f)m_background->getTexture()->getSize() / 2.f);
+	m_background->setPosition(400, 300);
+
+	// BUTTON CONFIG
+	Button* newGameButton = new Button(_RM->getTexture("New Game Button", TEXTURE_TYPE::BUTTON),
+										sf::Vector2f(400.f, 250.f),
+										BUTTON_TYPE::NEW_GAME_BUTTON);
+	newGameButton->setCallBack(
+		[]() {
+			std::cout << "newgame Callback" << std::endl;
+		}
+	);
+	m_buttons.push_back(newGameButton);
+
+	Button* continueButton = new Button(_RM->getTexture("Continue Button", TEXTURE_TYPE::BUTTON),
+									sf::Vector2f(400.f, 350.f),
+									BUTTON_TYPE::RESUME_BUTTON);
+	continueButton->setCallBack(
+		[](){
+			std::cout << "continue callback Button" << std::endl;
+		}
+	);
+	m_buttons.push_back(continueButton);
+
+	Button* settingButton = new Button(_RM->getTexture("Settings Button", TEXTURE_TYPE::BUTTON),
+		sf::Vector2f(400.0f, 450.0f),
+		BUTTON_TYPE::HOME_ICON_BUTTON);
+	settingButton->setCallBack(
+		[]() {
+			std::cout << "setting callback" << std::endl;
+		}
+	);
+	m_buttons.push_back(settingButton);
+
+	Button* homeButton = new Button(_RM->getTexture("Home Icon Button", TEXTURE_TYPE::BUTTON),
+		sf::Vector2f(750.0f, 550.0f),
+		BUTTON_TYPE::HOME_ICON_BUTTON);
+	homeButton->setCallBack(
+		[]() {
+			_GM->popState();
+		}
+	);
+	m_buttons.push_back(homeButton);
+
+	//Button* homeButton = new Button
+}
+
+void PlayInState::cleanup()
+{
+	if (m_background != nullptr)
+	{
+		delete m_background;
+		m_background = nullptr;
+	}
+
+	for (Button* button : m_buttons)
+	{
+		if (button != nullptr)
+		{
+			delete button;
+			button = nullptr;
+		}
+	}
+	m_buttons.clear();
+}
+
+void PlayInState::handleEvent(sf::Event& event)
+{
+	for (Button* button : m_buttons)
+	{
+		button->handleEvent(event);
+	}
+}
+
+void PlayInState::update(float deltaTime)
+{
+	for (Button* button : m_buttons)
+	{
+		button->update(deltaTime, *_MAIN_WINDOW->getWindow());
+	}
+}
+
+void PlayInState::render(sf::RenderWindow& window)
+{
+	window.draw(*m_background);
+	for (Button* button : m_buttons)
+	{
+		button->render(window);
+	}
+}
+
+void PlayInState::pause()
+{
+}
+
+void PlayInState::resume()
+{
+}
+
+void PlayInState::exit()
+{
+}
+
+bool PlayInState::isFinished() const
+{
+	return false;
+}

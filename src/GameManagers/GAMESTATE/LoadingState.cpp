@@ -29,7 +29,6 @@ SOFTWARE.
 
 LoadingState::LoadingState()
 {
-	init();
 }
 
 LoadingState::~LoadingState()
@@ -40,22 +39,6 @@ LoadingState::~LoadingState()
 
 void LoadingState::init()
 {
-	m_dotCount = 0;
-	m_ready = true;
-
-	// config text
-	{
-		sf::Font* font = _RM->getFont("gameFont");
-		m_textLoading.setFont(*font);
-		m_textLoading.setColor(_TEXT_COLOR);
-		m_textLoading.setCharacterSize(_TEXT_SIZE);
-	}
-	// config background
-	{
-		m_background = new sf::Sprite(*_RM->getTexture("Font", TEXTURE_TYPE::LOGO));
-		m_background->setScale(_BACK_GROUND_SCALE, _BACK_GROUND_SCALE);
-		m_background->setPosition(_BACK_GROUND_POSITION);
-	}
 }
 
 void LoadingState::cleanup()
@@ -95,6 +78,10 @@ void LoadingState::pause()
 }
 
 void LoadingState::resume()
+{
+}
+
+void LoadingState::exit()
 {
 }
 

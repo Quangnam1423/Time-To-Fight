@@ -26,7 +26,6 @@ SOFTWARE.
 #define IPLAYERSTATE_H
 
 #include <SFML/Graphics.hpp>
-#include <iostream>
 #include "PlayerConfigState.h"
 
 class Character;

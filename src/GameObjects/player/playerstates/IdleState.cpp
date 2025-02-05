@@ -25,6 +25,9 @@ SOFTWARE.
 #include "IdleState.h"
 #include "../Character.h"
 
+#include <iostream>
+
+
 IdleState::IdleState(Character* character, 
                     const char *texturePath, 
                     sf::Vector2i frameCount, 

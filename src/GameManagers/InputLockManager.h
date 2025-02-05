@@ -22,47 +22,42 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-#ifndef CAMERA_H
-#define CAMERA_H
+#ifndef INPUTLOCKMANAGER_H
+#define INPUTLOCKMANAGER_H
 
-#include <SFML/Graphics.hpp>
-#include <SFML/Graphics/View.hpp>
 
 #include "../Singleton.h"
 
-#define _ZOOM_LEVEL 45.0f
-//#define 
+#define _LOCKER InputLockManager::getInstance()
 
-class GameManager;
-class Character;
-
-class Camera
+class InputLockManager : public Singleton<InputLockManager>
 {
+friend class Singleton<InputLockManager>;
+
 public:
-    Camera(); // default contructor
-    Camera(sf::Vector2f size, sf::Vector2f center);
-    ~Camera();
-    void init();
-    void update(float deltaTime);
-    void handleEvent(sf::Event& event);
-    sf::View* getView();
-    void setCharater(Character* character);
-    void setGameManager(GameManager* gameManager);
-    Character* getCharacter();
-    GameManager* getGameManager();
-    void setAspect(sf::Vector2u windowSize);
+	InputLockManager() {};
+	~InputLockManager() {};
+
+	void update(float deltaTime)
+	{
+		if (m_timeClickMouse > 0.0f)
+		{
+			m_timeClickMouse -= deltaTime;
+		}
+	}
+	bool allowClickMouse()
+	{
+		return m_timeClickMouse <= 0.0f;
+	}
+
+	void setClick()
+	{
+		m_timeClickMouse = 0.2f;
+	}
+
 
 private:
-    GameManager* m_gameManager;
-    Character* m_character;
-    sf::View* m_view;
-    float m_durationTime;
-    float m_elapsedTime;
-    float m_aspect;
-
-    sf::Vector2f m_cameraPosition;
-    sf::Vector2f m_size;
-    sf::Vector2f m_cameraDirection;
+	float m_timeClickMouse = 0.0f;
 };
 
-#endif  
+#endif

@@ -30,7 +30,7 @@ SOFTWARE.
 #include <iostream>
 #include <cstring>
 #include <cmath>
-#include "../Button.h"
+#include "../../GameObjects/Button.h"
 #include "../GameManager.h"
 #include "../../GameObjects/player/Character.h"
 #include "../../GameObjects/Hitbox.h"

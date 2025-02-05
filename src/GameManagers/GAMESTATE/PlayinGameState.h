@@ -28,6 +28,8 @@ SOFTWARE.
 #include "IGameState.h"
 #include <list>
 
+class Button;
+
 class PlayInState : public IGameState
 {
 public:
@@ -50,6 +52,7 @@ public:
 	bool isFinished() const override;
 
 private:
+	sf::Sprite* m_background;
 	std::list<Button*> m_buttons;
 };
 

@@ -46,7 +46,7 @@ void PauseState::init()
 		m_overlay = sf::RectangleShape((sf::Vector2f)window->getSize());
 		m_overlay.setFillColor(sf::Color(0, 0, 0, 128));
 	}
-
+/*
 	// Home button
 	{
 		Button* homeButton = new Button(this,
@@ -70,11 +70,13 @@ void PauseState::init()
 		);
 		m_buttons.push_back(continueButton);
 	}
-
+*/
+/*
 	// logo
 	{
 		m_logo = new sf::Sprite(*_RM->getTexture("Logo", TEXTURE_TYPE::LOGO));
 	}
+*/
 	return;
 }
 

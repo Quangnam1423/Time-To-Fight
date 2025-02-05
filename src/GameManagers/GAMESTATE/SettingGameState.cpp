@@ -21,3 +21,53 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */ 
+
+#include "SettingGameState.h"
+#include "../../GameObjects/Button.h"
+#include <iostream>
+
+SettingState::SettingState()
+{
+	std::cout << "create Setting State" << std::endl;
+}
+
+SettingState::~SettingState()
+{
+}
+
+void SettingState::init()
+{
+}
+
+void SettingState::cleanup()
+{
+}
+
+void SettingState::handleEvent(sf::Event& event)
+{
+}
+
+void SettingState::update(float deltaTime)
+{
+}
+
+void SettingState::render(sf::RenderWindow& window)
+{
+}
+
+void SettingState::pause()
+{
+}
+
+void SettingState::resume()
+{
+}
+
+void SettingState::exit()
+{
+}
+
+bool SettingState::isFinished() const
+{
+	return false;
+}

@@ -33,31 +33,22 @@ SOFTWARE.
 
 IGameState* IGameState::createState(GAMESTATE newGameState)
 {
-    IGameState* newGS = nullptr;
-	switch (newGameState)
+	if (newGameState == GAMESTATE::MENU_STATE)
 	{
-	case GAMESTATE::INVALID:
-		newGS = nullptr;
-	case GAMESTATE::MENU_STATE:
-		newGS = new MenuGameState();
-	case GAMESTATE::INTRODUCE_STATE:
-		newGS = new IntroduceState();
-	case GAMESTATE::PLAYIN_STATE:
-		newGS = new PlayInState();
-	case GAMESTATE::PAUSE_STATE:
-		newGS = new PauseState();
-//	case GAMESTATE::END_STATE:
-//		newGS = new 
-	case GAMESTATE::LOADING_STATE:
-		newGS = new LoadingState();
-//	case GAMESTATE::CREDIT_STATE:
-//		break;
-//	case GAMESTATE::SETTINGS_STATE:
-//		break;
-//	case GAMESTATE::TUTORIAL_STATE:
-//		break;
-	default:
-		break;
+		return new MenuGameState();
 	}
-	return newGS;
+	else if (newGameState == GAMESTATE::INTRODUCE_STATE)
+	{
+		return new IntroduceState();
+	}
+	else if (newGameState == GAMESTATE::PLAYIN_STATE)
+	{
+		return new PlayInState();
+	}
+	else if (newGameState == GAMESTATE::SETTINGS_STATE)
+	{
+		return new SettingState();
+	}
+	else
+		return nullptr;
 }

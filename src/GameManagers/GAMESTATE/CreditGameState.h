@@ -21,3 +21,36 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
+
+#ifndef CREDIT_STATE_H
+#define CREDIT_STATE_H
+
+#include "IGameState.h"
+#include <list>
+
+class Button;
+
+class CreditState : public IGameState
+{
+public:
+	CreditState();
+	~CreditState();
+
+	void init() override;
+	void cleanup() override;
+	
+	void handleEvent(sf::Event& event) override;
+	void update(float deltaTime) override;
+	void render(sf::RenderWindow& window) override;
+
+	void pause() override;
+	void resume() override;
+	void exit() override;
+
+	bool isFinished() const override;
+private:
+	sf::Sprite* m_background;
+	std::list<Button*> m_buttons;
+};
+
+#endif

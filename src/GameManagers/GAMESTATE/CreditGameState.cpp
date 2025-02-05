@@ -21,3 +21,53 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
+
+#include "CreditGameState.h"
+#include "../../GameObjects/Button.h"
+#include <iostream>
+
+CreditState::CreditState()
+{
+	std::cout << "creditGame State created!" << std::endl;
+}
+
+CreditState::~CreditState()
+{
+}
+
+void CreditState::init()
+{
+}
+
+void CreditState::cleanup()
+{
+}
+
+void CreditState::handleEvent(sf::Event& event)
+{
+}
+
+void CreditState::update(float deltaTime)
+{
+}
+
+void CreditState::render(sf::RenderWindow& window)
+{
+}
+
+void CreditState::pause()
+{
+}
+
+void CreditState::resume()
+{
+}
+
+void CreditState::exit()
+{
+}
+
+bool CreditState::isFinished() const
+{
+	return false;
+}

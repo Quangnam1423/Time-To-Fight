@@ -27,6 +27,9 @@ SOFTWARE.
 
 #include "IGameState.h"
 #include <list>
+#include <vector>
+
+
 
 class Button;
 
@@ -54,6 +57,15 @@ public:
 	bool isFinished() const override;
 
 private:
+	float m_elapsedTime;
+
+	std::vector<std::string> m_lines;
+	std::vector<sf::Text> m_textLines;
+	sf::Font* m_font;
+	std::string m_displayText;
+	int m_index;
+	int m_lineIndex;
+
 	sf::Sprite* m_background;
 	std::list<Button*> m_buttons;
 };

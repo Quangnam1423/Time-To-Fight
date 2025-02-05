@@ -24,6 +24,7 @@ SOFTWARE.
 
 #include "Resource.h"
 #include <SFML/Audio/SoundBuffer.hpp>
+#include <iostream>
 
 Resource::Resource()
 {
@@ -32,8 +33,6 @@ Resource::Resource()
 
 void Resource::init()
 {
-    std::cout << "Resource created" << std::endl;
-    return;
 }
 
 Resource::~Resource()
@@ -63,8 +62,12 @@ bool Resource::loadResource(std::string path, enum RESOURCE_TYPE type)
         sf::Texture* texture = new sf::Texture();
         if (!texture->loadFromFile(path))
         {
-            throw std::runtime_error("can't load texture from texture path " + path);
+            //throw std::runtime_error("can't load texture from texture path " + path);
             return false;
+        }
+        if (texture == nullptr)
+        {
+            std::cout << "nullptr texture" << std::endl;
         }
         addTexture(texture, path);
         return true;
@@ -152,11 +155,11 @@ sf::Texture *Resource::getTexture(std::string textureName, enum TEXTURE_TYPE typ
     {
         if (loadResource(texturePath, RESOURCE_TYPE::TEXTURE))
         {
-            std::cout << "loaded texture successfully to resource map" << std::endl;
+            //std::cout << "loaded texture successfully to resource map" << std::endl;
         }
         else
         {
-            std::cout << "can't load texture!" + texturePath << std::endl;
+            //std::cout << "can't load texture!" + texturePath << std::endl;
         }
     }
     return _TEXTURE_MAP[texturePath];
@@ -165,6 +168,10 @@ sf::Texture *Resource::getTexture(std::string textureName, enum TEXTURE_TYPE typ
 sf::Font *Resource::getFont(std::string fontName)
 {
     std::string path = _PATH_FONT + fontName + _POST_FONT;
+    if (_FONT_MAP.find(path) == _FONT_MAP.end()) 
+    {
+        loadResource(path, RESOURCE_TYPE::FONT);
+    }
     return _FONT_MAP[path];
 }
 

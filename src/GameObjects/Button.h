@@ -26,7 +26,57 @@ SOFTWARE.
 #define BUTTON_H
 
 #include <SFML/Graphics.hpp>
-#include "ButtonConfig.h"
+
+#define _REACT_TIME_BUTTON 2.0f
+
+// button size 
+#define ButtonDefaultSize sf::Vector2f(0.3f, 0.3f)
+#define ButtonHoverSize sf::Vector2f(0.31f, 0.31f)
+#define ButtonActiveSize sf::Vector2f(0.28f, 0.28f)
+
+// button color 
+#define ButtonDefaultColor sf::Color::White
+#define ButtonHoverColor sf::Color(200, 200, 255)
+#define ButtonActiveColor sf::Color(100, 100, 255)
+
+enum class BUTTON_STATE {
+    DEFAULT,
+    HOVER,
+    ACTIVE
+};
+
+enum class BUTTON_TYPE
+{
+    AUDIO_ICON_BUTTON,
+    BACK_BUTTON,
+    CONTINUE_BUTTON,
+    CONTROLS_BUTTON,
+    DOWN_ICON_BUTTON,
+    EXIT_BUTTON,
+    HOME_ICON_BUTTON,
+    INFO_ICON_BUTTON,
+    LEFT_ICON_BUTTON,
+    LOAD_BUTTON,
+    MENU_BUTTON,
+    MUSIC_ICON_BUTTON,
+    NEW_GAME_BUTTON,
+    ON_OFF_BUTTON,
+    OPTIONS_BUTTON,
+    PAUSE_ICON_BUTTON,
+    PLAY_BUTTON,
+    PLAY_ICON_BUTTON,
+    QUESTIONMARK_ICON_BUTTON,
+    QUIT_BUTTON,
+    RESUME_BUTTON,
+    RETURN_ICON_BUTTON,
+    SETTINGS_BUTTON,
+    SETTINGS_ICON_BUTTON,
+    START_BUTTON,
+    UP_ICON_BUTTON,
+    V_ICON_BUTTON,
+    X_ICON_BUTTON
+};
+
 
 class IGameState;
 
@@ -42,6 +92,7 @@ public:
     void update(float deltaTime, sf::RenderWindow& window);
     bool checkHover(sf::RenderWindow& window);
     bool checkIsClicked(sf::RenderWindow& window);
+    void handleEvent(sf::Event& event);
     void setCallBack(void(*callbackfunction)());
 private:
     void (*m_callbackFunction)();

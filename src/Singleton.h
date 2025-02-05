@@ -25,7 +25,6 @@ SOFTWARE.
 #ifndef SINGLETON_H
 #define SINGLETON_H
 
-#include <iostream>
 #include <memory>
 
 template<typename T>

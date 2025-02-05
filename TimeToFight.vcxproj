@@ -149,13 +149,9 @@
     <None Include="sfml-window-d-2.dll" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\GameManagers\OperationsManager.cpp" />
     <ClCompile Include="src\GameManagers\GAMESTATE\IGameState.cpp" />
-    <ClCompile Include="src\GameObjects\spectaculars\Background.cpp" />
-    <ClCompile Include="src\GameManagers\GameConnector\ServerConnect\ServerListener.cpp" />
-    <ClCompile Include="src\GameManagers\GameConnector\ClientConnect\ClientConnect.cpp" />
     <ClCompile Include="src\Application.cpp" />
-    <ClCompile Include="src\GameManagers\Camera.cpp" />
-    <ClCompile Include="src\GameManagers\FunctionManagers\FunctionCallBack.cpp" />
     <ClCompile Include="src\GameObjects\Button.cpp" />
     <ClCompile Include="src\GameManagers\GameManager.cpp" />
     <ClCompile Include="src\GameManagers\GAMESTATE\CreditGameState.cpp" />
@@ -167,7 +163,6 @@
     <ClCompile Include="src\GameManagers\GAMESTATE\PlayinGameState.cpp" />
     <ClCompile Include="src\GameManagers\GAMESTATE\SettingGameState.cpp" />
     <ClCompile Include="src\GameManagers\Resource.cpp" />
-    <ClCompile Include="src\GameObjects\Camera.cpp" />
     <ClCompile Include="src\GameObjects\Hitbox.cpp" />
     <ClCompile Include="src\GameObjects\logics\Collision.cpp" />
     <ClCompile Include="src\GameObjects\logics\Physics.cpp" />
@@ -183,21 +178,15 @@
     <ClCompile Include="src\GameObjects\player\playerstates\ShieldState.cpp" />
     <ClCompile Include="src\GameObjects\player\playerstates\WalkState.cpp" />
     <ClCompile Include="src\GameObjects\player\Samurai.cpp" />
-    <ClCompile Include="src\GameObjects\spectaculars\Enemy.cpp" />
-    <ClCompile Include="src\GameObjects\spectaculars\Floor.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\GameManagers\WindowManager.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\GameObjects\spectaculars\Background.h" />
-    <ClInclude Include="src\GameManagers\GameConnector\ServerConnect\ServerListener.h" />
-    <ClInclude Include="src\GameManagers\GameConnector\ClientConnect\ClientConnect.h" />
+    <ClInclude Include="src\GameManagers\OperationsManager.h" />
     <ClInclude Include="src\Application.h" />
     <ClInclude Include="src\ApplicationConfig.h" />
-    <ClInclude Include="src\GameManagers\Camera.h" />
-    <ClInclude Include="src\GameManagers\FunctionManagers\FunctionCallBack.h" />
+    <ClInclude Include="src\GameManagers\InputLockManager.h" />
     <ClInclude Include="src\GameObjects\Button.h" />
-    <ClInclude Include="src\GameObjects\ButtonConfig.h" />
     <ClInclude Include="src\GameManagers\GameManager.h" />
     <ClInclude Include="src\GameManagers\GAMESTATE\CreditGameState.h" />
     <ClInclude Include="src\GameManagers\GAMESTATE\GameOverState.h" />
@@ -211,7 +200,6 @@
     <ClInclude Include="src\GameManagers\GAMESTATE\SettingGameState.h" />
     <ClInclude Include="src\GameManagers\Resource.h" />
     <ClInclude Include="src\Singleton.h" />
-    <ClInclude Include="src\GameObjects\Camera.h" />
     <ClInclude Include="src\GameObjects\GameDefinition.h" />
     <ClInclude Include="src\GameObjects\Hitbox.h" />
     <ClInclude Include="src\GameObjects\logics\Collision.h" />
@@ -229,8 +217,6 @@
     <ClInclude Include="src\GameObjects\player\playerstates\ShieldState.h" />
     <ClInclude Include="src\GameObjects\player\playerstates\WalkState.h" />
     <ClInclude Include="src\GameObjects\player\Samurai.h" />
-    <ClInclude Include="src\GameObjects\spectaculars\Enemy.h" />
-    <ClInclude Include="src\GameObjects\spectaculars\Floor.h" />
     <ClInclude Include="src\GameManagers\WindowManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

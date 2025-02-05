@@ -51,6 +51,7 @@ public:
     IGameState* nextState();
     bool needToChangeState();
     bool hasState();
+    int getSize();
 private:
     std::list<IGameState*> m_gameStateStack;
     IGameState* m_activeState;

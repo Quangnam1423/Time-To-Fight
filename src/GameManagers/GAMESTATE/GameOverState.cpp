@@ -1,3 +1,4 @@
+#include "GameOverState.h"
 /*
 MIT License
 
@@ -21,3 +22,62 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
+#include "GameOverState.h"
+#include "../../GameObjects/Button.h"
+
+#include <iostream>
+
+GameOverState::GameOverState()
+{
+	std::cout << "game over state" << std::endl;
+	m_background = nullptr;
+}
+
+GameOverState::~GameOverState()
+{
+	if (m_background != nullptr)
+		delete m_background;
+	for (Button* button : m_buttons)
+	{
+		if (button != nullptr)
+			delete button;
+		button = nullptr;
+	}
+}
+
+void GameOverState::init()
+{
+}
+
+void GameOverState::cleanup()
+{
+}
+
+void GameOverState::pause()
+{
+}
+
+void GameOverState::resume()
+{
+}
+
+void GameOverState::exit()
+{
+}
+
+void GameOverState::handleEvent(sf::Event& event)
+{
+}
+
+void GameOverState::update(float deltaTime)
+{
+}
+
+void GameOverState::render(sf::RenderWindow& window)
+{
+}
+
+bool GameOverState::isFinished() const
+{
+	return false;
+}

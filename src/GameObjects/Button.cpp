@@ -23,6 +23,8 @@ SOFTWARE.
 */
 
 #include "Button.h"
+#include "../GameManagers/InputLockManager.h"
+#include "../GameManagers/WindowManager.h"
 #include <iostream>
 
 
@@ -47,11 +49,10 @@ void Button::init(sf::Texture* texture, sf::Vector2f position, BUTTON_TYPE type)
 
     //button sprite and texture config
     m_sprite = new sf::Sprite(*texture);
-    m_sprite->setPosition(position);
     m_sprite->setColor(ButtonDefaultColor);
     m_sprite->setScale(ButtonDefaultSize);
-    sf::FloatRect bounds = m_sprite->getGlobalBounds();
-    m_sprite->setOrigin(bounds.width / 2 , bounds.height / 2);
+    m_sprite->setOrigin((sf::Vector2f)m_sprite->getTexture()->getSize() / 2.0f);
+    m_sprite->setPosition(position);
     return;
 }
 
@@ -86,12 +87,18 @@ void Button::update(float deltaTime, sf::RenderWindow& window)
 
 bool Button::checkIsClicked(sf::RenderWindow& window)
 {
-    bool check = sf::Mouse::isButtonPressed(sf::Mouse::Left);
-    if (check)
+    return sf::Mouse::isButtonPressed(sf::Mouse::Left);
+}
+
+void Button::handleEvent(sf::Event& event)
+{
+    if (event.type == sf::Event::MouseButtonPressed &&
+        event.mouseButton.button == sf::Mouse::Left && 
+        checkHover(*_MAIN_WINDOW->getWindow())
+        )
     {
-        std::cout << "clicked button" << std::endl;
+        m_callbackFunction();
     }
-    return check;
 }
 
 void Button::setCallBack(void(*callbackfunction)())

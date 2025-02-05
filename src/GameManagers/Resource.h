@@ -28,7 +28,6 @@ SOFTWARE.
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio/Sound.hpp>
 #include <SFML/Audio/Music.hpp>
-#include <filesystem>
 #include <unordered_map>
 
 #include "../Singleton.h"
@@ -60,7 +59,7 @@ SOFTWARE.
 
 #define _POST_MUSIC ".mp3"
 #define _POST_TEXTURE ".png"
-#define _POST_FONT ".txt"
+#define _POST_FONT ".ttf"
 #define _POST_SOUND ".mp3"
 
 enum RESOURCE_TYPE

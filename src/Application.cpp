@@ -27,6 +27,7 @@ SOFTWARE.
 #include "GameManagers/GameManager.h"
 #include "GameManagers/WindowManager.h"
 #include "GameManagers/Resource.h"
+#include "GameManagers/InputLockManager.h"
 
 #include <iostream>
 
@@ -72,6 +73,16 @@ void Application::init()
 
 void Application::update()
 {
+/*
+    sf::Vector2i mousePosition = sf::Mouse::getPosition(*_MAIN_WINDOW->getWindow());
+    float x_mousePos = static_cast<float>(mousePosition.x);
+    float y_mousePos = static_cast<float>(mousePosition.y);
+    std::cout << "application::update :(" << x_mousePos 
+                << " , " << y_mousePos 
+                << ")"
+                <<std::endl;
+*/
+    // HANDLING EVENT
     sf::Event event;
     while (_MAIN_WINDOW->getWindow()->pollEvent(event))
     {
@@ -79,10 +90,14 @@ void Application::update()
         {
             _MAIN_WINDOW->close();
         }
-        _GM->currentState()->handleEvent(event);
+        if (_GM->currentState() != nullptr)
+            _GM->currentState()->handleEvent(event);
     }
     m_deltaTime = m_clock->restart().asSeconds();
     m_elapsedTime += m_deltaTime;
+
+    // UPDATE GAME CONTROLL
+    _LOCKER->update(m_deltaTime);
     if (_GM->needToChangeState())
     {
         _GM->performStateChange();
