@@ -40,7 +40,8 @@ enum class GAMESTATE
     LOADING_STATE,
     CREDIT_STATE,
     SETTINGS_STATE,
-    TUTORIAL_STATE
+    TUTORIAL_STATE,
+    INFORMATION_STATE
 };
 
 class Button;
@@ -66,7 +67,6 @@ public:
 
     // check state if complete
     virtual bool isFinished() const = 0;
-    static IGameState* createState(GAMESTATE newGameState);
 };
 
 #endif

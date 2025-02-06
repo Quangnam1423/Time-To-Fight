@@ -72,9 +72,6 @@
     <ClCompile Include="src\GameObjects\Hitbox.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GameManagers\Resource.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\GameManagers\GameManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -82,15 +79,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\GameManagers\GAMESTATE\GameOverState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GameManagers\GAMESTATE\IntroduceGameState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GameManagers\GAMESTATE\LoadingState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GameManagers\GAMESTATE\PauseState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\GameManagers\GAMESTATE\PlayinGameState.cpp">
@@ -102,10 +90,19 @@
     <ClCompile Include="src\GameManagers\WindowManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GameManagers\GAMESTATE\IGameState.cpp">
+    <ClCompile Include="src\GameManagers\OperationsManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\GameManagers\OperationsManager.cpp">
+    <ClCompile Include="src\GameManagers\ResourceManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameManagers\GAMESTATE\InformationState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameManagers\GAMESTATE\IntroState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameManagers\GAMESTATE\GameState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -114,9 +111,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\ApplicationConfig.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GameManagers\Resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Singleton.h">
@@ -191,15 +185,6 @@
     <ClInclude Include="src\GameManagers\GAMESTATE\GameState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\GameManagers\GAMESTATE\IntroduceGameState.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GameManagers\GAMESTATE\LoadingState.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\GameManagers\GAMESTATE\PauseState.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\GameManagers\GAMESTATE\PlayinGameState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -216,6 +201,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\GameManagers\OperationsManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameManagers\ResourceManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameManagers\GAMESTATE\InformationState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GameManagers\GAMESTATE\IntroState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

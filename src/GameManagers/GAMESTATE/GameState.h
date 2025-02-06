@@ -27,11 +27,12 @@ SOFTWARE.
 
 #include "CreditGameState.h"
 #include "GameOverState.h"
-#include "IntroduceGameState.h"
-#include "LoadingState.h"
+#include "InformationState.h"
+#include "IntroState.h"
 #include "MenuGameState.h"
-#include "PauseState.h"
 #include "PlayinGameState.h"
 #include "SettingGameState.h"
+
+IGameState* createState(enum GAMESTATE newGameState);
 
 #endif

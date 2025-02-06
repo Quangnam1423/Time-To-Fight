@@ -23,7 +23,7 @@ SOFTWARE.
 */
 
 #include "MenuGameState.h"
-#include "../Resource.h"
+#include "../ResourceManager.h"
 #include "../../GameObjects/Button.h"
 #include "../WindowManager.h"
 #include "../GameManager.h"
@@ -43,7 +43,7 @@ MenuGameState::~MenuGameState()
 void MenuGameState::init()
 {
     //PLAY BUTTON.......................................................................
-    Button* playButton = new Button(_RM->getTexture("Play Button", TEXTURE_TYPE::BUTTON),
+    Button* playButton = new Button(DATA->getTexture("Buttons/Play Button"),
                                     sf::Vector2f(400.0f, 150.0f),
                                     BUTTON_TYPE::PLAY_BUTTON);
     playButton->setCallBack(
@@ -55,7 +55,7 @@ void MenuGameState::init()
     m_buttons.push_back(playButton);
 
     //SETTING BUTTON............................................................................
-    Button* settingButton = new Button(_RM->getTexture("Settings Button", TEXTURE_TYPE::BUTTON),
+    Button* settingButton = new Button(DATA->getTexture("Buttons/Settings Button"),
                                        sf::Vector2f(400.0f, 250.0f),
                                        BUTTON_TYPE::SETTINGS_BUTTON);
     settingButton->setCallBack(
@@ -66,7 +66,7 @@ void MenuGameState::init()
     m_buttons.push_back(settingButton);
 
     //OPTIONS BUTTON..........................................................................
-    Button* optionButton = new Button(_RM->getTexture("Options Button", TEXTURE_TYPE::BUTTON),
+    Button* optionButton = new Button(DATA->getTexture("Buttons/Options Button"),
         sf::Vector2f(400.0f, 350.0f),
         BUTTON_TYPE::OPTIONS_BUTTON);
     optionButton->setCallBack(
@@ -77,7 +77,7 @@ void MenuGameState::init()
     m_buttons.push_back(optionButton);
 
     //QUIT BUTTON............................................................................
-    Button* quitButton = new Button(_RM->getTexture("Quit Button", TEXTURE_TYPE::BUTTON),
+    Button* quitButton = new Button(DATA->getTexture("Buttons/Quit Button"),
                                     sf::Vector2f(400.0f, 450.0f),
                                     BUTTON_TYPE::QUIT_BUTTON);
     quitButton->setCallBack(
@@ -88,20 +88,20 @@ void MenuGameState::init()
     m_buttons.push_back(quitButton);
 
     //INTRODUCE BUTTON...............................................................................
-    Button* introButton = new Button(_RM->getTexture("Questionmark Icon Button", TEXTURE_TYPE::BUTTON),
+    Button* introButton = new Button(DATA->getTexture("Buttons/Questionmark Icon Button"),
                                     sf::Vector2f(750.0f, 550.0f),
                                     BUTTON_TYPE::QUESTIONMARK_ICON_BUTTON);
     introButton->setCallBack(
         []() {
             std::cout << "intro button" << std::endl;
             system("start https://github.com/Quangnam1423");
-            _GM->changeState(GAMESTATE::INTRODUCE_STATE);
+            _GM->changeState(GAMESTATE::INFORMATION_STATE);
         }
     );
     m_buttons.push_back(introButton);
 
     // BACKGROUND................................................................................
-    m_background = new sf::Sprite(*_RM->getTexture("Main BackGround", TEXTURE_TYPE::ENVIROMENT));
+    m_background = new sf::Sprite(*DATA->getTexture("Main BackGround"));
     m_background->setScale(sf::Vector2f(1.4f, 1.4f));
     m_background->setOrigin((sf::Vector2f)m_background->getTexture()->getSize() / 2.0f);
     m_background->setPosition(400, 300);

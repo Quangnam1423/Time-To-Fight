@@ -42,8 +42,8 @@ public:
     GameManager();
     ~GameManager();
 
-    void changeState(IGameState* gameState);
-    void changeState(enum GAMESTATE gameState);
+    void changeState(GAMESTATE gs);
+    void changeState(IGameState* gs);
     void pushState(GAMESTATE gameState);
     void popState();
     void performStateChange();

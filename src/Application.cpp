@@ -26,8 +26,8 @@ SOFTWARE.
 #include "GameManagers/GAMESTATE/GameState.h"
 #include "GameManagers/GameManager.h"
 #include "GameManagers/WindowManager.h"
-#include "GameManagers/Resource.h"
 #include "GameManagers/InputLockManager.h"
+#include "GameManagers/ResourceManager.h"
 
 #include <iostream>
 
@@ -48,8 +48,8 @@ Application::Application() :
 Application::~Application()
 {
     delete _GM;
-    delete _RM;
     delete _MAIN_WINDOW;
+    delete DATA;
 }
 
 void Application::run()
@@ -68,7 +68,7 @@ void Application::init()
     _MAIN_WINDOW->windowConfig(60, false);
     //m_window = new sf::RenderWindow(sf::VideoMode(_WIDTH, _HEIGHT),_GAME_NAME);
     m_clock = new sf::Clock();
-    _GM->changeState(GAMESTATE::MENU_STATE);
+    _GM->changeState(GAMESTATE::INTRODUCE_STATE);
 }
 
 void Application::update()

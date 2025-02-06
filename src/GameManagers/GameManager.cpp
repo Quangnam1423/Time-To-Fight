@@ -51,14 +51,14 @@ void GameManager::changeState(IGameState* gameState)
 
 void GameManager::changeState(GAMESTATE gameState)
 {
-	IGameState* gs = IGameState::createState(gameState);
+	IGameState* gs = createState(gameState);
 	changeState(gs);
 	return;
 }
 
 void GameManager::pushState(GAMESTATE gameState)
 {
-	IGameState* gs = IGameState::createState(gameState);
+	IGameState* gs = createState(gameState);
 	if (!m_gameStateStack.empty())
 	{
 		m_gameStateStack.back()->pause();

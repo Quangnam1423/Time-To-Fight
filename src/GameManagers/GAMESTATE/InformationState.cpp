@@ -1,49 +1,24 @@
-#include "IntroduceGameState.h"
-/*
-MIT License
-
-Copyright (c) 2024 Quangnam1423
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-*/
-
-#include "IntroduceGameState.h"
-#include "../Resource.h"
-#include "../../GameObjects//Button.h"
+#include "InformationState.h"
+#include "../../GameObjects/Button.h"
 #include "../WindowManager.h"
 #include "../GameManager.h"
 #include "../../Application.h"
+#include "../ResourceManager.h"
 
 #include <iostream>
 
 const char* introduce = "Time To Fight Game \n developed by Quangnam1423.";
 
-IntroduceState::IntroduceState()
+InformationState::InformationState()
 {
 }
 
-IntroduceState::~IntroduceState()
+InformationState::~InformationState()
 {
 	cleanup();
 }
 
-void IntroduceState::init()
+void InformationState::init()
 {
 	m_font = nullptr;
 	// MEMBER CLASS
@@ -54,7 +29,7 @@ void IntroduceState::init()
 	m_displayText = "";
 
 	// FONT CONFIG
-	m_font = _RM->getFont("gameFont6");
+	m_font = DATA->getFont("gameFont6");
 
 	// HANDLE TEXT LINE
 	std::string tempLine = "";
@@ -80,9 +55,9 @@ void IntroduceState::init()
 		m_textLines[i].setFillColor(sf::Color::White);
 	}
 	// BUTTON CONFIG
-	Button* homeButton = new Button(_RM->getTexture("Home Icon Button", TEXTURE_TYPE::BUTTON),
-									sf::Vector2f(750.0f, 550.0f),
-									BUTTON_TYPE::HOME_ICON_BUTTON);
+	Button* homeButton = new Button(DATA->getTexture("Buttons/Home Icon Button"),
+		sf::Vector2f(750.0f, 550.0f),
+		BUTTON_TYPE::HOME_ICON_BUTTON);
 	homeButton->setCallBack(
 		[]() {
 			_GM->popState();
@@ -91,13 +66,13 @@ void IntroduceState::init()
 	m_buttons.push_back(homeButton);
 
 	// MAIN BACKGROUND............................................................................
-	m_background = new sf::Sprite(*_RM->getTexture("Main BackGround", TEXTURE_TYPE::ENVIROMENT));
+	m_background = new sf::Sprite(*DATA->getTexture("Main BackGround"));
 	m_background->setScale(sf::Vector2f(1.4f, 1.4f));
 	m_background->setOrigin((sf::Vector2f)m_background->getTexture()->getSize() / 2.f);
 	m_background->setPosition(400, 300);
 }
 
-void IntroduceState::cleanup()
+void InformationState::cleanup()
 {
 	m_font = nullptr;
 	if (m_background != nullptr)
@@ -115,13 +90,13 @@ void IntroduceState::cleanup()
 	}
 }
 
-void IntroduceState::handleEvent(sf::Event& event)
+void InformationState::handleEvent(sf::Event& event)
 {
 	for (Button* button : m_buttons)
 		button->handleEvent(event);
 }
 
-void IntroduceState::update(float deltaTime)
+void InformationState::update(float deltaTime)
 {
 	m_elapsedTime += deltaTime;
 	if (m_elapsedTime >= 0.05f && introduce[m_index] != '\0')
@@ -145,7 +120,7 @@ void IntroduceState::update(float deltaTime)
 	}
 }
 
-void IntroduceState::render(sf::RenderWindow& window)
+void InformationState::render(sf::RenderWindow& window)
 {
 	for (size_t i = 0; i < m_textLines.size(); i++) {
 		sf::FloatRect textBounds = m_textLines[i].getLocalBounds();
@@ -163,20 +138,20 @@ void IntroduceState::render(sf::RenderWindow& window)
 	}
 }
 
-void IntroduceState::pause()
+void InformationState::pause()
 {
 }
 
-void IntroduceState::resume()
+void InformationState::resume()
 {
 }
 
-void IntroduceState::exit()
+void InformationState::exit()
 {
 	// _GM->popState();
 }
 
-bool IntroduceState::isFinished() const
+bool InformationState::isFinished() const
 {
 	return false;
 }

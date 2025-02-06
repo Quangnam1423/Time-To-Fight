@@ -149,20 +149,19 @@
     <None Include="sfml-window-d-2.dll" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\GameManagers\GAMESTATE\GameState.cpp" />
+    <ClCompile Include="src\GameManagers\GAMESTATE\IntroState.cpp" />
+    <ClCompile Include="src\GameManagers\GAMESTATE\InformationState.cpp" />
+    <ClCompile Include="src\GameManagers\ResourceManager.cpp" />
     <ClCompile Include="src\GameManagers\OperationsManager.cpp" />
-    <ClCompile Include="src\GameManagers\GAMESTATE\IGameState.cpp" />
     <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="src\GameObjects\Button.cpp" />
     <ClCompile Include="src\GameManagers\GameManager.cpp" />
     <ClCompile Include="src\GameManagers\GAMESTATE\CreditGameState.cpp" />
     <ClCompile Include="src\GameManagers\GAMESTATE\GameOverState.cpp" />
-    <ClCompile Include="src\GameManagers\GAMESTATE\IntroduceGameState.cpp" />
-    <ClCompile Include="src\GameManagers\GAMESTATE\LoadingState.cpp" />
     <ClCompile Include="src\GameManagers\GAMESTATE\MenuGameState.cpp" />
-    <ClCompile Include="src\GameManagers\GAMESTATE\PauseState.cpp" />
     <ClCompile Include="src\GameManagers\GAMESTATE\PlayinGameState.cpp" />
     <ClCompile Include="src\GameManagers\GAMESTATE\SettingGameState.cpp" />
-    <ClCompile Include="src\GameManagers\Resource.cpp" />
     <ClCompile Include="src\GameObjects\Hitbox.cpp" />
     <ClCompile Include="src\GameObjects\logics\Collision.cpp" />
     <ClCompile Include="src\GameObjects\logics\Physics.cpp" />
@@ -182,6 +181,9 @@
     <ClCompile Include="src\GameManagers\WindowManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\GameManagers\GAMESTATE\IntroState.h" />
+    <ClInclude Include="src\GameManagers\GAMESTATE\InformationState.h" />
+    <ClInclude Include="src\GameManagers\ResourceManager.h" />
     <ClInclude Include="src\GameManagers\OperationsManager.h" />
     <ClInclude Include="src\Application.h" />
     <ClInclude Include="src\ApplicationConfig.h" />
@@ -192,13 +194,9 @@
     <ClInclude Include="src\GameManagers\GAMESTATE\GameOverState.h" />
     <ClInclude Include="src\GameManagers\GAMESTATE\GameState.h" />
     <ClInclude Include="src\GameManagers\GAMESTATE\IGameState.h" />
-    <ClInclude Include="src\GameManagers\GAMESTATE\IntroduceGameState.h" />
-    <ClInclude Include="src\GameManagers\GAMESTATE\LoadingState.h" />
     <ClInclude Include="src\GameManagers\GAMESTATE\MenuGameState.h" />
-    <ClInclude Include="src\GameManagers\GAMESTATE\PauseState.h" />
     <ClInclude Include="src\GameManagers\GAMESTATE\PlayinGameState.h" />
     <ClInclude Include="src\GameManagers\GAMESTATE\SettingGameState.h" />
-    <ClInclude Include="src\GameManagers\Resource.h" />
     <ClInclude Include="src\Singleton.h" />
     <ClInclude Include="src\GameObjects\GameDefinition.h" />
     <ClInclude Include="src\GameObjects\Hitbox.h" />

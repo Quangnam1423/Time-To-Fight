@@ -1,4 +1,3 @@
-#include "PlayinGameState.h"
 /*
 MIT License
 
@@ -26,13 +25,14 @@ SOFTWARE.
 #include "../GameManager.h"
 #include "../WindowManager.h"
 #include "../InputLockManager.h"
-#include "../Resource.h"
+#include "../ResourceManager.h"
 #include "../../GameObjects/Button.h"
 
 #include <iostream>
 
 PlayInState::PlayInState()
 {
+	m_background = nullptr;
 }
 
 PlayInState::~PlayInState()
@@ -43,13 +43,13 @@ PlayInState::~PlayInState()
 void PlayInState::init()
 {
 	// MAIN BACKGROUND............................
-	m_background = new sf::Sprite(*_RM->getTexture("Main BackGround", TEXTURE_TYPE::ENVIROMENT));
+	m_background = new sf::Sprite(*DATA->getTexture("Main BackGround"));
 	m_background->setScale(sf::Vector2f(1.4f, 1.4f));
 	m_background->setOrigin((sf::Vector2f)m_background->getTexture()->getSize() / 2.f);
 	m_background->setPosition(400, 300);
 
 	// BUTTON CONFIG
-	Button* newGameButton = new Button(_RM->getTexture("New Game Button", TEXTURE_TYPE::BUTTON),
+	Button* newGameButton = new Button(DATA->getTexture("Buttons/New Game Button"),
 										sf::Vector2f(400.f, 250.f),
 										BUTTON_TYPE::NEW_GAME_BUTTON);
 	newGameButton->setCallBack(
@@ -59,7 +59,7 @@ void PlayInState::init()
 	);
 	m_buttons.push_back(newGameButton);
 
-	Button* continueButton = new Button(_RM->getTexture("Continue Button", TEXTURE_TYPE::BUTTON),
+	Button* continueButton = new Button(DATA->getTexture("Buttons/Continue Button"),
 									sf::Vector2f(400.f, 350.f),
 									BUTTON_TYPE::RESUME_BUTTON);
 	continueButton->setCallBack(
@@ -69,7 +69,7 @@ void PlayInState::init()
 	);
 	m_buttons.push_back(continueButton);
 
-	Button* settingButton = new Button(_RM->getTexture("Settings Button", TEXTURE_TYPE::BUTTON),
+	Button* settingButton = new Button(DATA->getTexture("Buttons/Settings Button"),
 		sf::Vector2f(400.0f, 450.0f),
 		BUTTON_TYPE::HOME_ICON_BUTTON);
 	settingButton->setCallBack(
@@ -79,7 +79,7 @@ void PlayInState::init()
 	);
 	m_buttons.push_back(settingButton);
 
-	Button* homeButton = new Button(_RM->getTexture("Home Icon Button", TEXTURE_TYPE::BUTTON),
+	Button* homeButton = new Button(DATA->getTexture("Buttons/Home Icon Button"),
 		sf::Vector2f(750.0f, 550.0f),
 		BUTTON_TYPE::HOME_ICON_BUTTON);
 	homeButton->setCallBack(
