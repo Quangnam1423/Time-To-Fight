@@ -179,6 +179,7 @@
     <ClCompile Include="src\GameObjects\player\Samurai.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\GameManagers\WindowManager.cpp" />
+    <ClCompile Include="src\GameObjects\TileMapBase.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\GameManagers\GAMESTATE\IntroState.h" />
@@ -216,6 +217,7 @@
     <ClInclude Include="src\GameObjects\player\playerstates\WalkState.h" />
     <ClInclude Include="src\GameObjects\player\Samurai.h" />
     <ClInclude Include="src\GameManagers\WindowManager.h" />
+    <ClInclude Include="src\GameObjects\TileMapBase.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
