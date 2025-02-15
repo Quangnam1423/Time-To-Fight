@@ -56,6 +56,7 @@ private:
     std::list<IGameState*> m_gameStateStack;
     IGameState* m_activeState;
     IGameState* m_nextState;
+    IGameState* m_trash;
 };
 
 #endif

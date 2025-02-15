@@ -1,59 +1,54 @@
-/*
-MIT License
-
-Copyright (c) 2024 Quangnam1423
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-*/
-
 #include "Hitbox.h"
 
-Hitbox::Hitbox(sf::Vector2f size, sf::Vector2f position)
-			:
-	sf::RectangleShape(size)
+Hitbox::Hitbox(sf::Vector2f size) : sf::RectangleShape(size)
 {
-	
-	setPosition(position);
+	this->setOrigin((sf::Vector2f)size / 2.f);
+	this->setFillColor(sf::Color(0, 0, 0, 0));
+
+	m_velocity = sf::Vector2f(0.f, 0.f);
+	m_isAlive = true;
 }
 
 Hitbox::~Hitbox()
 {
 }
 
+void Hitbox::init(sf::Vector2f velocity)
+{
+	m_velocity = velocity;
+}
+
+sf::Vector2f Hitbox::getVelocity()
+{
+	return m_velocity;
+}
+
 void Hitbox::setVelocity(sf::Vector2f velocity)
 {
 	m_velocity = velocity;
-	return;
 }
 
-bool Hitbox::checkCollison(const Hitbox& other) const
+TAG Hitbox::getTag()
 {
-	return this->getGlobalBounds().intersects(other.getGlobalBounds());
+	return m_tag;
 }
 
-void Hitbox::setStatus(Status status)
+void Hitbox::setTag(TAG tag)
 {
-	m_status = status;
-	return;
+	m_tag = tag;
 }
 
-Status Hitbox::getStatus()
+//DIRECTION Hitbox::getDirection()
+//{
+//	return DIRECTION();
+//}
+//
+//void Hitbox::setDirection(DIRECTION direction)
+//{
+//	m_direction = direction;
+//}
+
+sf::Vector2f Hitbox::getHaftSize()
 {
-	return m_status;
+	return (sf::Vector2f)(this->getSize() / 2.f);
 }

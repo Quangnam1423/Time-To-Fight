@@ -29,6 +29,7 @@ GameManager::GameManager()
 {
 	m_activeState = nullptr;
 	m_nextState = nullptr;
+	m_trash = nullptr;
 }
 
 GameManager::~GameManager()
@@ -40,6 +41,9 @@ GameManager::~GameManager()
 	}	
 	m_activeState = nullptr;
 	m_nextState = nullptr;
+	if (m_trash != nullptr)
+		delete m_trash;
+	m_trash = nullptr;
 	return;
 }
 
@@ -71,6 +75,7 @@ void GameManager::popState()
 {
 	if (hasState())
 	{
+		m_trash = m_gameStateStack.back();
 		m_gameStateStack.pop_back();
 	}
 	if (hasState())
@@ -93,6 +98,11 @@ void GameManager::performStateChange()
 		m_activeState = m_gameStateStack.back();
 	}
 	m_nextState = nullptr;
+	if (m_trash != nullptr)
+	{
+		delete m_trash;
+		m_trash = nullptr;
+	}
 	return;
 }
 
@@ -112,7 +122,8 @@ IGameState* GameManager::nextState()
 
 bool GameManager::needToChangeState()
 {
-	return m_nextState != nullptr;
+	return m_nextState != nullptr || 
+			m_trash != nullptr;
 }
 
 bool GameManager::hasState()

@@ -55,6 +55,7 @@ void PlayInState::init()
 	newGameButton->setCallBack(
 		[]() {
 			std::cout << "newgame Callback" << std::endl;
+			_GM->changeState(GAMESTATE::GAMEON_STATE);
 		}
 	);
 	m_buttons.push_back(newGameButton);

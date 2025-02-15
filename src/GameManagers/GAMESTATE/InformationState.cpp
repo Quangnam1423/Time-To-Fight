@@ -61,6 +61,7 @@ void InformationState::init()
 	homeButton->setCallBack(
 		[]() {
 			_GM->popState();
+			std::cout << "homeButton" << std::endl;
 		}
 	);
 	m_buttons.push_back(homeButton);

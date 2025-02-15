@@ -32,6 +32,7 @@ SOFTWARE.
 #include "MenuGameState.h"
 #include "PlayinGameState.h"
 #include "SettingGameState.h"
+#include "GameOnState.h"
 
 IGameState* createState(enum GAMESTATE newGameState);
 

@@ -1,5 +1,76 @@
 #include "TileMapBase.h"
 
+std::list<sf::Vector2i> TileMapBase::getMapCollider(sf::Vector2i baseSize, std::vector<int> tile, int width, int height)
+{
+	std::list<sf::Vector2i> mapCollider;
+	for (int i = 0; i < width; i++)
+	{
+		for (int j = 0; j < height; j++)
+		{
+			int tileNumber = tile[i + j * width];
+			if (tileNumber == -1)
+				continue;
+			// above
+			{
+				int x = i;
+				int y = j - 1;
+				if (x >= 0 && x < width && y >= 0 && y < height)
+				{
+					int aboveTile = tile[x + y * width];
+					if (aboveTile != -1)
+					{
+						mapCollider.push_back(sf::Vector2i(i * baseSize.x, j * baseSize.y));
+						continue;
+					}
+				}
+			}
+			// right
+			{
+				int x = i + 1;
+				int y = j;
+				if (x >= 0 && x < width && y >= 0 && y < height)
+				{
+					int rightTile = tile[x + y * width];
+					if (rightTile != -1)
+					{
+						mapCollider.push_back(sf::Vector2i(i * baseSize.x, j * baseSize.y));
+						continue;
+					}
+				}
+			}
+			// below
+			{
+				int x = i;
+				int y = j + 1;
+				if (x >= 0 && x < width && y >= 0 && y < height)
+				{
+					int belowTile = tile[x + y * width];
+					if (belowTile != -1)
+					{
+						mapCollider.push_back(sf::Vector2i(i * baseSize.x, j * baseSize.y));
+						continue;
+					}
+				}
+			}
+			// left
+			{
+				int x = i - 1;
+				int y = j;
+				if (x >= 0 && x < width && y >= 0 && y < height)
+				{
+					int leftTile = tile[x + y * width];
+					if (leftTile != -1)
+					{
+						mapCollider.push_back(sf::Vector2i(i * baseSize.x, j * baseSize.y));
+						continue;
+					}
+				}
+			}// end for height
+		}// end for width
+	}
+	return mapCollider;
+}
+
 bool TileMapBase::loadBase(sf::Texture* texture, sf::Vector2i baseSize, std::vector<int> tile, int width, int height)
 {
     m_tileMapBase = texture;
@@ -10,7 +81,9 @@ bool TileMapBase::loadBase(sf::Texture* texture, sf::Vector2i baseSize, std::vec
     {
         for (int j = 0; j < height; j++)
         {
-			int tileNumber = tile[i + j * width] - 1;
+			int tileNumber = tile[i + j * width];
+			if (tileNumber == -1)
+				continue;
 			int tu = tileNumber % (m_tileMapBase->getSize().x / baseSize.x);
 			int tv = tileNumber / (m_tileMapBase->getSize().x / baseSize.x);
 

@@ -22,6 +22,10 @@ IGameState* createState(enum GAMESTATE newGameState)
     {
         return new IntroState();
     }
+    else if (newGameState == GAMESTATE::GAMEON_STATE)
+    {
+        return new GameOnState();
+    }
     else
         return nullptr;
 }

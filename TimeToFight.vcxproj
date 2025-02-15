@@ -149,6 +149,9 @@
     <None Include="sfml-window-d-2.dll" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\GameManagers\GAMESTATE\GameOnState.cpp" />
+    <ClCompile Include="src\GameObjects\GameMap\Map1.cpp" />
+    <ClCompile Include="src\GameObjects\GameMap\MapBase.cpp" />
     <ClCompile Include="src\GameManagers\GAMESTATE\GameState.cpp" />
     <ClCompile Include="src\GameManagers\GAMESTATE\IntroState.cpp" />
     <ClCompile Include="src\GameManagers\GAMESTATE\InformationState.cpp" />
@@ -163,8 +166,6 @@
     <ClCompile Include="src\GameManagers\GAMESTATE\PlayinGameState.cpp" />
     <ClCompile Include="src\GameManagers\GAMESTATE\SettingGameState.cpp" />
     <ClCompile Include="src\GameObjects\Hitbox.cpp" />
-    <ClCompile Include="src\GameObjects\logics\Collision.cpp" />
-    <ClCompile Include="src\GameObjects\logics\Physics.cpp" />
     <ClCompile Include="src\GameObjects\player\Character.cpp" />
     <ClCompile Include="src\GameObjects\player\PlayerSkill.cpp" />
     <ClCompile Include="src\GameObjects\player\playerstates\AttackOneState.cpp" />
@@ -182,6 +183,9 @@
     <ClCompile Include="src\GameObjects\TileMapBase.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\GameManagers\GAMESTATE\GameOnState.h" />
+    <ClInclude Include="src\GameObjects\GameMap\Map1.h" />
+    <ClInclude Include="src\GameObjects\GameMap\MapBase.h" />
     <ClInclude Include="src\GameManagers\GAMESTATE\IntroState.h" />
     <ClInclude Include="src\GameManagers\GAMESTATE\InformationState.h" />
     <ClInclude Include="src\GameManagers\ResourceManager.h" />
@@ -201,8 +205,6 @@
     <ClInclude Include="src\Singleton.h" />
     <ClInclude Include="src\GameObjects\GameDefinition.h" />
     <ClInclude Include="src\GameObjects\Hitbox.h" />
-    <ClInclude Include="src\GameObjects\logics\Collision.h" />
-    <ClInclude Include="src\GameObjects\logics\Physics.h" />
     <ClInclude Include="src\GameObjects\player\Character.h" />
     <ClInclude Include="src\GameObjects\player\PlayerSkill.h" />
     <ClInclude Include="src\GameObjects\player\playerstates\AttackOneState.h" />
