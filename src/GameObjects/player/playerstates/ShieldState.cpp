@@ -40,7 +40,7 @@ ShieldState::ShieldState(Character* character,
 
 ShieldState::~ShieldState()
 {
-    IPlayerState::~IPlayerState();
+
 }
 
 

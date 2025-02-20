@@ -13,6 +13,39 @@ Map1::Map1()
 
 Map1::~Map1()
 {
+	if (m_background != nullptr)
+	{
+		delete m_background;
+		m_background = nullptr;
+	}
+
+	if (m_character != nullptr)
+	{
+		delete m_character;
+		m_character = nullptr;
+	}
+
+	if (m_decorMap != nullptr)
+	{
+		delete m_decorMap;
+		m_decorMap = nullptr;
+	}
+
+	if (m_map != nullptr)
+	{
+		delete m_map;
+		m_map = nullptr;
+	}
+
+	for (Hitbox* hitbox : m_mapHitbox)
+	{
+		if (hitbox != nullptr)
+		{
+			delete hitbox;
+			hitbox = nullptr;
+		}
+	}
+	m_mapHitbox.clear();
 }
 
 void Map1::init()
@@ -153,9 +186,9 @@ void Map1::render(sf::RenderWindow& window)
 		hitbox->setFillColor(sf::Color(0, 0, 0, 100));
 		window.draw(*hitbox);
 	}
-	m_character->render(window);
 	m_character->getHitbox()->setFillColor(sf::Color(0, 0, 0, 100));
-	window.draw(*m_character->getHitbox());
+	m_character->render(window);
+	
 }
 
 void Map1::handleEvent(sf::Event& event)

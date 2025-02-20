@@ -105,49 +105,54 @@ void Character::init()
 void Character::update(float deltaTime)
 {
     m_state->update(deltaTime);
-    m_sprite->setTextureRect(m_state->getCurrentFrame());
-    m_hitbox->setSize(getSize());
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-        return;
 
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+    // update sprite rect and hitbox of player
     {
-        movement(deltaTime, PLAYER_DIRECTION::RIGHT_DIRECTION);
+        m_sprite->setTextureRect(m_state->getCurrentFrame());
+        sf::FloatRect playerBound = m_sprite->getGlobalBounds();
+        m_sprite->setOrigin(playerBound.width / 2, playerBound.height / 2);
+        m_hitbox->setSize(getSize());
+        m_hitbox->setOrigin(m_hitbox->getHaftSize());
+        if (m_onLeft)
+        {
+            m_sprite->setScale(-1.0f, 1.0f);
+        }
+        else 
+        {
+            m_sprite->setScale(1.0f, 1.0f);
+        }
     }
-    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+
+    // Update movement
     {
-        movement(deltaTime, PLAYER_DIRECTION::LEFT_DIRECTION);
-    }
-    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-    {
-        jump(deltaTime, PLAYER_DIRECTION::JUMP_DIRECTION);
-    }
-    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-    {
-        movement(deltaTime, PLAYER_DIRECTION::SHIELD_DIRECTION);
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+            return;
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+        {
+            movement(deltaTime, PLAYER_DIRECTION::RIGHT_DIRECTION);
+        }
+        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+        {
+            movement(deltaTime, PLAYER_DIRECTION::LEFT_DIRECTION);
+        }
+        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+        {
+            jump(deltaTime, PLAYER_DIRECTION::JUMP_DIRECTION);
+        }
+        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+        {
+            movement(deltaTime, PLAYER_DIRECTION::SHIELD_DIRECTION);
+        }
     }
 }
 
 void Character::render(sf::RenderWindow &gl_window)
 {
-    m_sprite->setTextureRect(m_state->getCurrentFrame());
-    if (m_onLeft)
-    {
-        m_sprite->setScale(-1.0f, 1.0f);
-        //m_sprite->setOrigin(m_sprite->getGlobalBounds().width , 0);
-        m_sprite->setOrigin(m_hitbox->getOrigin());
-    }
-    else{
-        m_sprite->setScale(1.0f, 1.0f);
-        //m_sprite->setOrigin(0, 0);
-        m_sprite->setOrigin(m_hitbox->getOrigin());
-    }
     gl_window.draw(*m_sprite);
-
-    return;
+    gl_window.draw(*m_hitbox);
 }
 
-// virtual 
 void Character::handleEvent(sf::Event &event)
 {
 }
@@ -186,7 +191,8 @@ void Character::movement(float deltaTime, PLAYER_DIRECTION direction)
 
 void Character::jump(float deltaTime, PLAYER_DIRECTION direction)
 {
-
+    m_sprite->move(0, - m_movementSpeed * deltaTime * 2);
+    m_hitbox->move(0, -m_movementSpeed * deltaTime * 2);
 }
 
 void Character::shield(float deltaTime, PLAYER_DIRECTION direction)

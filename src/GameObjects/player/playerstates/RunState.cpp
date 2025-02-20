@@ -40,7 +40,6 @@ RunState::RunState(Character* character,
 
 RunState::~RunState()
 {
-    IPlayerState::~IPlayerState();
 }
 
 

@@ -15,7 +15,7 @@ IdleState::IdleState(Character* character,
                                     frameTime
                                     )
 {
-    std::cout << "create idle state" << std::endl;
+    
 }
 
 IdleState::~IdleState()

@@ -34,7 +34,6 @@ AttackTwoState::AttackTwoState(Character* character, const char* texturePath,
 
 AttackTwoState::~AttackTwoState()
 {
-    IPlayerState::~IPlayerState();
 }
 
 

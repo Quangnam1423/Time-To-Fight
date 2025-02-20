@@ -41,7 +41,7 @@ public:
         );
 
 
-    virtual ~IPlayerState() = default;
+    virtual ~IPlayerState();
     virtual void update(float deltaTime);                   // update state 
     virtual void setStateAtTheEndFrame();
     virtual void handleEvent(sf::Event& event);           // handling event for current player state

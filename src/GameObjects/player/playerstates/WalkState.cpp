@@ -31,12 +31,11 @@ WalkState::WalkState(Character* character,
                         float frameTime) : 
                     IPlayerState(character, texturePath, frameCount, frameTime)
 {
-    std::cout << "create walk state player" << std::endl;
+    
 }
 
 WalkState::~WalkState()
 {
-    IPlayerState::~IPlayerState();
 }
 
 

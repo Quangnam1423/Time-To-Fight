@@ -149,7 +149,8 @@ Samurai::Samurai(sf::Vector2f position) : Character(position)
     m_sprite->setPosition(m_position);
     m_sprite->setTextureRect(m_state->getCurrentFrame());
     m_sprite->setScale(1.f, 1.f);
-    m_sprite->setOrigin(0, 0);
+    sf::FloatRect playerBound = m_sprite->getGlobalBounds();
+    m_sprite->setOrigin(playerBound.width / 2, playerBound.height / 2);
 }
 
 Samurai::~Samurai()
@@ -173,7 +174,7 @@ void Samurai::init()
     }
     // JUMP STATE
     {
-        JumpState* jumpState = new JumpState(this, const_jumpPath, { const_jumpFrame - 1, 0 }, 0.1f);
+        JumpState* jumpState = new JumpState(this, const_jumpPath, { const_jumpFrame - 1, 0 }, 0.05f);
         jumpState->setFrameHitboxes(jumpHitboxes);
         jumpState->setState(STATE::JUMP);
         m_stateMap[STATE::JUMP] = jumpState;

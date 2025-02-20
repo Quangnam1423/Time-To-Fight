@@ -42,6 +42,10 @@ IPlayerState::IPlayerState(Character *character,
     m_state = STATE::NULLST;
 }
 
+IPlayerState::~IPlayerState()
+{
+}
+
 void IPlayerState::update(float deltaTime)
 {
 
