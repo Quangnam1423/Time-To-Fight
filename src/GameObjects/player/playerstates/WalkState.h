@@ -42,7 +42,7 @@ public:
 
     void update(float deltaTime) override;
     void setStateAtTheEndFrame() override;
-    void handlingEvent(sf::Event& event) override;
+    void handleEvent(sf::Event& event) override;
 };
 
 #endif

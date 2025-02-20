@@ -17,7 +17,7 @@ std::list<sf::Vector2i> TileMapBase::getMapCollider(sf::Vector2i baseSize, std::
 				if (x >= 0 && x < width && y >= 0 && y < height)
 				{
 					int aboveTile = tile[x + y * width];
-					if (aboveTile != -1)
+					if (aboveTile == -1)
 					{
 						mapCollider.push_back(sf::Vector2i(i * baseSize.x, j * baseSize.y));
 						continue;
@@ -31,7 +31,7 @@ std::list<sf::Vector2i> TileMapBase::getMapCollider(sf::Vector2i baseSize, std::
 				if (x >= 0 && x < width && y >= 0 && y < height)
 				{
 					int rightTile = tile[x + y * width];
-					if (rightTile != -1)
+					if (rightTile == -1)
 					{
 						mapCollider.push_back(sf::Vector2i(i * baseSize.x, j * baseSize.y));
 						continue;
@@ -45,7 +45,7 @@ std::list<sf::Vector2i> TileMapBase::getMapCollider(sf::Vector2i baseSize, std::
 				if (x >= 0 && x < width && y >= 0 && y < height)
 				{
 					int belowTile = tile[x + y * width];
-					if (belowTile != -1)
+					if (belowTile == -1)
 					{
 						mapCollider.push_back(sf::Vector2i(i * baseSize.x, j * baseSize.y));
 						continue;
@@ -59,7 +59,7 @@ std::list<sf::Vector2i> TileMapBase::getMapCollider(sf::Vector2i baseSize, std::
 				if (x >= 0 && x < width && y >= 0 && y < height)
 				{
 					int leftTile = tile[x + y * width];
-					if (leftTile != -1)
+					if (leftTile == -1)
 					{
 						mapCollider.push_back(sf::Vector2i(i * baseSize.x, j * baseSize.y));
 						continue;

@@ -72,7 +72,7 @@ void ShieldState::setStateAtTheEndFrame()
     resetDurationTime();
 }
 
-void ShieldState::handlingEvent(sf::Event &event)
+void ShieldState::handleEvent(sf::Event &event)
 {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
         return;

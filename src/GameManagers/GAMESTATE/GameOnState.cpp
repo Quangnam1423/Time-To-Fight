@@ -1,7 +1,6 @@
 #include "GameOnState.h"
 #include "../GameManager.h"
 #include "../WindowManager.h"
-#include "../InputLockManager.h"
 #include "../ResourceManager.h"
 #include "../../GameObjects/GameMap/Map1.h"
 #include "../../GameObjects/GameMap/MapBase.h"

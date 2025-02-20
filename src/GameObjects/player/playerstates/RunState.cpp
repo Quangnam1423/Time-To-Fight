@@ -68,7 +68,7 @@ void RunState::setStateAtTheEndFrame()
     resetDurationTime();
 }
 
-void RunState::handlingEvent(sf::Event &event)
+void RunState::handleEvent(sf::Event &event)
 {
     return;
 }

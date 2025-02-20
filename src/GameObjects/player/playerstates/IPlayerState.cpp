@@ -23,6 +23,9 @@ SOFTWARE.
 */
 
 #include "IPlayerState.h"
+#include "../../../GameManagers/ResourceManager.h"
+#include "../../../GameManagers/WindowManager.h"
+#include "../../../GameManagers/GameManager.h"
 
 IPlayerState::IPlayerState(Character *character, 
                            const char *texturePath, 
@@ -32,10 +35,8 @@ IPlayerState::IPlayerState(Character *character,
                                     m_frameCount(frameCount), 
                                     m_timeFrame(timeFrame)
 {
-    if (!m_texture.loadFromFile(texturePath))
-    {
-        throw std::runtime_error("can't load texture");
-    }
+
+    m_texture = *DATA->getTexture(texturePath);
     m_currentFrame = sf::Vector2i(0 , 0);
     m_durationTime = 0.0f;
     CalculateFrameSize();
@@ -50,7 +51,7 @@ void IPlayerState::setStateAtTheEndFrame()
 {
 }
 
-void IPlayerState::handlingEvent(sf::Event &event)
+void IPlayerState::handleEvent(sf::Event &event)
 {
     
 }

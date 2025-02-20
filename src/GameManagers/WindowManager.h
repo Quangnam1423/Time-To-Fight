@@ -45,6 +45,7 @@ public:
 	void display();
 private:
 	sf::RenderWindow* m_window;
+	sf::View m_defaultView;
 };
 
 #endif

@@ -149,6 +149,7 @@
     <None Include="sfml-window-d-2.dll" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\GameManagers\CameraManager.cpp" />
     <ClCompile Include="src\GameManagers\GAMESTATE\GameOnState.cpp" />
     <ClCompile Include="src\GameObjects\GameMap\Map1.cpp" />
     <ClCompile Include="src\GameObjects\GameMap\MapBase.cpp" />
@@ -183,6 +184,7 @@
     <ClCompile Include="src\GameObjects\TileMapBase.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\GameManagers\CameraManager.h" />
     <ClInclude Include="src\GameManagers\GAMESTATE\GameOnState.h" />
     <ClInclude Include="src\GameObjects\GameMap\Map1.h" />
     <ClInclude Include="src\GameObjects\GameMap\MapBase.h" />
@@ -192,7 +194,6 @@
     <ClInclude Include="src\GameManagers\OperationsManager.h" />
     <ClInclude Include="src\Application.h" />
     <ClInclude Include="src\ApplicationConfig.h" />
-    <ClInclude Include="src\GameManagers\InputLockManager.h" />
     <ClInclude Include="src\GameObjects\Button.h" />
     <ClInclude Include="src\GameManagers\GameManager.h" />
     <ClInclude Include="src\GameManagers\GAMESTATE\CreditGameState.h" />

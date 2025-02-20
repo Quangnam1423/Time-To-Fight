@@ -24,7 +24,6 @@ SOFTWARE.
 #include "PlayinGameState.h"
 #include "../GameManager.h"
 #include "../WindowManager.h"
-#include "../InputLockManager.h"
 #include "../ResourceManager.h"
 #include "../../GameObjects/Button.h"
 
@@ -48,7 +47,7 @@ void PlayInState::init()
 	m_background->setOrigin((sf::Vector2f)m_background->getTexture()->getSize() / 2.f);
 	m_background->setPosition(400, 300);
 
-	// BUTTON CONFIG
+	// BUTTON NEW GAME
 	Button* newGameButton = new Button(DATA->getTexture("Buttons/New Game Button"),
 										sf::Vector2f(400.f, 250.f),
 										BUTTON_TYPE::NEW_GAME_BUTTON);
@@ -60,6 +59,7 @@ void PlayInState::init()
 	);
 	m_buttons.push_back(newGameButton);
 
+	// BUTTON CONTINUE
 	Button* continueButton = new Button(DATA->getTexture("Buttons/Continue Button"),
 									sf::Vector2f(400.f, 350.f),
 									BUTTON_TYPE::RESUME_BUTTON);
@@ -70,6 +70,7 @@ void PlayInState::init()
 	);
 	m_buttons.push_back(continueButton);
 
+	// BUTTON SETTING
 	Button* settingButton = new Button(DATA->getTexture("Buttons/Settings Button"),
 		sf::Vector2f(400.0f, 450.0f),
 		BUTTON_TYPE::HOME_ICON_BUTTON);
@@ -80,6 +81,7 @@ void PlayInState::init()
 	);
 	m_buttons.push_back(settingButton);
 
+	// BUTTON HOME
 	Button* homeButton = new Button(DATA->getTexture("Buttons/Home Icon Button"),
 		sf::Vector2f(750.0f, 550.0f),
 		BUTTON_TYPE::HOME_ICON_BUTTON);
@@ -89,8 +91,6 @@ void PlayInState::init()
 		}
 	);
 	m_buttons.push_back(homeButton);
-
-	//Button* homeButton = new Button
 }
 
 void PlayInState::cleanup()

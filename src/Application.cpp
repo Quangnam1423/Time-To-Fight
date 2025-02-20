@@ -26,16 +26,16 @@ SOFTWARE.
 #include "GameManagers/GAMESTATE/GameState.h"
 #include "GameManagers/GameManager.h"
 #include "GameManagers/WindowManager.h"
-#include "GameManagers/InputLockManager.h"
 #include "GameManagers/ResourceManager.h"
 
 #include <iostream>
 
 /*
-* _RM get instance of Resource which is single object
 * _MAIN_WINDOW get instance of WindowManager which is single object
 * _GM get instance of GameManager which is single object
-* references : "GameManager.h", "Resource.h", "WindowManager.h"
+* DATA get instance of ResourceManager which is single object
+* CAMERA get instance of CameraManager which is single object
+* references : "GameManager.h", "ResourceManager.h", "WindowManager.h", "CameraManager.h"
 */
 
 Application::Application() :
@@ -73,16 +73,6 @@ void Application::init()
 
 void Application::update()
 {
-/*
-    sf::Vector2i mousePosition = sf::Mouse::getPosition(*_MAIN_WINDOW->getWindow());
-    float x_mousePos = static_cast<float>(mousePosition.x);
-    float y_mousePos = static_cast<float>(mousePosition.y);
-    std::cout << "application::update :(" << x_mousePos 
-                << " , " << y_mousePos 
-                << ")"
-                <<std::endl;
-*/
-    // HANDLING EVENT
     sf::Event event;
     while (_MAIN_WINDOW->getWindow()->pollEvent(event))
     {
@@ -97,7 +87,6 @@ void Application::update()
     m_elapsedTime += m_deltaTime;
 
     // UPDATE GAME CONTROLL
-    _LOCKER->update(m_deltaTime);
     if (_GM->needToChangeState())
     {
         _GM->performStateChange();

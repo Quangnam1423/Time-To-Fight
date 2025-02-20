@@ -71,7 +71,7 @@ void WalkState::setStateAtTheEndFrame()
     resetDurationTime();
 }
 
-void WalkState::handlingEvent(sf::Event &event)
+void WalkState::handleEvent(sf::Event &event)
 {
     if (event.type == sf::Event::KeyReleased)
     {

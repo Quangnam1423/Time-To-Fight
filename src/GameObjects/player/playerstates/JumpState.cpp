@@ -54,6 +54,6 @@ void JumpState::setStateAtTheEndFrame()
     m_character->setState(STATE::IDLE, m_durationTime);
 }
 
-void JumpState::handlingEvent(sf::Event &event)
+void JumpState::handleEvent(sf::Event &event)
 {
 }

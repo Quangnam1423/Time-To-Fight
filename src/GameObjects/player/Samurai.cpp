@@ -34,16 +34,16 @@ SOFTWARE.
 #include "playerstates/AttackThreeState.h"
 
 //path of action
-const char* const_idlePath = "resource/Samurai/Idle.png";
-const char* const_runPath = "resource/Samurai/Run.png";
-const char* const_jumpPath = "resource/Samurai/Jump.png";
-const char* const_walkPath = "resource/Samurai/Walk.png";
-const char* const_attack_1Path = "resource/Samurai/Attack_3.png";
-const char* const_attack_2Path = "resource/Samurai/Attack_2.png";
-const char* const_attack_3Path = "resource/Samurai/Attack_1.png";
-const char* const_hurtPath = "resource/Samurai/Hurt.png";
-const char* const_deadPath = "resource/Samurai/Dead.png";
-const char* const_shieldPath = "resource/Samurai/Shield.png";
+const char* const_idlePath = "characters/Samurai/Idle";
+const char* const_runPath = "characters/Samurai/Run";
+const char* const_jumpPath = "characters/Samurai/Jump";
+const char* const_walkPath = "characters/Samurai/Walk";
+const char* const_attack_1Path = "characters/Samurai/Attack_3";
+const char* const_attack_2Path = "characters/Samurai/Attack_2";
+const char* const_attack_3Path = "characters/Samurai/Attack_1";
+const char* const_hurtPath = "characters/Samurai/Hurt";
+const char* const_deadPath = "characters/Samurai/Dead";
+const char* const_shieldPath = "characters/Samurai/Shield";
 
 
 // number of action frame
@@ -73,9 +73,9 @@ Samurai::~Samurai()
 
 }
 
-void Samurai::handlingEvent(sf::Event &event)
+void Samurai::handleEvent(sf::Event &event)
 {
-    m_state->handlingEvent(event);
+    m_state->handleEvent(event);
     // if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::D)
     // {
     //     //movement(deltaTime, DIRECTION::RIGHT_DIRECTION);

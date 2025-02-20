@@ -54,7 +54,7 @@ void AttackOneState::setStateAtTheEndFrame()
     m_character->setState(STATE::IDLE, m_durationTime);
 }
 
-void AttackOneState::handlingEvent(sf::Event &event)
+void AttackOneState::handleEvent(sf::Event &event)
 {
 
 }

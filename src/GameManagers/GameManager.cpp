@@ -122,8 +122,8 @@ IGameState* GameManager::nextState()
 
 bool GameManager::needToChangeState()
 {
-	return m_nextState != nullptr || 
-			m_trash != nullptr;
+	return m_nextState != nullptr
+		|| m_trash != nullptr;
 }
 
 bool GameManager::hasState()

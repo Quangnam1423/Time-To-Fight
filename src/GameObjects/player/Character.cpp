@@ -33,6 +33,7 @@ SOFTWARE.
 #include "playerstates/AttackOneState.h"
 #include "playerstates/AttackTwoState.h"
 #include "playerstates/AttackThreeState.h"
+#include "../Hitbox.h"
 
 // #include "../logics/Physics.h"
 // #include "../logics/Collision.h"
@@ -99,22 +100,22 @@ void Character::update(float deltaTime)
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
     {
-        movement(deltaTime, DIRECTION::RIGHT_DIRECTION);
+        movement(deltaTime, PLAYER_DIRECTION::RIGHT_DIRECTION);
         std::cout << "move right" << std::endl;
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
     {
-        movement(deltaTime, DIRECTION::LEFT_DIRECTION);
+        movement(deltaTime, PLAYER_DIRECTION::LEFT_DIRECTION);
         std::cout << "move left" << std::endl;
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
     {
-        jump(deltaTime, DIRECTION::JUMP_DIRECTION);
+        jump(deltaTime, PLAYER_DIRECTION::JUMP_DIRECTION);
         std::cout << "jump" << std::endl;
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
     {
-        movement(deltaTime, DIRECTION::SHIELD_DIRECTION);
+        movement(deltaTime, PLAYER_DIRECTION::SHIELD_DIRECTION);
         std::cout << "shield" << std::endl;
     }
 }
@@ -140,7 +141,7 @@ void Character::render(sf::RenderWindow &gl_window)
 }
 
 // virtual 
-void Character::handlingEvent(sf::Event &event)
+void Character::handleEvent(sf::Event &event)
 {
 }
 
@@ -153,10 +154,10 @@ void Character::setState(STATE nextState, float durationTime)
     return;
 }
 
-void Character::movement(float deltaTime, DIRECTION direction)
+void Character::movement(float deltaTime, PLAYER_DIRECTION direction)
 {
     std::cout << "call movement" << std::endl;
-    if (direction == DIRECTION::LEFT_DIRECTION)
+    if (direction == PLAYER_DIRECTION::LEFT_DIRECTION)
     {
         m_onLeft = true;
         m_onRight = false;
@@ -164,7 +165,7 @@ void Character::movement(float deltaTime, DIRECTION direction)
         float distance = deltaTime * m_movementSpeed;
         m_sprite->move(-distance, 0.0f);
     }
-    else if (direction == DIRECTION::RIGHT_DIRECTION)
+    else if (direction == PLAYER_DIRECTION::RIGHT_DIRECTION)
     {
         m_onLeft = false;
         m_onRight = true;
@@ -178,12 +179,27 @@ void Character::movement(float deltaTime, DIRECTION direction)
     return;
 }
 
-void Character::jump(float deltaTime, DIRECTION direction)
+void Character::jump(float deltaTime, PLAYER_DIRECTION direction)
 {
 
 }
 
-void Character::shield(float deltaTime, DIRECTION direction)
+void Character::shield(float deltaTime, PLAYER_DIRECTION direction)
 {
     std::cout <<"shield mode on display" << std::endl;
+}
+
+void Character::setHitbox(Hitbox* hitbox)
+{
+    m_hitbox = hitbox;
+}
+
+Hitbox* Character::getHitbox()
+{
+    return m_hitbox;
+}
+
+sf::Vector2f Character::getPosition()
+{
+    return m_sprite->getPosition();
 }

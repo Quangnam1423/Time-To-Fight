@@ -1,6 +1,7 @@
 #include "Map1.h"
 #include "../TileMapBase.h"
 #include "../Hitbox.h"
+#include "../player/Samurai.h"
 
 #include "../../GameManagers/ResourceManager.h"
 #include "../../GameManagers/WindowManager.h"
@@ -122,10 +123,14 @@ void Map1::init()
 		for (sf::Vector2i box : MapCollider)
 		{
 			Hitbox* tmpHitbox = new Hitbox({ 32, 32 });
-			tmpHitbox->setPosition((sf::Vector2f)box);
+			tmpHitbox->setPosition(sf::Vector2f(box.x + 16, box.y + 16));
 			tmpHitbox->setTag(TAG::MAP);
 			m_mapHitbox.push_back(tmpHitbox);
 		}
+	}
+	// character
+	{
+		m_character = new Samurai({ 500.f, 300.f });
 	}
 }
 
@@ -136,15 +141,26 @@ void Map1::update(float deltaTime)
 
 void Map1::render(sf::RenderWindow& window)
 {
+	window.setView(getView());
 	window.draw(*m_decorMap);
 	window.draw(*m_map);
+	for (Hitbox* hitbox : m_mapHitbox) 
+	{
+		hitbox->setFillColor(sf::Color(0, 0, 0, 200));
+		window.draw(*hitbox);
+	}
+	m_character->render(window);
 }
 
 void Map1::handleEvent(sf::Event& event)
 {
+	m_character->handleEvent(event);
 }
 
 sf::View Map1::getView()
 {
-	return sf::View();
+	sf::View view;
+	view.setSize(800, 600);
+	view.setCenter(m_character->getPosition());
+	return view;
 }

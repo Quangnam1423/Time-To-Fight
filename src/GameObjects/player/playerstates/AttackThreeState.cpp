@@ -54,6 +54,6 @@ void AttackThreeState::setStateAtTheEndFrame()
     m_character->setState(STATE::IDLE, m_durationTime);
 }
 
-void AttackThreeState::handlingEvent(sf::Event &event)
+void AttackThreeState::handleEvent(sf::Event &event)
 {
 }

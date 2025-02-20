@@ -36,6 +36,7 @@ WindowManager::~WindowManager()
 void WindowManager::setWindow(sf::RenderWindow* window)
 {
 	m_window = window;
+	m_defaultView = window->getDefaultView();
 	return;
 }
 
@@ -57,6 +58,8 @@ bool WindowManager::isOpen()
 
 void WindowManager::readyToDraw()
 {
+	//m_defaultView.setViewport(sf::FloatRect(0.f, 0.f, 0.5f, 1.f));
+	m_window->setView(m_defaultView);
 	m_window->clear(sf::Color::White);
 	return;
 }

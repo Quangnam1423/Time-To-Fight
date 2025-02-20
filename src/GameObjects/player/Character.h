@@ -33,6 +33,8 @@ SOFTWARE.
 #include "playerstates/IPlayerState.h"
 #include "playerstates/PlayerConfigState.h"
 
+class Hitbox;
+
 
 class Character : sf::Sprite
 {
@@ -42,22 +44,26 @@ public:
     ~Character();
 
     virtual void init();
-    virtual void handlingEvent(sf::Event& event);
+    virtual void handleEvent(sf::Event& event);
     
     void update(float deltaTime);
     void render(sf::RenderWindow& gl_window);
     void setState(STATE nextState,  float durationTime);
 
-    void movement(float deltaTime, DIRECTION direction);
-    void jump(float deltaTime, DIRECTION direction);
-    void shield(float deltaTime, DIRECTION direction);
+    void movement(float deltaTime, PLAYER_DIRECTION direction);
+    void jump(float deltaTime, PLAYER_DIRECTION direction);
+    void shield(float deltaTime, PLAYER_DIRECTION direction);
+    void setHitbox(Hitbox* hitbox);
+    Hitbox* getHitbox();
 
+    sf::Vector2f getPosition();
 protected:
 
     //
     sf::Sprite* m_sprite;
     sf::Clock m_animationClock;
     sf::Time m_deltaTime;
+    Hitbox* m_hitbox;
     IPlayerState * m_state;
     sf::Vector2f m_position;
 

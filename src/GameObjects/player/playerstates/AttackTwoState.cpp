@@ -54,6 +54,6 @@ void AttackTwoState::setStateAtTheEndFrame()
     m_character->setState(STATE::IDLE,  m_durationTime);
 }
 
-void AttackTwoState::handlingEvent(sf::Event &event)
+void AttackTwoState::handleEvent(sf::Event &event)
 {
 }
