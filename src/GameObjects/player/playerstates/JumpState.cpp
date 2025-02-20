@@ -25,9 +25,8 @@ SOFTWARE.
 #include "JumpState.h"
 #include "../Character.h"
 
-JumpState::JumpState(Character* character, const char* texturePath, 
-                sf::Vector2i frameCount, 
-                float frameTime) : IPlayerState(character, texturePath, frameCount, frameTime)
+JumpState::JumpState(Character* character, const char* texturePath, sf::Vector2i frameCount, float frameTime) : 
+                IPlayerState(character, texturePath, frameCount, frameTime)
 {
 
 }
@@ -41,17 +40,25 @@ JumpState::~JumpState()
 void JumpState::update(float deltaTime)
 {
     m_durationTime += deltaTime;
-    if (m_durationTime > m_timeFrame)
+    if (m_durationTime >= m_timeFrame)
     {
-        CalculateNextFrame();
-        m_durationTime = 0.0f;
+        if (!checkEndFrame())
+        {
+            CalculateNextFrame();
+            m_character->jump(deltaTime, PLAYER_DIRECTION::JUMP_DIRECTION);
+        }
+        else
+        {
+            setStateAtTheEndFrame();
+        }
+        resetDurationTime();
     }
 }
 
 void JumpState::setStateAtTheEndFrame()
-{
-    reset();
+{ 
     m_character->setState(STATE::IDLE, m_durationTime);
+    reset();
 }
 
 void JumpState::handleEvent(sf::Event &event)

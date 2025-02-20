@@ -29,6 +29,7 @@ SOFTWARE.
 
 
 enum STATE{ 
+    NULLST = -1,
     IDLE  = 0, 
     ATTACK_1 = 1, 
     ATTACK_2 = 2, 

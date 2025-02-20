@@ -26,6 +26,7 @@ SOFTWARE.
 #define IPLAYERSTATE_H
 
 #include <SFML/Graphics.hpp>
+#include <vector>
 #include "PlayerConfigState.h"
 
 class Character;
@@ -49,26 +50,26 @@ public:
     void reset();
     void resetDurationTime();
     void CalculateNextFrame();                              // calculate m_currentFrame
-    void CalculateFrameSize();
     bool checkEndFrame();
+
+    void setState(STATE state);
+    STATE getState();
+
+    void setFrameHitboxes(std::vector<sf::IntRect>& Hitboxes);
 
     sf::Texture& getTexture();
 
 protected:
     Character* m_character;
-
-    enum STATE m_playerState;
-
+    enum STATE m_state;
     sf::Texture m_texture;
+
+    std::vector<sf::IntRect> m_frameHitboxes;
 
     sf::Vector2i m_frameCount;
     sf::Vector2i m_currentFrame;
-    sf::Vector2f m_frameSize;
-    sf::Vector2i m_textUV;
-    sf::IntRect m_intRect;
     float m_timeFrame;
-    float m_durationTime;
-    bool m_modeStopAtTheEndFrame;   
+    float m_durationTime;  
 };
 
 

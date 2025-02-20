@@ -23,7 +23,6 @@ SOFTWARE.
 */
 
 #include "Samurai.h"
-
 #include "playerstates/WalkState.h"
 #include "playerstates/JumpState.h"
 #include "playerstates/IdleState.h"
@@ -58,6 +57,91 @@ const int const_hurt = 2;
 const int const_dead = 3;
 const int const_shield = 2;
 
+std::vector<sf::IntRect> idleHitboxes = {
+    {46, 46, 40, 82},
+    {174, 46, 40, 82},
+    {302, 46, 40, 82},
+    {430, 46, 40, 82},
+    {558, 46, 40, 82},
+    {686, 46, 40, 82}
+};
+
+std::vector<sf::IntRect> runHitboxes = {
+    {20, 48, 40, 80},
+    {148, 48, 40, 80},
+    {276, 48, 40, 80},
+    {404, 48, 40, 80},
+    {532, 48, 40, 80},
+    {660, 48, 40, 80},
+    {788, 48, 40, 80},
+    {916, 48, 40, 80}
+};
+
+std::vector<sf::IntRect> jumpHitboxes = {
+    {46, 48, 40, 80},
+    {174, 50, 40, 78},
+    {302, 52, 40, 76},
+    {430, 48, 40, 80},
+    {558, 44, 40, 84},
+    {686, 46, 40, 82},
+    {814, 48, 40, 80},
+    {942, 50, 40, 78},
+    {1070, 54, 40, 74},
+    {1198, 56, 40, 72},
+    {1326, 58, 40, 70},
+    {1454, 64, 40, 64}
+};
+
+std::vector<sf::IntRect> walkHitboxes = {
+    {36, 46, 38, 82},
+    {164, 46, 38, 82},
+    {292, 46, 38, 82},
+    {420, 46, 38, 82},
+    {548, 46, 38, 82},
+    {676, 46, 38, 82},
+    {804, 46, 38, 82},
+    {932, 46, 38, 82}
+};
+
+std::vector<sf::IntRect> attack1Hitboxes = {
+    {34, 54, 43, 74},
+    {162, 54, 42, 74},
+    {290, 54, 46, 74},
+    {418, 54, 54, 74},
+    {546, 54, 92, 74},
+    {674, 54, 44, 74}
+};
+
+std::vector<sf::IntRect> attack2Hitboxes = {
+    {28, 54, 56, 74},
+    {152, 54, 62, 74},
+    {286, 56, 100, 72},
+    {412, 56, 66, 72}
+};
+
+std::vector<sf::IntRect> attack3Hitboxes = {
+    {34, 54, 68, 74},
+    {162, 54, 92, 74},
+    {290, 54, 92, 74}
+};
+
+std::vector<sf::IntRect> hurtHitboxes = {
+    {48, 48, 40, 80},
+    {176, 50, 40, 78}
+};
+
+std::vector<sf::IntRect> deadHitboxes = {
+    {28, 52, 48, 76},
+    {152, 68, 52, 60},
+    {284, 118, 76, 10}
+};
+
+std::vector<sf::IntRect> shieldHitboxes = {
+    {34, 50, 64, 78},
+    {162, 50, 60, 78}
+};
+
+
 Samurai::Samurai(sf::Vector2f position) : Character(position)                                
 {
     init();
@@ -76,66 +160,68 @@ Samurai::~Samurai()
 void Samurai::handleEvent(sf::Event &event)
 {
     m_state->handleEvent(event);
-    // if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::D)
-    // {
-    //     //movement(deltaTime, DIRECTION::RIGHT_DIRECTION);
-    //     std::cout << "move right" << std::endl;
-        
-    // }
-    // else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-    // {
-    //     //movement(deltaTime, DIRECTION::LEFT_DIRECTION);
-    //     std::cout << "move left" << std::endl;
-    // }
-    // else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-    // {
-    //     //jump(deltaTime, DIRECTION::JUMP_DIRECTION);
-    //     std::cout << "jump" << std::endl;
-    // }
-    // else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-    // {
-    //     //movement(deltaTime, DIRECTION::SHIELD_DIRECTION);
-    //     std::cout << "shield" << std::endl;
-    // }
-    // state handle event from keyboard..
 }
 
 void Samurai::init()
 {
-    IdleState* idleState = new IdleState(this, const_idlePath, 
-                                        sf::Vector2i(const_idleFrame - 1, 0), 0.05f);
-    m_stateMap[STATE::IDLE] = idleState;
-
-    JumpState* jumpState = new JumpState(this, const_jumpPath, 
-                                        sf::Vector2i(const_jumpFrame - 1, 0) , 0.1f);
-    m_stateMap[STATE::JUMP] = jumpState;
-
-    WalkState* walkState = new WalkState(this, const_walkPath,
-                                        sf::Vector2i(const_walkFrame - 1, 0) , 0.1f);
-    m_stateMap[STATE::WALK] = walkState;
-
-    RunState* runState = new RunState(this, const_runPath, 
-                                        sf::Vector2i(const_runFrame - 1, 0), 0.05f);
-    m_stateMap[STATE::RUN] = runState;
-
-    AttackOneState* attackOneState = new AttackOneState(this, const_attack_1Path,
-                                        sf::Vector2i(const_attack_1 - 1, 0), 0.05f);
-    m_stateMap[STATE::ATTACK_1] = attackOneState;    
-
-    AttackTwoState* attackTwoState = new AttackTwoState(this, const_attack_2Path,
-                                        sf::Vector2i(const_attack_2 - 1, 0), 0.05f);
-    m_stateMap[STATE::ATTACK_2] = attackTwoState;
-
-    AttackThreeState* attackThreeState = new AttackThreeState(this, const_attack_3Path,
-                                        sf::Vector2i(const_attack_3 - 1, 0), 0.05f);
-    m_stateMap[STATE::ATTACK_3] = attackThreeState;   
-
-    ShieldState* shieldState = new ShieldState(this, const_shieldPath,
-                                        sf::Vector2i(const_shield - 1, 0), 0.05f);   
-    m_stateMap[STATE::SHIELD] = shieldState;                         
-
+    // IDLE STATE
+    {
+        IdleState* idleState = new IdleState(this, const_idlePath, { const_idleFrame - 1, 0 }, 0.05f);
+        idleState->setFrameHitboxes(idleHitboxes);
+        idleState->setState(STATE::IDLE);
+        m_stateMap[STATE::IDLE] = idleState;
+    }
+    // JUMP STATE
+    {
+        JumpState* jumpState = new JumpState(this, const_jumpPath, { const_jumpFrame - 1, 0 }, 0.1f);
+        jumpState->setFrameHitboxes(jumpHitboxes);
+        jumpState->setState(STATE::JUMP);
+        m_stateMap[STATE::JUMP] = jumpState;
+    }
+    // WALK STATE
+    {
+        WalkState* walkState = new WalkState(this, const_walkPath, { const_walkFrame - 1, 0 }, 0.1f);
+        walkState->setFrameHitboxes(walkHitboxes);
+        walkState->setState(STATE::WALK);
+        m_stateMap[STATE::WALK] = walkState;
+    }
+    // RUN STATE
+    {
+        RunState* runState = new RunState(this, const_runPath, { const_runFrame - 1, 0 }, 0.05f);
+        runState->setFrameHitboxes(runHitboxes);
+        runState->setState(STATE::RUN);
+        m_stateMap[STATE::RUN] = runState;
+    }
+    // ATTACK ONE STATE
+    {
+        AttackOneState* attackOneState = new AttackOneState(this, const_attack_1Path, { const_attack_1 - 1, 0 }, 0.05f);
+        attackOneState->setFrameHitboxes(attack1Hitboxes);
+        attackOneState->setState(STATE::ATTACK_1);
+        m_stateMap[STATE::ATTACK_1] = attackOneState;
+    }
+    // ATTACK TWO STATE
+    {
+        AttackTwoState* attackTwoState = new AttackTwoState(this, const_attack_2Path, {const_attack_2 - 1, 0}, 0.05f);
+        attackTwoState->setFrameHitboxes(attack2Hitboxes);
+        attackTwoState->setState(STATE::ATTACK_2);
+        m_stateMap[STATE::ATTACK_2] = attackTwoState;
+    } 
+    // ATTACK THREE STATE                     
+    {
+        AttackThreeState* attackThreeState = new AttackThreeState(this, const_attack_3Path,{const_attack_3 - 1, 0}, 0.05f);
+        attackThreeState->setFrameHitboxes(attack3Hitboxes);
+        attackThreeState->setState(STATE::ATTACK_3);
+        m_stateMap[STATE::ATTACK_3] = attackThreeState;
+    }
+    // SHIELD STATE
+    {
+        ShieldState* shieldState = new ShieldState(this, const_shieldPath, { const_shield - 1, 0 }, 0.05f);
+        shieldState->setFrameHitboxes(shieldHitboxes);
+        shieldState->setState(STATE::SHIELD);
+        m_stateMap[STATE::SHIELD] = shieldState;
+    }
+    // set player state
     m_state = m_stateMap[STATE::IDLE];
-    //setState(State::IDLE);
     return;
 }
 

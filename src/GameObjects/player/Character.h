@@ -55,8 +55,8 @@ public:
     void shield(float deltaTime, PLAYER_DIRECTION direction);
     void setHitbox(Hitbox* hitbox);
     Hitbox* getHitbox();
-
     sf::Vector2f getPosition();
+    sf::Vector2f getSize();
 protected:
 
     //

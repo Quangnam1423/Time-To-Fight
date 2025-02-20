@@ -69,7 +69,6 @@ void ShieldState::setStateAtTheEndFrame()
 {
     m_character->setState(STATE::IDLE, m_durationTime);
     reset();
-    resetDurationTime();
 }
 
 void ShieldState::handleEvent(sf::Event &event)

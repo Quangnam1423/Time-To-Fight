@@ -39,7 +39,7 @@ IPlayerState::IPlayerState(Character *character,
     m_texture = *DATA->getTexture(texturePath);
     m_currentFrame = sf::Vector2i(0 , 0);
     m_durationTime = 0.0f;
-    CalculateFrameSize();
+    m_state = STATE::NULLST;
 }
 
 void IPlayerState::update(float deltaTime)
@@ -58,10 +58,7 @@ void IPlayerState::handleEvent(sf::Event &event)
 
 sf::IntRect IPlayerState::getCurrentFrame()
 {
-    m_textUV.x = m_currentFrame.x * m_frameSize.x;
-    m_textUV.y = m_currentFrame.y * m_frameSize.y;
-    m_intRect = sf::IntRect(m_textUV , (sf::Vector2i)m_frameSize);
-    return m_intRect;
+    return m_frameHitboxes[m_currentFrame.x + m_currentFrame.y * (m_frameCount.x + 1)];
 }
 
 void IPlayerState::reset()
@@ -90,15 +87,6 @@ void IPlayerState::CalculateNextFrame()
     }
 }
 
-
-
-void IPlayerState::CalculateFrameSize()
-{
-    m_frameSize.x = m_texture.getSize().x / (m_frameCount.x + 1);
-    m_frameSize.y = m_texture.getSize().y / (m_frameCount.y + 1);
-    return;
-}
-
 bool IPlayerState::checkEndFrame()
 {
     if (m_currentFrame == m_frameCount)
@@ -106,8 +94,23 @@ bool IPlayerState::checkEndFrame()
     return false;
 }
 
+void IPlayerState::setState(STATE state)
+{
+    m_state = state;
+}
+
+STATE IPlayerState::getState()
+{
+    return m_state;
+}
+
+void IPlayerState::setFrameHitboxes(std::vector<sf::IntRect>& Hitboxes)
+{
+    m_frameHitboxes = Hitboxes;
+}
+
 
 sf::Texture &IPlayerState::getTexture()
 {
-    return this->m_texture;
+    return m_texture;
 }

@@ -76,13 +76,24 @@ Character::Character(sf::Vector2f position) : m_position(position)
 Character::~Character()
 {
     if (m_sprite != nullptr)
+    {
         delete m_sprite;
-
-
+        m_sprite = nullptr;
+    }
     for (auto& pair : m_stateMap)
     {
         if (pair.second != nullptr)
+        {
             delete pair.second;
+            pair.second = nullptr;
+        }
+    }
+    m_stateMap.clear();
+
+    if (m_hitbox != nullptr)
+    {
+        delete m_hitbox;
+        m_hitbox = nullptr;
     }
 }
 
@@ -95,28 +106,25 @@ void Character::update(float deltaTime)
 {
     m_state->update(deltaTime);
     m_sprite->setTextureRect(m_state->getCurrentFrame());
+    m_hitbox->setSize(getSize());
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
         return;
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
     {
         movement(deltaTime, PLAYER_DIRECTION::RIGHT_DIRECTION);
-        std::cout << "move right" << std::endl;
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
     {
         movement(deltaTime, PLAYER_DIRECTION::LEFT_DIRECTION);
-        std::cout << "move left" << std::endl;
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
     {
         jump(deltaTime, PLAYER_DIRECTION::JUMP_DIRECTION);
-        std::cout << "jump" << std::endl;
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
     {
         movement(deltaTime, PLAYER_DIRECTION::SHIELD_DIRECTION);
-        std::cout << "shield" << std::endl;
     }
 }
 
@@ -126,15 +134,14 @@ void Character::render(sf::RenderWindow &gl_window)
     if (m_onLeft)
     {
         m_sprite->setScale(-1.0f, 1.0f);
-        m_sprite->setOrigin(m_sprite->getGlobalBounds().width, 0);
-        //m_sprite->setPosition(m_position);
+        //m_sprite->setOrigin(m_sprite->getGlobalBounds().width , 0);
+        m_sprite->setOrigin(m_hitbox->getOrigin());
     }
     else{
         m_sprite->setScale(1.0f, 1.0f);
-        m_sprite->setOrigin(0, 0);
-        //m_sprite->setPosition(m_position);
+        //m_sprite->setOrigin(0, 0);
+        m_sprite->setOrigin(m_hitbox->getOrigin());
     }
-    // draw the sprite
     gl_window.draw(*m_sprite);
 
     return;
@@ -156,7 +163,6 @@ void Character::setState(STATE nextState, float durationTime)
 
 void Character::movement(float deltaTime, PLAYER_DIRECTION direction)
 {
-    std::cout << "call movement" << std::endl;
     if (direction == PLAYER_DIRECTION::LEFT_DIRECTION)
     {
         m_onLeft = true;
@@ -164,6 +170,7 @@ void Character::movement(float deltaTime, PLAYER_DIRECTION direction)
         m_position.x -= deltaTime * m_movementSpeed;
         float distance = deltaTime * m_movementSpeed;
         m_sprite->move(-distance, 0.0f);
+        m_hitbox->move(-distance, 0.0f);
     }
     else if (direction == PLAYER_DIRECTION::RIGHT_DIRECTION)
     {
@@ -172,10 +179,8 @@ void Character::movement(float deltaTime, PLAYER_DIRECTION direction)
         m_position.x += deltaTime * m_movementSpeed;
         float distance = deltaTime * m_movementSpeed;
         m_sprite->move(distance, 0.0f);
+        m_hitbox->move(distance, 0.0f);
     }
-    //m_sprite->setPosition(m_position);
-    //m_sprite.move()
-
     return;
 }
 
@@ -186,7 +191,6 @@ void Character::jump(float deltaTime, PLAYER_DIRECTION direction)
 
 void Character::shield(float deltaTime, PLAYER_DIRECTION direction)
 {
-    std::cout <<"shield mode on display" << std::endl;
 }
 
 void Character::setHitbox(Hitbox* hitbox)
@@ -202,4 +206,10 @@ Hitbox* Character::getHitbox()
 sf::Vector2f Character::getPosition()
 {
     return m_sprite->getPosition();
+}
+
+sf::Vector2f Character::getSize()
+{
+    sf::FloatRect playerBound = m_sprite->getGlobalBounds();
+    return sf::Vector2f(playerBound.width, playerBound.height);
 }

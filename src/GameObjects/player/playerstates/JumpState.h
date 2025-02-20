@@ -42,13 +42,6 @@ public:
     void update(float deltaTime) override;
     void setStateAtTheEndFrame() override;
     void handleEvent(sf::Event& event) override;
-
-    using IPlayerState::CalculateFrameSize;
-    using IPlayerState::CalculateNextFrame;
-    using IPlayerState::getCurrentFrame;
-    using IPlayerState::getTexture;
-    using IPlayerState::reset;
-    //using IPlayerState::update;
 private:
 
 };

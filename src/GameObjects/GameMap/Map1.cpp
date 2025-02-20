@@ -131,12 +131,16 @@ void Map1::init()
 	// character
 	{
 		m_character = new Samurai({ 500.f, 300.f });
+		Hitbox* playerHitbox = new Hitbox(m_character->getSize());
+		playerHitbox->setPosition(m_character->getPosition());
+		playerHitbox->setTag(TAG::PLAYER);
+		m_character->setHitbox(playerHitbox);
 	}
 }
 
 void Map1::update(float deltaTime)
 {
-	// update
+	m_character->update(deltaTime);
 }
 
 void Map1::render(sf::RenderWindow& window)
@@ -146,10 +150,12 @@ void Map1::render(sf::RenderWindow& window)
 	window.draw(*m_map);
 	for (Hitbox* hitbox : m_mapHitbox) 
 	{
-		hitbox->setFillColor(sf::Color(0, 0, 0, 200));
+		hitbox->setFillColor(sf::Color(0, 0, 0, 100));
 		window.draw(*hitbox);
 	}
 	m_character->render(window);
+	m_character->getHitbox()->setFillColor(sf::Color(0, 0, 0, 100));
+	window.draw(*m_character->getHitbox());
 }
 
 void Map1::handleEvent(sf::Event& event)
