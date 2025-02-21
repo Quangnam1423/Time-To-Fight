@@ -39,7 +39,7 @@ IPlayerState::IPlayerState(Character *character,
     m_texture = *DATA->getTexture(texturePath);
     m_currentFrame = sf::Vector2i(0 , 0);
     m_durationTime = 0.0f;
-    m_state = STATE::NULLST;
+    m_state = PLAYER_STATE::NULLST;
 }
 
 IPlayerState::~IPlayerState()
@@ -62,7 +62,7 @@ void IPlayerState::handleEvent(sf::Event &event)
 
 sf::IntRect IPlayerState::getCurrentFrame()
 {
-    return m_frameHitboxes[m_currentFrame.x + m_currentFrame.y * (m_frameCount.x + 1)];
+    return m_frameHitboxes[(long long)m_currentFrame.x + (long long)m_currentFrame.y * (long long)(m_frameCount.x + 1)];
 }
 
 void IPlayerState::reset()
@@ -91,19 +91,19 @@ void IPlayerState::CalculateNextFrame()
     }
 }
 
-bool IPlayerState::checkEndFrame()
+bool IPlayerState::checkEndFrame() const
 {
     if (m_currentFrame == m_frameCount)
         return true;
     return false;
 }
 
-void IPlayerState::setState(STATE state)
+void IPlayerState::setState(PLAYER_STATE state)
 {
     m_state = state;
 }
 
-STATE IPlayerState::getState()
+PLAYER_STATE IPlayerState::getState() const
 {
     return m_state;
 }

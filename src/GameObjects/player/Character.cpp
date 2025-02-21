@@ -35,9 +35,6 @@ SOFTWARE.
 #include "playerstates/AttackThreeState.h"
 #include "../Hitbox.h"
 
-// #include "../logics/Physics.h"
-// #include "../logics/Collision.h"
-
 #include <iostream>
 
 
@@ -45,14 +42,19 @@ SOFTWARE.
 Character::Character(sf::Vector2f position) : m_position(position)
 
 {
+    m_sprite = nullptr;
+    m_hitbox = nullptr;
+    m_state = nullptr;
+
     m_elapsedTime = 0.0f;
     m_durationTime = 0.0f;
 
-
+    
     m_onLeft = false;
     m_onRight = true;
     m_deadMode = false;
 
+    m_agility = 0.f;
     m_healthPoint = 100.0f;
     m_manaPoint = 20.0f;
     m_strength = 5.0f;
@@ -157,7 +159,7 @@ void Character::handleEvent(sf::Event &event)
 {
 }
 
-void Character::setState(STATE nextState, float durationTime)
+void Character::setState(PLAYER_STATE nextState, float durationTime)
 {
     m_state = m_stateMap[nextState];
     m_sprite->setTexture(m_state->getTexture());

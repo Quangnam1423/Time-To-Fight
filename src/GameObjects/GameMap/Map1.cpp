@@ -1,4 +1,6 @@
 #include "Map1.h"
+
+#include "../GameLogic/PhysicManager.h"
 #include "../TileMapBase.h"
 #include "../Hitbox.h"
 #include "../player/Samurai.h"
@@ -9,6 +11,7 @@
 
 Map1::Map1()
 {
+	m_physicControll = nullptr; 
 }
 
 Map1::~Map1()
@@ -46,6 +49,12 @@ Map1::~Map1()
 		}
 	}
 	m_mapHitbox.clear();
+
+	if (m_physicControll != nullptr)
+	{
+		delete m_physicControll;
+		m_physicControll = nullptr;
+	}
 }
 
 void Map1::init()

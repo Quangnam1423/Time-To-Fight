@@ -34,7 +34,6 @@ AttackThreeState::AttackThreeState(Character* character, const char* texturePath
 
 AttackThreeState::~AttackThreeState()
 {
-    IPlayerState::~IPlayerState();
 }
 
 
@@ -51,7 +50,7 @@ void AttackThreeState::update(float deltaTime)
 void AttackThreeState::setStateAtTheEndFrame()
 {
     reset();
-    m_character->setState(STATE::IDLE, m_durationTime);
+    m_character->setState(PLAYER_STATE::IDLE, m_durationTime);
 }
 
 void AttackThreeState::handleEvent(sf::Event &event)

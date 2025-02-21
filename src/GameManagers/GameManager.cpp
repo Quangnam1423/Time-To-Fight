@@ -133,5 +133,5 @@ bool GameManager::hasState()
 
 int GameManager::getSize()
 {
-	return m_gameStateStack.size();
+	return (int)m_gameStateStack.size();
 }

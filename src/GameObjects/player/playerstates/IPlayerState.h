@@ -27,7 +27,7 @@ SOFTWARE.
 
 #include <SFML/Graphics.hpp>
 #include <vector>
-#include "PlayerConfigState.h"
+#include "../../GameDefinition.h"
 
 class Character;
 
@@ -50,10 +50,10 @@ public:
     void reset();
     void resetDurationTime();
     void CalculateNextFrame();                              // calculate m_currentFrame
-    bool checkEndFrame();
+    bool checkEndFrame() const;
 
-    void setState(STATE state);
-    STATE getState();
+    void setState(PLAYER_STATE state);
+    PLAYER_STATE getState() const;
 
     void setFrameHitboxes(std::vector<sf::IntRect>& Hitboxes);
 
@@ -61,7 +61,7 @@ public:
 
 protected:
     Character* m_character;
-    enum STATE m_state;
+    enum PLAYER_STATE m_state;
     sf::Texture m_texture;
 
     std::vector<sf::IntRect> m_frameHitboxes;

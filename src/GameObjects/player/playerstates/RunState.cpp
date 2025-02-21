@@ -62,7 +62,7 @@ void RunState::update(float deltaTime)
 
 void RunState::setStateAtTheEndFrame()
 {
-    m_character->setState(STATE::IDLE, m_durationTime);
+    m_character->setState(PLAYER_STATE::IDLE, m_durationTime);
     reset();
     resetDurationTime();
 }

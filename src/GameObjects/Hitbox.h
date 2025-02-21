@@ -2,24 +2,7 @@
 #define HITBOX_H
 
 #include <SFML/Graphics.hpp>
-
-enum class TAG {
-	PLAYER,
-	MAP,
-
-};
-
-//enum class direction
-//{
-//	dnull,
-//	right,
-//	above,
-//	below,
-//	right,
-//	left,
-//	inside,
-//	goin
-//};
+#include "GameDefinition.h"
 
 class Hitbox : public sf::RectangleShape
 {
@@ -29,14 +12,11 @@ public:
 
 	void init(sf::Vector2f velocity);
 
-	sf::Vector2f getVelocity();
+	sf::Vector2f getVelocity() const;
 	void setVelocity(sf::Vector2f velocity);
 
-	TAG getTag();
+	TAG getTag() const;
 	void setTag(TAG tag);
-
-	//DIRECTION getDirection();
-	//void setDirection(DIRECTION direction);
 
 	sf::Vector2f getHaftSize();
 private:

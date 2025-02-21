@@ -169,60 +169,60 @@ void Samurai::init()
     {
         IdleState* idleState = new IdleState(this, const_idlePath, { const_idleFrame - 1, 0 }, 0.05f);
         idleState->setFrameHitboxes(idleHitboxes);
-        idleState->setState(STATE::IDLE);
-        m_stateMap[STATE::IDLE] = idleState;
+        idleState->setState(PLAYER_STATE::IDLE);
+        m_stateMap[PLAYER_STATE::IDLE] = idleState;
     }
     // JUMP STATE
     {
         JumpState* jumpState = new JumpState(this, const_jumpPath, { const_jumpFrame - 1, 0 }, 0.05f);
         jumpState->setFrameHitboxes(jumpHitboxes);
-        jumpState->setState(STATE::JUMP);
-        m_stateMap[STATE::JUMP] = jumpState;
+        jumpState->setState(PLAYER_STATE::JUMP);
+        m_stateMap[PLAYER_STATE::JUMP] = jumpState;
     }
     // WALK STATE
     {
         WalkState* walkState = new WalkState(this, const_walkPath, { const_walkFrame - 1, 0 }, 0.1f);
         walkState->setFrameHitboxes(walkHitboxes);
-        walkState->setState(STATE::WALK);
-        m_stateMap[STATE::WALK] = walkState;
+        walkState->setState(PLAYER_STATE::WALK);
+        m_stateMap[PLAYER_STATE::WALK] = walkState;
     }
     // RUN STATE
     {
         RunState* runState = new RunState(this, const_runPath, { const_runFrame - 1, 0 }, 0.05f);
         runState->setFrameHitboxes(runHitboxes);
-        runState->setState(STATE::RUN);
-        m_stateMap[STATE::RUN] = runState;
+        runState->setState(PLAYER_STATE::RUN);
+        m_stateMap[PLAYER_STATE::RUN] = runState;
     }
     // ATTACK ONE STATE
     {
         AttackOneState* attackOneState = new AttackOneState(this, const_attack_1Path, { const_attack_1 - 1, 0 }, 0.05f);
         attackOneState->setFrameHitboxes(attack1Hitboxes);
-        attackOneState->setState(STATE::ATTACK_1);
-        m_stateMap[STATE::ATTACK_1] = attackOneState;
+        attackOneState->setState(PLAYER_STATE::ATTACK_1);
+        m_stateMap[PLAYER_STATE::ATTACK_1] = attackOneState;
     }
     // ATTACK TWO STATE
     {
         AttackTwoState* attackTwoState = new AttackTwoState(this, const_attack_2Path, {const_attack_2 - 1, 0}, 0.05f);
         attackTwoState->setFrameHitboxes(attack2Hitboxes);
-        attackTwoState->setState(STATE::ATTACK_2);
-        m_stateMap[STATE::ATTACK_2] = attackTwoState;
+        attackTwoState->setState(PLAYER_STATE::ATTACK_2);
+        m_stateMap[PLAYER_STATE::ATTACK_2] = attackTwoState;
     } 
     // ATTACK THREE STATE                     
     {
         AttackThreeState* attackThreeState = new AttackThreeState(this, const_attack_3Path,{const_attack_3 - 1, 0}, 0.05f);
         attackThreeState->setFrameHitboxes(attack3Hitboxes);
-        attackThreeState->setState(STATE::ATTACK_3);
-        m_stateMap[STATE::ATTACK_3] = attackThreeState;
+        attackThreeState->setState(PLAYER_STATE::ATTACK_3);
+        m_stateMap[PLAYER_STATE::ATTACK_3] = attackThreeState;
     }
     // SHIELD STATE
     {
         ShieldState* shieldState = new ShieldState(this, const_shieldPath, { const_shield - 1, 0 }, 0.05f);
         shieldState->setFrameHitboxes(shieldHitboxes);
-        shieldState->setState(STATE::SHIELD);
-        m_stateMap[STATE::SHIELD] = shieldState;
+        shieldState->setState(PLAYER_STATE::SHIELD);
+        m_stateMap[PLAYER_STATE::SHIELD] = shieldState;
     }
     // set player state
-    m_state = m_stateMap[STATE::IDLE];
+    m_state = m_stateMap[PLAYER_STATE::IDLE];
     return;
 }
 

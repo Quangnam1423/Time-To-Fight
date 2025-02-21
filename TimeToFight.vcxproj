@@ -149,6 +149,7 @@
     <None Include="sfml-window-d-2.dll" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\GameObjects\GameLogic\PhysicManager.cpp" />
     <ClCompile Include="src\GameManagers\CameraManager.cpp" />
     <ClCompile Include="src\GameManagers\GAMESTATE\GameOnState.cpp" />
     <ClCompile Include="src\GameObjects\GameMap\Map1.cpp" />
@@ -184,6 +185,7 @@
     <ClCompile Include="src\GameObjects\TileMapBase.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\GameObjects\GameLogic\PhysicManager.h" />
     <ClInclude Include="src\GameManagers\CameraManager.h" />
     <ClInclude Include="src\GameManagers\GAMESTATE\GameOnState.h" />
     <ClInclude Include="src\GameObjects\GameMap\Map1.h" />
@@ -214,7 +216,6 @@
     <ClInclude Include="src\GameObjects\player\playerstates\IdleState.h" />
     <ClInclude Include="src\GameObjects\player\playerstates\IPlayerState.h" />
     <ClInclude Include="src\GameObjects\player\playerstates\JumpState.h" />
-    <ClInclude Include="src\GameObjects\player\playerstates\PlayerConfigState.h" />
     <ClInclude Include="src\GameObjects\player\playerstates\RunState.h" />
     <ClInclude Include="src\GameObjects\player\playerstates\ShieldState.h" />
     <ClInclude Include="src\GameObjects\player\playerstates\WalkState.h" />

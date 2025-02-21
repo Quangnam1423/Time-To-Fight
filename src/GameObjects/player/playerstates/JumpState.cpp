@@ -33,7 +33,6 @@ JumpState::JumpState(Character* character, const char* texturePath, sf::Vector2i
 
 JumpState::~JumpState()
 {
-    IPlayerState::~IPlayerState();
 }
 
 
@@ -57,7 +56,7 @@ void JumpState::update(float deltaTime)
 
 void JumpState::setStateAtTheEndFrame()
 { 
-    m_character->setState(STATE::IDLE, m_durationTime);
+    m_character->setState(PLAYER_STATE::IDLE, m_durationTime);
     reset();
 }
 

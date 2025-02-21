@@ -65,7 +65,7 @@ void WalkState::update(float deltaTime)
 
 void WalkState::setStateAtTheEndFrame()
 {
-    m_character->setState(STATE::IDLE, m_durationTime);
+    m_character->setState(PLAYER_STATE::IDLE, m_durationTime);
     reset();
     resetDurationTime();
 }
@@ -89,13 +89,13 @@ void WalkState::handleEvent(sf::Event &event)
     {
         if (event.key.code == sf::Keyboard::W)
         {
-            m_character->setState(STATE::JUMP, m_durationTime);
+            m_character->setState(PLAYER_STATE::JUMP, m_durationTime);
             reset();
             resetDurationTime();
         }
         else if (event.key.code == sf::Keyboard::S)
         {
-            m_character->setState(STATE::SHIELD, m_durationTime);
+            m_character->setState(PLAYER_STATE::SHIELD, m_durationTime);
             reset();
             resetDurationTime();
         }

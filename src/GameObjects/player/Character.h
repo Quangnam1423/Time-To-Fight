@@ -31,7 +31,7 @@ SOFTWARE.
 #include <unordered_map>
 
 #include "playerstates/IPlayerState.h"
-#include "playerstates/PlayerConfigState.h"
+#include "../GameDefinition.h"
 
 class Hitbox;
 
@@ -48,7 +48,7 @@ public:
     
     void update(float deltaTime);
     void render(sf::RenderWindow& gl_window);
-    void setState(STATE nextState,  float durationTime);
+    void setState(PLAYER_STATE nextState,  float durationTime);
 
     void movement(float deltaTime, PLAYER_DIRECTION direction);
     void jump(float deltaTime, PLAYER_DIRECTION direction);
@@ -68,7 +68,7 @@ protected:
     sf::Vector2f m_position;
 
     // get state for 
-    std::unordered_map<STATE, IPlayerState* , EnumClassHash> m_stateMap;
+    std::unordered_map<PLAYER_STATE, IPlayerState* , EnumClassHash> m_stateMap;
 
     float m_elapsedTime;
     float m_durationTime;

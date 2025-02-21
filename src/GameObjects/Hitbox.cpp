@@ -7,6 +7,7 @@ Hitbox::Hitbox(sf::Vector2f size) : sf::RectangleShape(size)
 
 	m_velocity = sf::Vector2f(0.f, 0.f);
 	m_isAlive = true;
+	m_tag = TAG::NULLOB;
 }
 
 Hitbox::~Hitbox()
@@ -18,7 +19,7 @@ void Hitbox::init(sf::Vector2f velocity)
 	m_velocity = velocity;
 }
 
-sf::Vector2f Hitbox::getVelocity()
+sf::Vector2f Hitbox::getVelocity() const
 {
 	return m_velocity;
 }
@@ -28,7 +29,7 @@ void Hitbox::setVelocity(sf::Vector2f velocity)
 	m_velocity = velocity;
 }
 
-TAG Hitbox::getTag()
+TAG Hitbox::getTag() const
 {
 	return m_tag;
 }
@@ -37,16 +38,6 @@ void Hitbox::setTag(TAG tag)
 {
 	m_tag = tag;
 }
-
-//DIRECTION Hitbox::getDirection()
-//{
-//	return DIRECTION();
-//}
-//
-//void Hitbox::setDirection(DIRECTION direction)
-//{
-//	m_direction = direction;
-//}
 
 sf::Vector2f Hitbox::getHaftSize()
 {

@@ -67,7 +67,7 @@ void ShieldState::update(float deltaTime)
 
 void ShieldState::setStateAtTheEndFrame()
 {
-    m_character->setState(STATE::IDLE, m_durationTime);
+    m_character->setState(PLAYER_STATE::IDLE, m_durationTime);
     reset();
 }
 

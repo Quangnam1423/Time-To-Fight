@@ -20,7 +20,6 @@ IdleState::IdleState(Character* character,
 
 IdleState::~IdleState()
 {
-    IPlayerState::~IPlayerState();
 }
 
 
@@ -44,7 +43,7 @@ void IdleState::update(float deltaTime)
 
 void IdleState::setStateAtTheEndFrame()
 {
-    m_character->setState(STATE::IDLE, m_durationTime);
+    m_character->setState(PLAYER_STATE::IDLE, m_durationTime);
     reset();
     resetDurationTime();
 }
@@ -53,25 +52,25 @@ void IdleState::handleEvent(sf::Event &event)
 {
     if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::D)
     {
-        m_character->setState(STATE::WALK, m_durationTime);
+        m_character->setState(PLAYER_STATE::WALK, m_durationTime);
         reset();
         resetDurationTime();
     }
     else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::A)
     {
-        m_character->setState(STATE::WALK, m_durationTime);
+        m_character->setState(PLAYER_STATE::WALK, m_durationTime);
         reset();
         resetDurationTime();
     }
     else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::W)
     {
-        m_character->setState(STATE::JUMP, m_durationTime);
+        m_character->setState(PLAYER_STATE::JUMP, m_durationTime);
         reset();
         resetDurationTime();
     }
     else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::S)
     {
-        m_character->setState(STATE::SHIELD, m_durationTime);
+        m_character->setState(PLAYER_STATE::SHIELD, m_durationTime);
         reset();
         resetDurationTime();
     }

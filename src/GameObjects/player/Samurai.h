@@ -29,10 +29,6 @@ SOFTWARE.
 
 #include "Character.h"
 
-// #include "../logics/Collision.h"
-// #include "../logics/Physics.h"
-//#include "PlayerSkill.h"
-
 class Samurai : public Character
 {
 public:
