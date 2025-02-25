@@ -44,7 +44,6 @@ void JumpState::update(float deltaTime)
         if (!checkEndFrame())
         {
             CalculateNextFrame();
-            m_character->jump(deltaTime, PLAYER_DIRECTION::JUMP_DIRECTION);
         }
         else
         {

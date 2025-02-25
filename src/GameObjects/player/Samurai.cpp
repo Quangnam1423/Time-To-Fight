@@ -142,11 +142,11 @@ std::vector<sf::IntRect> shieldHitboxes = {
 };
 
 
-Samurai::Samurai(sf::Vector2f position) : Character(position)                                
+Samurai::Samurai(sf::Vector2f position) : Character()                                
 {
     init();
     m_sprite = new sf::Sprite(m_state->getTexture());
-    m_sprite->setPosition(m_position);
+    m_sprite->setPosition(position);
     m_sprite->setTextureRect(m_state->getCurrentFrame());
     m_sprite->setScale(1.f, 1.f);
     sf::FloatRect playerBound = m_sprite->getGlobalBounds();
@@ -161,6 +161,22 @@ Samurai::~Samurai()
 void Samurai::handleEvent(sf::Event &event)
 {
     m_state->handleEvent(event);
+    if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::D)
+    {
+        m_sprite->setScale(1.0f, 1.0f);
+        setDirection(DIRECTION::RIGHT);
+    }
+    else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::A)
+    {
+        m_sprite->setScale(-1.0f, 1.0f);
+    }
+    else if (event.type == sf::Event::KeyPressed && 
+        event.key.code == sf::Keyboard::W &&
+        m_isOnPlatform == true)
+    {
+        m_velocity.y = -200.f;
+        m_isOnPlatform = false;
+    }
 }
 
 void Samurai::init()

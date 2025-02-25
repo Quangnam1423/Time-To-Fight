@@ -25,24 +25,21 @@ SOFTWARE.
 #ifndef GAMEDEFINITION_H
 #define GAMEDEFINITION_H
 
+#include <SFML/Graphics.hpp>
+
 enum class TAG {
     PLAYER,
     MAP,
     NULLOB
 };
 
-enum class DIRECTTION
+enum class DIRECTION
 {
     RIGHT,
     LEFT,
     UP,
-    DOWN
-};
-
-struct Status
-{
-    bool aLive;
-    bool onPlatform;
+    DOWN,
+    DNULL
 };
 
 enum PLAYER_STATE {
@@ -65,6 +62,11 @@ enum PLAYER_DIRECTION
     RIGHT_DIRECTION,
     SHIELD_DIRECTION,
     JUMP_DIRECTION
+};
+
+struct TileInformation {
+    sf::Vector2i box;
+    DIRECTION direction;
 };
 
 struct EnumClassHash {

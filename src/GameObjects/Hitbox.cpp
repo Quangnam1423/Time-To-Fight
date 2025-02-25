@@ -39,6 +39,16 @@ void Hitbox::setTag(TAG tag)
 	m_tag = tag;
 }
 
+void Hitbox::setDirection(DIRECTION direction)
+{
+	m_direction = direction;
+}
+
+DIRECTION Hitbox::getDirection() const
+{
+	return m_direction;
+}
+
 sf::Vector2f Hitbox::getHaftSize()
 {
 	return (sf::Vector2f)(this->getSize() / 2.f);

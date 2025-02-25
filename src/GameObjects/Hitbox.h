@@ -18,11 +18,15 @@ public:
 	TAG getTag() const;
 	void setTag(TAG tag);
 
+	void setDirection(DIRECTION direction);
+	DIRECTION getDirection() const;
+
 	sf::Vector2f getHaftSize();
 private:
 	sf::Vector2f m_velocity;
 	bool m_isAlive;
 	enum TAG m_tag;
+	enum DIRECTION m_direction;
 };
 
 #endif

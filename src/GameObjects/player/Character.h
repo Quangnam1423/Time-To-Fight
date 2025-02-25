@@ -40,7 +40,7 @@ class Character : sf::Sprite
 {
 public:
     
-    Character(sf::Vector2f position);
+    Character();
     ~Character();
 
     virtual void init();
@@ -50,56 +50,35 @@ public:
     void render(sf::RenderWindow& gl_window);
     void setState(PLAYER_STATE nextState,  float durationTime);
 
-    void movement(float deltaTime, PLAYER_DIRECTION direction);
-    void jump(float deltaTime, PLAYER_DIRECTION direction);
-    void shield(float deltaTime, PLAYER_DIRECTION direction);
+    void move(float x, float y);
+    void setVelocity(sf::Vector2f velocity);
+    sf::Vector2f getVelocity() const;
+
     void setHitbox(Hitbox* hitbox);
     Hitbox* getHitbox();
+
+    void setDirection(DIRECTION direction);
+    DIRECTION getDirection() const;
+    void isOnPlatform(bool value);
+
     sf::Vector2f getPosition();
     sf::Vector2f getSize();
 protected:
-
-    //
     sf::Sprite* m_sprite;
-    sf::Clock m_animationClock;
-    sf::Time m_deltaTime;
     Hitbox* m_hitbox;
     IPlayerState * m_state;
-    sf::Vector2f m_position;
-
-    // get state for 
-    std::unordered_map<PLAYER_STATE, IPlayerState* , EnumClassHash> m_stateMap;
 
     float m_elapsedTime;
     float m_durationTime;
 
     // character attribute
-    bool m_onLeft;
-    bool m_onRight;
+    bool m_isOnPlatform;
     bool m_deadMode;
+    DIRECTION m_direction;
 
-    //core attributes
-    float m_healthPoint;
-    float m_manaPoint;
-    float m_strength;
-    float m_dexterity;
-    float m_agility;
-    float m_constitution;
-
-    // combat stats
-    float m_movementSpeed;
-    float m_healing;
-    float m_physicalDamage;
-    float m_magicDamage;
-    float m_armor;
-    float m_magicResistance;
-    float m_evasion;
-    float m_block;
-
-    //recovery and Resource
-    float m_healthRegen;
-    float m_manaRegen;
-    float m_energyRegen;
+    sf::Vector2f m_velocity;
+    
+    std::unordered_map<PLAYER_STATE, IPlayerState*, EnumClassHash> m_stateMap;
 };
 
 #endif

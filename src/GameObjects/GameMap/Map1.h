@@ -1,6 +1,7 @@
 #ifndef MAP1_H
 #define MAP1_H
 #include "MapBase.h"
+#include "../GameDefinition.h"
 
 class PhysicManager;
 

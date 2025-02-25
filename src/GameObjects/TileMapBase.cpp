@@ -1,8 +1,8 @@
 #include "TileMapBase.h"
 
-std::list<sf::Vector2i> TileMapBase::getMapCollider(sf::Vector2i baseSize, std::vector<int> tile, int width, int height)
+std::list<TileInformation> TileMapBase::getMapCollider(sf::Vector2i baseSize, std::vector<int> tile, int width, int height)
 {
-	std::list<sf::Vector2i> mapCollider;
+	std::list<TileInformation> mapCollider;
 	for (int i = 0; i < width; i++)
 	{
 		for (int j = 0; j < height; j++)
@@ -14,13 +14,16 @@ std::list<sf::Vector2i> TileMapBase::getMapCollider(sf::Vector2i baseSize, std::
 			{
 				int x = i;
 				int y = j - 1;
+				if (y < 0)
+				{
+					mapCollider.push_back({ {i * baseSize.x, j * baseSize.y}, DIRECTION::DOWN });
+				}
 				if (x >= 0 && x < width && y >= 0 && y < height)
 				{
 					int aboveTile = tile[x + y * width];
 					if (aboveTile == -1)
 					{
-						mapCollider.push_back(sf::Vector2i(i * baseSize.x, j * baseSize.y));
-						continue;
+						mapCollider.push_back({ {i * baseSize.x, j * baseSize.y}, DIRECTION::DOWN });
 					}
 				}
 			}
@@ -28,13 +31,16 @@ std::list<sf::Vector2i> TileMapBase::getMapCollider(sf::Vector2i baseSize, std::
 			{
 				int x = i + 1;
 				int y = j;
+				if (x >= width)
+				{
+					mapCollider.push_back({ {i * baseSize.x, j * baseSize.y}, DIRECTION::LEFT });
+				}
 				if (x >= 0 && x < width && y >= 0 && y < height)
 				{
 					int rightTile = tile[x + y * width];
 					if (rightTile == -1)
 					{
-						mapCollider.push_back(sf::Vector2i(i * baseSize.x, j * baseSize.y));
-						continue;
+						mapCollider.push_back({ {i * baseSize.x, j * baseSize.y}, DIRECTION::LEFT });
 					}
 				}
 			}
@@ -42,13 +48,16 @@ std::list<sf::Vector2i> TileMapBase::getMapCollider(sf::Vector2i baseSize, std::
 			{
 				int x = i;
 				int y = j + 1;
+				if (y >= height)
+				{
+					mapCollider.push_back({ {i * baseSize.x, j * baseSize.y}, DIRECTION::UP });
+				}
 				if (x >= 0 && x < width && y >= 0 && y < height)
 				{
 					int belowTile = tile[x + y * width];
 					if (belowTile == -1)
 					{
-						mapCollider.push_back(sf::Vector2i(i * baseSize.x, j * baseSize.y));
-						continue;
+						mapCollider.push_back({ {i * baseSize.x, j * baseSize.y}, DIRECTION::UP });
 					}
 				}
 			}
@@ -56,13 +65,16 @@ std::list<sf::Vector2i> TileMapBase::getMapCollider(sf::Vector2i baseSize, std::
 			{
 				int x = i - 1;
 				int y = j;
+				if (x < 0)
+				{
+					mapCollider.push_back({ {i * baseSize.x, j * baseSize.y}, DIRECTION::RIGHT });
+				}
 				if (x >= 0 && x < width && y >= 0 && y < height)
 				{
 					int leftTile = tile[x + y * width];
 					if (leftTile == -1)
 					{
-						mapCollider.push_back(sf::Vector2i(i * baseSize.x, j * baseSize.y));
-						continue;
+						mapCollider.push_back({ {i * baseSize.x, j * baseSize.y}, DIRECTION::RIGHT });
 					}
 				}
 			}// end for height

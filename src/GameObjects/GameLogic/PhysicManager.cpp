@@ -52,3 +52,59 @@ bool PhysicManager::checkCollision()
     }
     return false;
 }
+
+void PhysicManager::gravityPerform(float deltaTime)
+{
+    sf::Vector2f velocity = m_character->getVelocity();
+    m_character->setVelocity({ velocity.x,velocity.y  + _GRA * deltaTime});
+}
+
+void PhysicManager::handleCollision()
+{
+    Hitbox* playerHitbox = m_character->getHitbox();
+    for (Hitbox* box : m_mapCollider)
+    {
+        if (box->getGlobalBounds().intersects(playerHitbox->getGlobalBounds()))
+        {
+            sf::Vector2f playerPosition = playerHitbox->getPosition();
+            sf::Vector2f boxPosition = box->getPosition();
+
+            float distanceY = playerPosition.y - boxPosition.y;
+            float distanceX = playerPosition.x - boxPosition.x;
+
+            float correctX = playerHitbox->getHaftSize().x + box->getHaftSize().x;
+            float correctY = playerHitbox->getHaftSize().y + box->getHaftSize().y;
+
+            float intersectX = correctX - abs(distanceX);
+            float intersextY = correctY - abs(distanceY);
+
+            float push = std::min(intersectX, intersextY);
+
+            if (push == intersectX)
+            {
+                if (distanceX > 0)
+                {
+                    m_character->move(push, 0.f);
+                }
+                else
+                {
+                    m_character->move(-push, 0.f);
+                }
+                m_character->setVelocity({ 0.f, m_character->getVelocity().y});
+            }
+            else
+            {
+                if (distanceY > 0)
+                {
+                    m_character->move(0.f, push);
+                }
+                else
+                {
+                    m_character->move(0.f, -push);
+                    m_character->isOnPlatform(true);
+                }
+                m_character->setVelocity({ m_character->getVelocity().x, 0.f });
+            }
+        }
+    }
+}

@@ -161,28 +161,40 @@ void Map1::init()
 
 	// collider Map
 	{
-		std::list<sf::Vector2i> MapCollider = m_map->getMapCollider({ 32, 32 }, m_mapMatrix, 50, 40);
-		for (sf::Vector2i box : MapCollider)
+		std::list<TileInformation> MapCollider = m_map->getMapCollider({ 32, 32 }, m_mapMatrix, 50, 40);
+		for (TileInformation tile : MapCollider)
 		{
 			Hitbox* tmpHitbox = new Hitbox({ 32, 32 });
-			tmpHitbox->setPosition(sf::Vector2f(box.x + 16, box.y + 16));
+			tmpHitbox->setOrigin({ 16, 16 });
+			tmpHitbox->setPosition(sf::Vector2f(tile.box.x + 16, tile.box.y + 16));
 			tmpHitbox->setTag(TAG::MAP);
+			tmpHitbox->setDirection(tile.direction);
 			m_mapHitbox.push_back(tmpHitbox);
 		}
 	}
 	// character
 	{
-		m_character = new Samurai({ 500.f, 300.f });
+		m_character = new Samurai({ 500.f, 1100.f });
 		Hitbox* playerHitbox = new Hitbox(m_character->getSize());
 		playerHitbox->setPosition(m_character->getPosition());
 		playerHitbox->setTag(TAG::PLAYER);
 		m_character->setHitbox(playerHitbox);
 	}
+
+	// physic manager init
+	{
+		m_physicControll = new PhysicManager();
+		m_physicControll->setMapCollider(m_mapHitbox);
+		m_physicControll->setCharacter(m_character);
+		m_physicControll->setGravity(_GRA);
+	}
 }
 
 void Map1::update(float deltaTime)
 {
+	m_physicControll->gravityPerform(deltaTime);
 	m_character->update(deltaTime);
+	m_physicControll->handleCollision();
 }
 
 void Map1::render(sf::RenderWindow& window)

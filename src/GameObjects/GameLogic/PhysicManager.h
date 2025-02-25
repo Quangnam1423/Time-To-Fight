@@ -4,7 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include <list>
 
-#define _GRA
+#define _GRA 1000.f
 
 class Hitbox;
 class Character;
@@ -19,6 +19,8 @@ public:
 	void setMapCollider(std::list<Hitbox*>& mapCollider);
 	void setCharacter(Character* character);
 	bool checkCollision();
+	void gravityPerform(float deltaTime);
+	void handleCollision();
 private:
 	float m_gravity;
 	Character* m_character;

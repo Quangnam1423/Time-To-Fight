@@ -39,7 +39,7 @@ SOFTWARE.
 
 
 
-Character::Character(sf::Vector2f position) : m_position(position)
+Character::Character()
 
 {
     m_sprite = nullptr;
@@ -50,29 +50,10 @@ Character::Character(sf::Vector2f position) : m_position(position)
     m_durationTime = 0.0f;
 
     
-    m_onLeft = false;
-    m_onRight = true;
     m_deadMode = false;
-
-    m_agility = 0.f;
-    m_healthPoint = 100.0f;
-    m_manaPoint = 20.0f;
-    m_strength = 5.0f;
-    m_dexterity = 1.0f;
-    m_constitution = 1.0f;
-
-    m_movementSpeed = 200.0f;
-    m_healing = 2.5f;
-    m_physicalDamage = 2.5f;
-    m_magicDamage = 2.0f;
-    m_armor = 1.0f;
-    m_magicResistance = 0.5f;
-    m_evasion = 0.1f;
-    m_block = 2.0f;
-
-    m_healthRegen = 100.0f;
-    m_manaRegen = 100.0f;
-    m_energyRegen = 50.0f;
+    m_isOnPlatform = false;
+    m_velocity = { 0.f, 0.f };
+    m_direction = DIRECTION::DOWN;
 }
 
 Character::~Character()
@@ -106,7 +87,10 @@ void Character::init()
 
 void Character::update(float deltaTime)
 {
-    m_state->update(deltaTime);
+    // update player state
+    {
+        m_state->update(deltaTime);
+    }
 
     // update sprite rect and hitbox of player
     {
@@ -115,37 +99,39 @@ void Character::update(float deltaTime)
         m_sprite->setOrigin(playerBound.width / 2, playerBound.height / 2);
         m_hitbox->setSize(getSize());
         m_hitbox->setOrigin(m_hitbox->getHaftSize());
-        if (m_onLeft)
+    }
+
+    // update velocity
+    {
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
         {
-            m_sprite->setScale(-1.0f, 1.0f);
+            m_velocity.x = 200.f;
         }
-        else 
+        
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
         {
-            m_sprite->setScale(1.0f, 1.0f);
+            m_velocity.x = -200.f;
+        }
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+        {
+            m_velocity.y = -200.f;
+        }
+
+        if (!sf::Keyboard::isKeyPressed(sf::Keyboard::D) &&
+            !sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+        {
+            m_velocity.x = 0.f;
+            setDirection(DIRECTION::DNULL);
         }
     }
 
-    // Update movement
+    // move for character
     {
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+        if (m_state->getState() == PLAYER_STATE::SHIELD)
             return;
-
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-        {
-            movement(deltaTime, PLAYER_DIRECTION::RIGHT_DIRECTION);
-        }
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-        {
-            movement(deltaTime, PLAYER_DIRECTION::LEFT_DIRECTION);
-        }
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-        {
-            jump(deltaTime, PLAYER_DIRECTION::JUMP_DIRECTION);
-        }
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-        {
-            movement(deltaTime, PLAYER_DIRECTION::SHIELD_DIRECTION);
-        }
+        move(deltaTime * m_velocity.x, 0.f);
+        move(0.f, deltaTime * m_velocity.y);
     }
 }
 
@@ -157,6 +143,7 @@ void Character::render(sf::RenderWindow &gl_window)
 
 void Character::handleEvent(sf::Event &event)
 {
+
 }
 
 void Character::setState(PLAYER_STATE nextState, float durationTime)
@@ -168,37 +155,20 @@ void Character::setState(PLAYER_STATE nextState, float durationTime)
     return;
 }
 
-void Character::movement(float deltaTime, PLAYER_DIRECTION direction)
+void Character::move(float x, float y)
 {
-    if (direction == PLAYER_DIRECTION::LEFT_DIRECTION)
-    {
-        m_onLeft = true;
-        m_onRight = false;
-        m_position.x -= deltaTime * m_movementSpeed;
-        float distance = deltaTime * m_movementSpeed;
-        m_sprite->move(-distance, 0.0f);
-        m_hitbox->move(-distance, 0.0f);
-    }
-    else if (direction == PLAYER_DIRECTION::RIGHT_DIRECTION)
-    {
-        m_onLeft = false;
-        m_onRight = true;
-        m_position.x += deltaTime * m_movementSpeed;
-        float distance = deltaTime * m_movementSpeed;
-        m_sprite->move(distance, 0.0f);
-        m_hitbox->move(distance, 0.0f);
-    }
-    return;
+    m_sprite->move(x, y);
+    m_hitbox->move(x, y);
 }
 
-void Character::jump(float deltaTime, PLAYER_DIRECTION direction)
+void Character::setVelocity(sf::Vector2f velocity)
 {
-    m_sprite->move(0, - m_movementSpeed * deltaTime * 2);
-    m_hitbox->move(0, -m_movementSpeed * deltaTime * 2);
+    m_velocity = velocity;
 }
 
-void Character::shield(float deltaTime, PLAYER_DIRECTION direction)
+sf::Vector2f Character::getVelocity() const
 {
+    return m_velocity;
 }
 
 void Character::setHitbox(Hitbox* hitbox)
@@ -209,6 +179,21 @@ void Character::setHitbox(Hitbox* hitbox)
 Hitbox* Character::getHitbox()
 {
     return m_hitbox;
+}
+
+void Character::setDirection(DIRECTION direction)
+{
+    m_direction = direction;
+}
+
+DIRECTION Character::getDirection() const
+{
+    return m_direction;
+}
+
+void Character::isOnPlatform(bool value)
+{
+    m_isOnPlatform = value;
 }
 
 sf::Vector2f Character::getPosition()

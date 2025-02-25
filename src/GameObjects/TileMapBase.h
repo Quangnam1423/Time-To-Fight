@@ -4,11 +4,12 @@
 
 #include <SFML/Graphics.hpp>
 #include <list>
+#include "GameDefinition.h"
 
 class TileMapBase : public sf::Drawable, public sf::Transformable
 {
 public:
-	std::list<sf::Vector2i> getMapCollider(sf::Vector2i baseSize, std::vector<int> tile, int width, int height);
+	std::list<TileInformation> getMapCollider(sf::Vector2i baseSize, std::vector<int> tile, int width, int height);
 	bool loadBase(sf::Texture* texture, sf::Vector2i baseSize, std::vector<int> tile, int width, int height);
 private:
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const
